@@ -44,6 +44,7 @@ import jsm from './education/jsm.png';
 import wasto from "./projects/wasto.png";
 import artisight from "./projects/artisight.png";
 import securepass from "./projects/securepass.png";
+import phnmn from "./projects/phnmn.png";
 
 // Testimonials
 import binu from "./testimonials/binu.jpg";
@@ -91,6 +92,7 @@ export {
   wasto,
   artisight,
   securepass,
+  phnmn,
   // Testimonials
   binu,
   tarini,

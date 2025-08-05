@@ -32,11 +32,11 @@ import {
   wasto,
   artisight,
   securepass,
+  phnmn,
   // Testimonials
   binu,
   tarini,
-  ganesh,  
-  website
+  ganesh,
 } from "../assets";
 
 export const navLinks = [
@@ -102,22 +102,21 @@ const technologies = [
     name: "Python",
     icon: python,
   },
-    {
-    name: "AWS",
-    icon: aws,
+  {
+    name: "TypeScript",
+    icon: typescript,
   },
   {
-    name: "Tailwind CSS",
-    icon: tailwind,
+    name: "Next JS",
+    icon: next,
   },
   {
     name: "React JS",
     icon: reactjs,
   },
-  ,
   {
-    name: "Next JS",
-    icon: next,
+    name: "AWS",
+    icon: aws,
   },
   {
     name: "Redux Toolkit",
@@ -136,6 +135,10 @@ const technologies = [
     icon: nodejs,
   },
   {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
+  {
     name: "MongoDB",
     icon: mongodb,
   },
@@ -146,10 +149,6 @@ const technologies = [
   {
     name: "java",
     icon: java,
-  },
-  {
-    name: "TypeScript",
-    icon: typescript,
   }
 ];
 
@@ -174,7 +173,7 @@ const experiences = [
     company_name: "Stealth Startup (Social Media Platform) | Remote",
     icon: stealth,
     iconBg: "#ffffff",
-    date: "Feb 2025 - May 2025",
+    date: "Feb 2024 - May 2024",
     points: [
       "Worked directly with the co-founder in a 3-member founding team, taking full ownership across all phases of early-stage product development in a fast-paced startup environment.",
       "Led user research efforts to validate core assumptions, shaped the problem statement, and performed detailed competitive analysis to identify key differentiators in the social media space.",
@@ -369,6 +368,28 @@ const projects = [
     image: securepass,
     source_code_link: "https://github.com/vdevisricharan/securepass",
   },
+  {
+    name: "Phnmn",
+    description:
+      "A Ecommerce fashion website that provides a seamless shopping experience with a user-friendly interface, and secure payment options.",
+    tags: [
+      {
+        name: "typescript",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "node.js",
+        color: "green-text-gradient",
+      },
+      {
+        name: "next.js",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: phnmn,
+    source_code_link: "https://github.com/vdevisricharan/phnmn",
+    live_link: "https://phnmn.vercel.app/"
+  }
 ];
 
 export { services, technologies, experiences, testimonials, projects, education };
