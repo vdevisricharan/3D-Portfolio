@@ -33,7 +33,8 @@ import midas from "./company/midas.jpg";
 import microbiome from "./company/microbiome.png";
 import lumiq from './company/lumiq.webp';
 import hcd from './company/hcd.png';
-import stealth from './company/stealth.jpg';
+import remotasks from './company/remotasks.jpg';
+import streezi from './company/streezi.png';
 
 // Education images
 import iiitd from './education/iiitd.png';
@@ -83,7 +84,8 @@ export {
   microbiome,
   lumiq,
   hcd,
-  stealth,
+  remotasks,
+  streezi,
   // Education images
   iiitd,
   sr,
