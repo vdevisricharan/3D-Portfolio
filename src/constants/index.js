@@ -24,7 +24,7 @@ import {
   lumiq,
   hcd,
   remotasks,
-  streezi,
+  skizen,
   // Education images
   iiitd,
   sr,
@@ -155,18 +155,18 @@ const technologies = [
 
 const experiences = [
   {
-    title: "Product Engineer",
-    company_name: "Streezi | Remote",
-    icon: streezi,
+    title: "Software Engineer",
+    company_name: "Skizen | Hyderabad",
+    icon: skizen,
     iconBg: "#ffffff",
-    date: "Sep 2025 - Present",
+    date: "Oct 2025 - Present",
     points: [
-      "Worked directly with the co-founder, taking full ownership across all phases of early-stage product development in a fast-paced startup environment.",
-      "Led user research efforts to validate core assumptions, shaped the problem statement, and performed detailed competitive analysis to identify key differentiators in the social media space.",
-      "Designed scalable information architecture and built iterative low-, mid-, and high-fidelity prototypes using Figma to refine user flows and engagement strategies.",
-      "Engineered the MVP frontend using React Native and built the backend APIs with Python (FastAPI), laying the technical foundation for rapid iteration, internal testing, and investor demonstrations.",
+      "Architected and developed a mobile-first platform connecting users through location-based demand mapping, building the mobile client with React Native and scalable backend services using Django, Django REST Framework, and PostgreSQL.",
+      "Designed and implemented RESTful APIs and data models powering core platform features including community posts,category-based discussions, groups, messaging systems, and business opportunity discovery workflows.",
+      "Built asynchronous backend pipelines using Celery and Redis for background jobs such as analytics processing, notifications, and data aggregation, improving system responsiveness and enabling scalable task execution.",
+      "Integrated Firebase authentication, cloud storage services, and AI-driven analytics pipelines, enabling real-time user engagement features and predictive insights for identifying profitable local business opportunities.",
     ],
-    website: "https://streezi.com/"
+    website: "https://skizen.in/"
   },
   {
     title: "Software Engineer",
@@ -175,11 +175,10 @@ const experiences = [
     iconBg: "#ffffff",
     date: "Jun 2024 - Aug 2025",
     points: [
-      "Designed and implemented a high-performance deduplication engine using Python and AWS ETL pipelines, reducing duplicate insurance data records by 40% and improving data quality for multiple enterprise clients.",
-      "Built a scalable internal project management and resource allocation platform using React, NestJS, and PostgreSQL, boosting team productivity by 30% through streamlined tracking and efficient resource utilization.",
-      "Developed a stateful CMS-based application using Strapi (backend) and React (frontend) with robust API validations and PDF export functionality; deployed via Docker, improving content management workflows by 35%.",
-      "Created an AI-powered virtual sales agent using LangChain, LangGraph, and LLMs, with a Next.js frontend using SSR and SSG; enabled real-time demos, increasing client engagement by 25%.",
-      "Wrote a robust Bash data correction script that removed over 350,000 duplicate financial exposure records for a key insurance client, significantly enhancing data reliability and financial reporting accuracy."
+      "Created an AI-powered virtual sales agent using LangChain, LangGraph, and LLMs, with a Next.js frontend using SSR and SSG; enabled real-time demos, increasing client engagement.",
+      "Designed and implemented a high-performance deduplication engine using Python, Django and AWS ETL pipelines, reducing duplicate insurance data records and improving data quality for multiple enterprise clients.",
+      "Wrote a robust Bash data correction script that removed over 350,000 duplicate financial exposure records for a key insurance client, significantly enhancing data reliability and financial reporting accuracy.",
+      "Built a scalable internal project management and resource allocation platform using React, NestJS, and PostgreSQL,boosting team productivity through streamlined tracking and efficient resource utilization."
     ],
     website: "https://lumiq.ai/",
   },

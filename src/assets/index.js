@@ -34,7 +34,7 @@ import microbiome from "./company/microbiome.png";
 import lumiq from './company/lumiq.webp';
 import hcd from './company/hcd.png';
 import remotasks from './company/remotasks.jpg';
-import streezi from './company/streezi.png';
+import skizen from './company/skizen.svg';
 
 // Education images
 import iiitd from './education/iiitd.png';
@@ -85,7 +85,7 @@ export {
   lumiq,
   hcd,
   remotasks,
-  streezi,
+  skizen,
   // Education images
   iiitd,
   sr,
