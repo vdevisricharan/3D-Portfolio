@@ -168,29 +168,30 @@ const technologies = [
 const experiences = [
   {
     title: "Software Engineer",
-    company_name: "Skizen | Hyderabad",
+    company_name: "Skizen | Hyderabad, India",
     icon: skizen,
     iconBg: "#ffffff",
     date: "Oct 2025 - Present",
     points: [
-      "Architected and developed a mobile-first platform connecting users through location-based demand mapping, building the mobile client with React Native and scalable backend services using Django, Django REST Framework, and PostgreSQL.",
-      "Designed and implemented RESTful APIs and data models powering core platform features including community posts, category-based discussions, groups, messaging systems, and business opportunity discovery workflows.",
-      "Built asynchronous backend pipelines using Celery and Redis for background jobs such as analytics processing, notifications, and data aggregation, improving system responsiveness and enabling scalable task execution.",
-      "Integrated Firebase authentication, cloud storage services, and AI-driven analytics pipelines, enabling real-time user engagement features and predictive insights for identifying profitable local business opportunities.",
+      "Architected and developed a mobile-first social discovery platform connecting users through location-based demand mapping, engineering the cross-platform client with React Native (Expo) and backend services using Django, Django REST Framework, Express, and PostgreSQL.",
+      "Designed RESTful APIs and spatial data models utilizing GeoJSON 2dsphere indexing for geolocation-based business discovery, category feeds, community discussions, and tiered role-based access control (User, Creator, Business).",
+      "Engineered high-performance video feed orchestration using expo-video and viewport visibility detection (onViewableItemsChanged), guaranteeing single-stream hardware-accelerated playback with preloading and zero black-frame transitions.",
+      "Built asynchronous backend pipelines using Celery and Redis to decouple background analytics aggregation and push notifications; implemented a non-blocking media ingestion pipeline integrating Cloudinary and background upload queues with client-side progress tracking.",
+      "Implemented bidirectional real-time messaging using Socket.IO with JWT authentication, typing indicators, and read receipts; reinforced system security with automated token refresh interceptors and TOTP-based two-factor authentication (2FA).",
     ],
     website: "https://skizen.in/"
   },
   {
     title: "Software Engineer",
-    company_name: "Lumiq | Noida",
+    company_name: "Lumiq | Noida, India",
     icon: lumiq,
     iconBg: "#ffffff",
     date: "Jun 2024 - Aug 2025",
     points: [
-      "Designed and shipped an AI-powered virtual sales agent using LangChain, LangGraph, and LLMs with a Next.js (SSR/SSG) frontend, enabling interactive real-time product demos for prospective enterprise clients.",
-      "Engineered a high-performance deduplication engine using Python, Django, and AWS ETL pipelines, cleaning and reconciling high-volume insurance policy records across enterprise clients.",
-      "Wrote a robust Bash data correction pipeline that cleansed and deduplicated over 350,000 financial exposure records for a premier insurance client, ensuring regulatory data fidelity and reporting accuracy.",
-      "Built a scalable internal project management and resource allocation platform using React, NestJS, and PostgreSQL, streamlining cross-team tracking and operational efficiency."
+      "Engineered an AI-powered virtual sales agent utilizing LangChain and LangGraph to orchestrate stateful, multi-step LLM conversational workflows, coupled with a Next.js (SSR/SSG) frontend enabling real-time interactive product demonstrations for enterprise prospects.",
+      "Designed and implemented a high-throughput data deduplication engine using Python, Django, and AWS ETL pipelines (S3, Glue, Athena) to identify, merge, and clean duplicate insurance policy records across enterprise data lakes.",
+      "Developed and executed an automated Bash and SQL data correction script that successfully eliminated over 350,000 duplicate financial exposure records for a key insurance client, ensuring regulatory data reliability and financial reporting accuracy.",
+      "Built a scalable internal project management and resource allocation platform using React, NestJS, and PostgreSQL, streamlining cross-team project tracking and optimizing operational resource utilization.",
     ],
     website: "https://lumiq.ai/",
   },
