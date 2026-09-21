@@ -1,5 +1,21 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { About, Contact, Experience, Education, Testimonials, Hero, Navbar, Technologies, Projects, StarsCanvas, ResumeModal } from "./components";
+import {
+  About,
+  Contact,
+  Experience,
+  Education,
+  Testimonials,
+  Hero,
+  Navbar,
+  Technologies,
+  Projects,
+  Achievements,
+  Footer,
+  StarsCanvas,
+  ResumeModal,
+  ProjectCaseStudy,
+  ScrollToTop
+} from "./components";
 import { useState } from "react";
 
 const App = () => {
@@ -15,26 +31,37 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="relative z-0 bg-primary">
-        <Navbar onResumeClick={handleResumeClick} />
         <Routes>
           <Route path="/" element={
             <>
+              <Navbar onResumeClick={handleResumeClick} />
               <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-                <Hero />
+                <Hero onResumeClick={handleResumeClick} />
               </div>
               <About />
               <Experience />
-              <Technologies />
-              <Education />
               <Projects />
+              <Technologies />
+              <Achievements />
+              <Education />
               <Testimonials />
               <div className="relative z-0">
                 <Contact />
                 <StarsCanvas />
               </div>
+              <Footer onResumeClick={handleResumeClick} />
             </>
           } />
+          <Route
+            path="/project/:projectId"
+            element={<ProjectCaseStudy onResumeClick={handleResumeClick} />}
+          />
+          <Route
+            path="/case-study/:projectId"
+            element={<ProjectCaseStudy onResumeClick={handleResumeClick} />}
+          />
         </Routes>
         {/* Resume Modal */}
         <ResumeModal
@@ -43,7 +70,8 @@ const App = () => {
         />
       </div>
     </BrowserRouter>
-  )
-}
+  );
+};
+
 
 export default App

@@ -171,7 +171,7 @@ const Navbar = ({ onResumeClick }) => {
             {/* Mobile Menu Footer */}
             <div className="absolute bottom-4 xs:bottom-5 sm:bottom-6 left-4 xs:left-5 sm:left-6 right-4 xs:right-5 sm:right-6">
               <div className="text-center text-secondary text-[12px] xs:text-[13px] border-t border-white/10 pt-4">
-                © 2025 Charan. All rights reserved.
+                © 2026 Charan. All rights reserved.
               </div>
             </div>
           </div>

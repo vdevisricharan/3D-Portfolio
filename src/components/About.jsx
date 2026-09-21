@@ -46,7 +46,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)} 
         className='mt-3 xs:mt-4 sm:mt-6 text-secondary text-[14px] xs:text-[15px] sm:text-[16px] md:text-[17px] max-w-3xl leading-[22px] xs:leading-[24px] sm:leading-[26px] md:leading-[30px]'
       >
-        I'm a Software Engineer at Lumiq, with a B.Tech in Computer Science and Design from IIIT Delhi. I thrive at the intersection of software engineering and AI, and I'm actively looking for challenging full-stack or AI-driven roles where I can build impactful products.
+        I'm a Software Engineer with a B.Tech in Computer Science and Design from IIIT Delhi. I architect production AI systems, distributed backend pipelines, and high-performance web and mobile applications. Having shipped enterprise solutions at Skizen and Lumiq from multi-agent orchestration and deduplication engines to cloud-scale APIs. I bridge applied AI with resilient software engineering.
       </motion.p>
       <div className='mt-12 xs:mt-16 sm:mt-20 grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6 xs:gap-8 sm:gap-10 md:gap-12 lg:gap-20 justify-items-center'>
         {services.map((service, index) => (

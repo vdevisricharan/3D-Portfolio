@@ -1,0 +1,819 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devi Sri Charan Valupadasu - Software Engineer Resume</title>
+  <meta name="description" content="Software Engineer specializing in Scalable Backend Architecture, Applied AI/ML, and Full-Stack Engineering." />
+  <style>
+    /* CSS Reset & Token Definitions */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --color-bg-page: #f1f5f9;
+      --color-card-bg: #ffffff;
+      --color-text-primary: #0f172a;
+      --color-text-secondary: #334155;
+      --color-text-muted: #64748b;
+      --color-text-light: #94a3b8;
+      --color-accent: #0284c7;
+      --color-accent-dark: #0369a1;
+      --color-border: #e2e8f0;
+      --color-border-light: #f1f5f9;
+      --color-tag-bg: #f8fafc;
+      --color-tag-border: #cbd5e1;
+      --color-tag-text: #334155;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg-page);
+      color: var(--color-text-primary);
+      line-height: 1.45;
+      font-size: 13px;
+      padding: 24px 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Top Floating Toolbar (Screen Only) */
+    .top-toolbar {
+      max-width: 860px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 18px;
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toolbar-info {
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #ecfdf5;
+      color: #047857;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: 11px;
+    }
+
+    .toolbar-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-print {
+      background: #0f172a;
+      color: #ffffff;
+      border: 1px solid #0f172a;
+    }
+
+    .btn-print:hover {
+      background: #1e293b;
+    }
+
+    /* Resume Container */
+    .resume-document {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 34px 38px;
+    }
+
+    /* Header Section */
+    .resume-header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .candidate-name {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    .candidate-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-accent-dark);
+      margin-top: 3px;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      transition: color 0.15s ease;
+    }
+
+    .contact-item:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    .contact-separator {
+      color: var(--color-text-light);
+    }
+
+    /* Section Styling */
+    .resume-section {
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 7px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 3px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #0f172a;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-border-light);
+    }
+
+    /* Professional Summary */
+    .summary-text {
+      color: var(--color-text-secondary);
+      font-size: 12.5px;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    /* Experience & Projects Entries */
+    .entry-item {
+      margin-bottom: 11px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .entry-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+    }
+
+    .entry-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .role-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .company-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-accent-dark);
+    }
+
+    .entry-location {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+    }
+
+    .entry-date {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 2px;
+      margin-bottom: 5px;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 500;
+      background: var(--color-tag-bg);
+      border: 1px solid var(--color-tag-border);
+      color: var(--color-tag-text);
+      padding: 1px 6px;
+      border-radius: var(--radius-sm);
+      line-height: 1.25;
+    }
+
+    .project-link {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Bullet List */
+    .bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 3px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+      color: var(--color-text-secondary);
+      font-size: 12.3px;
+      line-height: 1.45;
+      text-align: justify;
+    }
+
+    .bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .bullet-list li::before {
+      content: '•';
+      position: absolute;
+      left: 2px;
+      top: -1px;
+      color: #0f172a;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .metric-highlight {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    /* Skills Section (Exactly 5 Groups) */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .skill-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-size: 12.3px;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      color: #0f172a;
+      width: 155px;
+      flex-shrink: 0;
+      font-size: 12px;
+    }
+
+    .skill-items {
+      color: var(--color-text-secondary);
+      flex: 1;
+      line-height: 1.4;
+    }
+
+    /* Two Column Grid for Education and Achievements */
+    .two-column-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .dense-entry {
+      margin-bottom: 6px;
+    }
+
+    .dense-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .dense-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .dense-subtitle {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      margin-top: 1px;
+    }
+
+    .dense-detail {
+      font-size: 11.8px;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+      line-height: 1.38;
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        font-size: 9.5pt !important;
+        color: #000000 !important;
+      }
+
+      .top-toolbar {
+        display: none !important;
+      }
+
+      .resume-document {
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+
+      .resume-header {
+        border-bottom: 1.5pt solid #000000 !important;
+        padding-bottom: 6px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .candidate-name {
+        font-size: 18pt !important;
+      }
+
+      .candidate-title {
+        font-size: 10pt !important;
+        color: #000000 !important;
+        margin-bottom: 5px !important;
+      }
+
+      .contact-bar {
+        font-size: 8.5pt !important;
+        gap: 8px !important;
+      }
+
+      .contact-item {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
+
+      .section-title {
+        font-size: 9.5pt !important;
+        color: #000000 !important;
+      }
+
+      .resume-section {
+        margin-bottom: 9px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .entry-item {
+        margin-bottom: 7px !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .role-title {
+        font-size: 10pt !important;
+      }
+
+      .company-name {
+        font-size: 9.5pt !important;
+        color: #000000 !important;
+      }
+
+      .entry-date, .entry-location {
+        font-size: 8.5pt !important;
+      }
+
+      .tag-badge {
+        border: 0.5pt solid #94a3b8 !important;
+        background: #f8fafc !important;
+        color: #000000 !important;
+        font-size: 7.5pt !important;
+      }
+
+      .bullet-list li {
+        font-size: 8.8pt !important;
+        line-height: 1.32 !important;
+        margin-bottom: 2px !important;
+        color: #000000 !important;
+      }
+
+      .summary-text {
+        font-size: 8.8pt !important;
+        line-height: 1.35 !important;
+        color: #000000 !important;
+      }
+
+      .skill-row {
+        font-size: 8.8pt !important;
+      }
+
+      .skill-category {
+        width: 125px !important;
+        color: #000000 !important;
+      }
+
+      .skill-items {
+        color: #000000 !important;
+      }
+
+      .two-column-grid {
+        gap: 10px !important;
+      }
+
+      a {
+        text-decoration: none !important;
+        color: #000000 !important;
+      }
+
+      @page {
+        margin: 0.35in;
+        size: letter;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px 8px;
+      }
+
+      .resume-document {
+        padding: 20px 14px;
+      }
+
+      .candidate-name {
+        font-size: 21px;
+      }
+
+      .entry-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .entry-date {
+        margin-top: 2px;
+        margin-bottom: 4px;
+      }
+
+      .skill-row {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .skill-category {
+        width: auto;
+      }
+
+      .two-column-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .top-toolbar {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Toolbar -->
+  <aside class="top-toolbar" aria-label="Resume Actions">
+    <div class="toolbar-info">
+      <span class="toolbar-badge">Available for Roles</span>
+      <span>Devi Sri Charan Valupadasu — Verified Technical Resume</span>
+    </div>
+    <div class="toolbar-actions">
+      <button type="button" id="printBtn" class="btn-action btn-print" aria-label="Print or save PDF version of resume">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Semantic Resume Document -->
+  <main class="resume-document" itemscope itemtype="https://schema.org/Person">
+    
+    <!-- Header -->
+    <header class="resume-header">
+      <h1 class="candidate-name" itemprop="name">DEVI SRI CHARAN VALUPADASU</h1>
+      <p class="candidate-title" itemprop="jobTitle">Software Engineer &bull; Scalable Backend Systems &bull; Applied AI/ML &bull; Full-Stack</p>
+      
+      <div class="contact-bar">
+        <a href="mailto:vdevisricharan@gmail.com" class="contact-item" itemprop="email">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          vdevisricharan@gmail.com
+        </a>
+        <span class="contact-separator">&bull;</span>
+        <a href="https://vdevisricharan.netlify.app" target="_blank" rel="noopener noreferrer" class="contact-item" itemprop="url">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+          vdevisricharan.netlify.app
+        </a>
+        <span class="contact-separator">&bull;</span>
+        <a href="https://github.com/vdevisricharan" target="_blank" rel="noopener noreferrer" class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          github.com/vdevisricharan
+        </a>
+        <span class="contact-separator">&bull;</span>
+        <a href="https://linkedin.com/in/vdevisricharan" target="_blank" rel="noopener noreferrer" class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="9" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          linkedin.com/in/vdevisricharan
+        </a>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="resume-section">
+      <div class="section-header">
+        <h2 class="section-title">Professional Summary</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="summary-text">
+        Software Engineer with over 2 years of experience building scalable backend architectures, distributed background pipelines, and production AI/LLM applications. Proficient in engineering cross-platform mobile and web services using React Native, Next.js, Django, and FastAPI, orchestrating multi-agent RAG pipelines with LangGraph and Qdrant, and automating large-scale enterprise data workflows with Celery, Redis, and AWS. Proven track record of delivering resilient, high-throughput systems and data quality pipelines across enterprise and startup environments.
+      </p>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="resume-section">
+      <div class="section-header">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Skizen -->
+      <article class="entry-item">
+        <div class="entry-header">
+          <div class="entry-title-group">
+            <span class="role-title">Software Engineer</span>
+            <span class="company-name">Skizen</span>
+            <span class="entry-location">&bull; Hyderabad, India</span>
+          </div>
+          <time class="entry-date">Oct 2025 – Present</time>
+        </div>
+        <ul class="bullet-list">
+          <li>Architected and developed a mobile-first social discovery platform connecting users through location-based demand mapping, engineering the cross-platform client with React Native (Expo) and backend services using Django, Django REST Framework, Express, and PostgreSQL.</li>
+          <li>Designed RESTful APIs and spatial data models utilizing GeoJSON 2dsphere indexing for geolocation-based business discovery, category feeds, community discussions, and tiered role-based access control (User, Creator, Business).</li>
+          <li>Engineered high-performance video feed orchestration using <span class="metric-highlight">expo-video</span> and viewport visibility detection (<span class="metric-highlight">onViewableItemsChanged</span>), guaranteeing single-stream hardware-accelerated playback with preloading and zero black-frame transitions.</li>
+          <li>Built asynchronous backend pipelines using <span class="metric-highlight">Celery and Redis</span> to decouple background analytics aggregation and push notifications; implemented a non-blocking media ingestion pipeline integrating Cloudinary and background upload queues with client-side progress tracking.</li>
+          <li>Implemented bidirectional real-time messaging using <span class="metric-highlight">Socket.IO</span> with JWT authentication, typing indicators, and read receipts; reinforced system security with automated token refresh interceptors and TOTP-based two-factor authentication (2FA).</li>
+        </ul>
+      </article>
+
+      <!-- Lumiq -->
+      <article class="entry-item">
+        <div class="entry-header">
+          <div class="entry-title-group">
+            <span class="role-title">Software Engineer</span>
+            <span class="company-name">Lumiq</span>
+            <span class="entry-location">&bull; Noida, India</span>
+          </div>
+          <time class="entry-date">Jun 2024 – Aug 2025</time>
+        </div>
+        <ul class="bullet-list">
+          <li>Engineered an AI-powered virtual sales agent utilizing <span class="metric-highlight">LangChain and LangGraph</span> to orchestrate stateful, multi-step LLM conversational workflows, coupled with a Next.js (SSR/SSG) frontend enabling real-time interactive product demonstrations for enterprise prospects.</li>
+          <li>Designed and implemented a high-throughput data deduplication engine using Python, Django, and AWS ETL pipelines (S3, Glue, Athena) to identify, merge, and clean duplicate insurance policy records across enterprise data lakes.</li>
+          <li>Developed and executed an automated Bash and SQL data correction script that successfully eliminated <span class="metric-highlight">over 350,000 duplicate financial exposure records</span> for a key insurance client, ensuring regulatory data reliability and financial reporting accuracy.</li>
+          <li>Built a scalable internal project management and resource allocation platform using <span class="metric-highlight">React, NestJS, and PostgreSQL</span>, streamlining cross-team project tracking and optimizing operational resource utilization.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Technical Projects (Exactly 2) -->
+    <section class="resume-section">
+      <div class="section-header">
+        <h2 class="section-title">Technical Projects</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Multi-Agent Medical Assistant -->
+      <article class="entry-item">
+        <div class="entry-header">
+          <div class="entry-title-group">
+            <span class="role-title">Multi-Agent Medical Assistant</span>
+            <a href="https://github.com/vdevisricharan/Multi-Agent-Medical-Assistant" target="_blank" rel="noopener noreferrer" class="project-link">
+              [github.com/vdevisricharan/Multi-Agent-Medical-Assistant]
+            </a>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag-badge">Python</span>
+          <span class="tag-badge">FastAPI</span>
+          <span class="tag-badge">LangGraph</span>
+          <span class="tag-badge">Qdrant</span>
+          <span class="tag-badge">Docling</span>
+          <span class="tag-badge">PyTorch</span>
+          <span class="tag-badge">Docker</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Architected a modular multi-agent medical assistance system using <span class="metric-highlight">LangGraph and FastAPI</span>, dynamically routing complex healthcare research and triage queries across specialized conversational, literature retrieval, and medical imaging agents.</li>
+          <li>Engineered an advanced agentic RAG pipeline integrating <span class="metric-highlight">Docling</span> for multimodal document parsing (extracting tables, text, and figures), LLM query expansion, and <span class="metric-highlight">Qdrant hybrid search</span> (BM25 sparse keyword + dense embeddings) with HuggingFace Cross-Encoder (<span class="metric-highlight">ms-marco-TinyBERT</span>) re-ranking.</li>
+          <li>Developed deep learning computer vision agents in PyTorch for chest X-ray disease classification and skin lesion segmentation, incorporating input/output safety guardrails, confidence-based agent handoffs (RAG to web search), and human-in-the-loop verification workflows.</li>
+          <li>Containerized the multi-service architecture with <span class="metric-highlight">Docker</span> and automated continuous integration testing with GitHub Actions; integrated ElevenLabs API for low-latency bidirectional voice interaction.</li>
+        </ul>
+      </article>
+
+      <!-- Cost-Efficient RAG Application -->
+      <article class="entry-item">
+        <div class="entry-header">
+          <div class="entry-title-group">
+            <span class="role-title">Cost-Efficient RAG Application</span>
+            <a href="https://github.com/vdevisricharan/cost-efficient-rag-application" target="_blank" rel="noopener noreferrer" class="project-link">
+              [github.com/vdevisricharan/cost-efficient-rag-application]
+            </a>
+          </div>
+        </div>
+        <div class="project-tags">
+          <span class="tag-badge">Python</span>
+          <span class="tag-badge">FastAPI</span>
+          <span class="tag-badge">Gemini 2.5 Flash</span>
+          <span class="tag-badge">LanceDB</span>
+          <span class="tag-badge">ChromaDB</span>
+          <span class="tag-badge">SentenceTransformers</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Engineered a self-hosted, serverless-style RAG service pairing embedded vector stores (<span class="metric-highlight">LanceDB</span> with Apache Arrow columnar disk format and <span class="metric-highlight">ChromaDB</span>) with Gemini 2.5 Flash, demonstrating up to <span class="metric-highlight">99.9% analytical infrastructure cost reduction</span> compared to always-on managed cloud vector pods.</li>
+          <li>Built an idempotent multi-format document ingestion pipeline (PDF, HTML, Markdown) utilizing recursive chunking, <span class="metric-highlight">SHA-256 chunk hashing</span> to eliminate duplicate vector writes, and strict system-prompted citation enforcement <span class="metric-highlight">[Doc: &lt;source&gt;, Chunk: &lt;id&gt;]</span>.</li>
+          <li>Implemented a configurable cosine similarity cutoff (&tau; = 0.35) achieving <span class="metric-highlight">100% fallback accuracy</span> on unanswerable queries in benchmark tests; evaluated retrieval performance across a 20-query ground-truth dataset yielding <span class="metric-highlight">83.3% Recall@3, 83.3% Hit Rate@3, and 85.0% LLM-as-a-Judge answer relevance</span>.</li>
+          <li>Exposed FastAPI REST endpoints (<span class="metric-highlight">/ingest, /query, /health, /stats</span>) and CLI tooling; instrumented structured logging via Loguru to monitor per-query retrieval latency (<span class="metric-highlight">p50 = 26.48 ms on LanceDB</span>), token consumption, and generation metrics.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Technical Skills (Exactly 5 Groups) -->
+    <section class="resume-section">
+      <div class="section-header">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-category">Programming:</span>
+          <span class="skill-items">Python, JavaScript, TypeScript, SQL, Java, Bash</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-category">Frontend &amp; Mobile:</span>
+          <span class="skill-items">React, React Native, Next.js, Redux, Zustand, Tailwind CSS, HTML5, CSS3</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-category">Backend &amp; APIs:</span>
+          <span class="skill-items">Django, Django REST Framework, FastAPI, Flask, Node.js, Express.js, NestJS, REST APIs, Socket.IO</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-category">AI / ML / RAG:</span>
+          <span class="skill-items">LangChain, LangGraph, PyTorch, TensorFlow, Hugging Face, Transformers, Qdrant, LanceDB, ChromaDB, Docling, SentenceTransformers, RAG, NLP</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-category">Data, Cloud &amp; DevOps:</span>
+          <span class="skill-items">PostgreSQL, MySQL, MongoDB, AWS (EC2, S3, Lambda, Athena, Glue), Celery, Redis, Docker, Git, GitHub Actions, Firebase / FCM, Cloudinary</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-Column Grid: Education & Achievements / Certifications -->
+    <div class="two-column-grid">
+      
+      <!-- Education -->
+      <section class="resume-section">
+        <div class="section-header">
+          <h2 class="section-title">Education</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="dense-entry">
+          <div class="dense-title">Indraprastha Institute of Information Technology Delhi (IIIT Delhi)</div>
+          <div class="dense-subtitle">B.Tech in Computer Science and Design &bull; 2020 – 2024</div>
+          <div class="dense-detail">
+            <strong>Coursework:</strong> Data Structures &amp; Algorithms, DBMS, Advanced Programming, Analysis &amp; Design of Algorithms, Computer Networks, Operating Systems, NLP, Information Retrieval, Machine Learning, Reinforcement Learning in Finance, Affective Computing.
+          </div>
+        </div>
+      </section>
+
+      <!-- Achievements & Certifications -->
+      <section class="resume-section">
+        <div class="section-header">
+          <h2 class="section-title">Achievements &amp; Certifications</h2>
+          <div class="section-line"></div>
+        </div>
+        
+        <div class="dense-entry">
+          <div class="dense-title">Honors &amp; Awards</div>
+          <div class="dense-detail">
+            &bull; <strong>Won 1st Place</strong> | SMAI Hackathon by Micron Technology India (2022)<br/>
+            &bull; <strong>Scored 99.23 Percentile</strong> | JEE MAINS (All India Rank: 8,694)
+          </div>
+        </div>
+
+        <div class="dense-entry" style="margin-top: 6px;">
+          <div class="dense-title">Certifications</div>
+          <div class="dense-detail">
+            &bull; <strong>AWS Certified Data Engineer – Associate (Partner)</strong> | Lumiq<br/>
+            &bull; <strong>AWS Certification</strong> | Scaler
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script>
+    document.getElementById('printBtn').addEventListener('click', function() {
+      window.print();
+    });
+  </script>
+</body>
+</html>

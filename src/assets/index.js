@@ -27,6 +27,10 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
+import pytorch from "./tech/pytorch.svg";
+import fastapi from "./tech/fastapi.svg";
+import langchain from "./tech/langchain.svg";
+import redis from "./tech/redis.svg";
 
 // Company logos
 import midas from "./company/midas.jpg";
@@ -42,6 +46,10 @@ import sr from './education/sr.jpg';
 import jsm from './education/jsm.png';
 
 // Project images
+import medical_assistant from "./projects/medical_assistant.png";
+import cost_efficient_rag from "./projects/cost_efficient_rag.png";
+import llm_as_judge from "./projects/llm_as_judge.png";
+import recipe_generation from "./projects/recipe_generation.png";
 import wasto from "./projects/wasto.png";
 import artisight from "./projects/artisight.png";
 import securepass from "./projects/securepass.png";
@@ -79,6 +87,10 @@ export {
   typescript,
   aws,
   docker,
+  pytorch,
+  fastapi,
+  langchain,
+  redis,
   // Company logos
   midas,
   microbiome,
@@ -91,6 +103,10 @@ export {
   sr,
   jsm,
   // Project images
+  medical_assistant,
+  cost_efficient_rag,
+  llm_as_judge,
+  recipe_generation,
   wasto,
   artisight,
   securepass,

@@ -54,6 +54,17 @@ const Experience = () => {
           }
         </VerticalTimeline>
       </div>
+      <div className="mt-12 flex justify-center">
+        <a
+          href="https://linkedin.com/in/vdevisricharan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-tertiary/80 hover:bg-tertiary border border-white/10 hover:border-[#915eff]/60 text-secondary hover:text-white transition-all duration-200 text-[13px] sm:text-[15px] shadow-lg"
+        >
+          <span>Looking for earlier research and university roles? View complete history on LinkedIn</span>
+          <span className="text-[#915eff] font-bold">&rarr;</span>
+        </a>
+      </div>
     </>
   )
 }

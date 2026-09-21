@@ -18,6 +18,10 @@ import {
   typescript,
   aws,
   docker,
+  pytorch,
+  fastapi,
+  langchain,
+  redis,
   // Company logos
   midas,
   microbiome,
@@ -30,6 +34,10 @@ import {
   sr,
   jsm,
   // Project images
+  medical_assistant,
+  cost_efficient_rag,
+  llm_as_judge,
+  recipe_generation,
   wasto,
   artisight,
   securepass,
@@ -50,16 +58,20 @@ export const navLinks = [
     title: "Experience",
   },
   {
+    id: "#projects",
+    title: "Projects",
+  },
+  {
     id: "#technologies",
     title: "Technologies",
   },
   {
-    id: "#education",
-    title: "Education",
+    id: "#achievements",
+    title: "Achievements",
   },
   {
-    id: "#projects",
-    title: "Projects",
+    id: "#education",
+    title: "Education",
   },
   {
     id: "#testimonials",
@@ -77,31 +89,47 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Frontend Developer",
-    icon: web,
-  },
-  {
-    title: "Backend Developer",
-    icon: creator,
-  },
-  {
-    title: "AWS Data Engineer",
+    title: "AI Systems Engineer",
     icon: backend,
   },
   {
-    title: "UI/UX Designer",
+    title: "Backend Architect",
+    icon: creator,
+  },
+  {
+    title: "Full Stack Developer",
+    icon: web,
+  },
+  {
+    title: "AWS Data Engineer",
     icon: mobile,
   },
 ];
 
 const technologies = [
   {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
     name: "Python",
     icon: python,
+  },
+  {
+    name: "PyTorch",
+    icon: pytorch,
+  },
+  {
+    name: "LangChain",
+    icon: langchain,
+  },
+  {
+    name: "FastAPI",
+    icon: fastapi,
+  },
+  {
+    name: "PostgreSQL",
+    icon: postgresql,
+  },
+  {
+    name: "Redis",
+    icon: redis,
   },
   {
     name: "TypeScript",
@@ -112,20 +140,20 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
-    icon: redux,
+    name: "Next JS",
+    icon: next,
   },
   {
-    name: "PostgreSQL",
-    icon: postgresql,
+    name: "Docker",
+    icon: docker,
+  },
+  {
+    name: "AWS",
+    icon: aws,
   },
   {
     name: "Node JS",
     icon: nodejs,
-  },
-  {
-    name: "Next JS",
-    icon: next,
   },
   {
     name: "Nest JS",
@@ -135,22 +163,6 @@ const technologies = [
     name: "Tailwind CSS",
     icon: tailwind,
   },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Docker",
-    icon: docker,
-  },
-  {
-    name: "java",
-    icon: java,
-  },
-  {
-    name: "AWS",
-    icon: aws,
-  }
 ];
 
 const experiences = [
@@ -162,7 +174,7 @@ const experiences = [
     date: "Oct 2025 - Present",
     points: [
       "Architected and developed a mobile-first platform connecting users through location-based demand mapping, building the mobile client with React Native and scalable backend services using Django, Django REST Framework, and PostgreSQL.",
-      "Designed and implemented RESTful APIs and data models powering core platform features including community posts,category-based discussions, groups, messaging systems, and business opportunity discovery workflows.",
+      "Designed and implemented RESTful APIs and data models powering core platform features including community posts, category-based discussions, groups, messaging systems, and business opportunity discovery workflows.",
       "Built asynchronous backend pipelines using Celery and Redis for background jobs such as analytics processing, notifications, and data aggregation, improving system responsiveness and enabling scalable task execution.",
       "Integrated Firebase authentication, cloud storage services, and AI-driven analytics pipelines, enabling real-time user engagement features and predictive insights for identifying profitable local business opportunities.",
     ],
@@ -175,112 +187,64 @@ const experiences = [
     iconBg: "#ffffff",
     date: "Jun 2024 - Aug 2025",
     points: [
-      "Created an AI-powered virtual sales agent using LangChain, LangGraph, and LLMs, with a Next.js frontend using SSR and SSG; enabled real-time demos, increasing client engagement.",
-      "Designed and implemented a high-performance deduplication engine using Python, Django and AWS ETL pipelines, reducing duplicate insurance data records and improving data quality for multiple enterprise clients.",
-      "Wrote a robust Bash data correction script that removed over 350,000 duplicate financial exposure records for a key insurance client, significantly enhancing data reliability and financial reporting accuracy.",
-      "Built a scalable internal project management and resource allocation platform using React, NestJS, and PostgreSQL,boosting team productivity through streamlined tracking and efficient resource utilization."
+      "Designed and shipped an AI-powered virtual sales agent using LangChain, LangGraph, and LLMs with a Next.js (SSR/SSG) frontend, enabling interactive real-time product demos for prospective enterprise clients.",
+      "Engineered a high-performance deduplication engine using Python, Django, and AWS ETL pipelines, cleaning and reconciling high-volume insurance policy records across enterprise clients.",
+      "Wrote a robust Bash data correction pipeline that cleansed and deduplicated over 350,000 financial exposure records for a premier insurance client, ensuring regulatory data fidelity and reporting accuracy.",
+      "Built a scalable internal project management and resource allocation platform using React, NestJS, and PostgreSQL, streamlining cross-team tracking and operational efficiency."
     ],
     website: "https://lumiq.ai/",
-  },
-  {
-    title: "Generative AI Trainer",
-    company_name: "Remotasks | Remote",
-    icon: remotasks,
-    iconBg: "#ffffff",
-    date: "December 2023 - May 2024",
-    points: [
-      "Reviewed and evaluated code generated by AI in languages such as JavaScript, Python, Go, Java, TypeScript, and C++",
-      "Analysed code quality, maintainability, and adherence to real-world engineering standards",
-      "Provided feedback on version control workflows, collaborative coding practices, and effective debugging techniques",
-    ],
-    website: "https://www.remotasks.com/",
-  },
-  {
-    title: "Full Stack Developer",
-    company_name: "Microbiome Informatics Lab | IIIT Delhi",
-    icon: microbiome,
-    iconBg: "#ffffff",
-    date: "January 2023 - November 2023",
-    points: [
-      "Led the end-to-end development of a dedicated research portal, enhancing the Lab's online presence and increasing visibility of research areas and publications by 60%.",
-      "Designed and implemented scalable RESTful API endpoints using Flask, optimising retrieval and processing of complex metagenomic data, resulting in a 45% improvement in response time.",
-      "Built a web application with React and TailwindCSS, enabling advanced search and download functionality for metagenome datasets and improving researcher accessibility by 50%.",
-    ],
-    website: "https://microbiome.iiitd.edu.in/",
-  },
-  {
-    title: "Full Stack Developer",
-    company_name: "Midas Lab | IIIT Delhi",
-    icon: midas,
-    iconBg: "#ffffff",
-    date: "January 2023 - November 2023",
-    points: [
-      "Designed and implemented a scalable Flask-based backend system for a real-time environmental sensing platform, efficiently processing over 100,000+ data points per day and reducing data handling latency by 30%.",
-      "Built optimized RESTful API endpoints to support high-throughput sensor networks, enhancing data retrieval speed by 40%.",
-      "Developed a dynamic, data-driven frontend using React and TailwindCSS to visualize real-time sensor data, improving user interaction and data interpretation by 50%.",
-      "Designed and deployed a fully responsive marketing website to showcase the project, focusing on UX/UI best practices and mobile-first design."
-    ],
-    website: "https://midas.iiitd.edu.in/",
-  },
-  {
-    title: "Frontend Developer",
-    company_name: "Department of Human Centered Design | IIIT Delhi",
-    icon: hcd,
-    iconBg: "#ffffff",
-    date: "August 2022 - November 2022",
-    points: [
-      "Conceptualized, designed, and developed the official website for the IIIT Delhi 11th Convocation 2022.",
-      "Tech Stack: HTML, CSS, SCSS, Javascript, Bootstrap, Adobe Suite",
-    ],
-    website: "https://hcd.iiitd.ac.in/",
   },
 ];
 
 const education = [
   {
-    title: "Bachelor of Technology",
-    company_name: "IIIT Delhi",
+    title: "B.Tech in Computer Science and Design",
+    company_name: "Indraprastha Institute of Information Technology, Delhi (IIIT Delhi)",
     icon: iiitd,
     iconBg: "#ffffff",
     date: "2020 - 2024",
     points: [
-      "Branch: Computer Science and Design",
-      "Department: Human Centered Design",
-      "CGPA: 7",
-      "Won 1st Place in SMAI Hackathon conducted by Micron Technology India",
+      "Graduated with a Bachelor of Technology in Computer Science and Design.",
+      "Relevant Coursework: Data Structures & Algorithms, Machine Learning, Natural Language Processing, Database Management Systems, Operating Systems, Computer Networks.",
+      "National Hackathon Winner: Secured 1st Place in Micron SMAI Hackathon 2022 among collegiate teams nationwide."
     ],
     website: "https://iiitd.ac.in/",
   },
+];
+
+const achievements = [
   {
-    title: "Intermediate Education",
-    company_name: "SR Edu-Center, Warangal",
-    icon: sr,
-    iconBg: "#ffffff",
-    date: "2018 - 2020",
-    points: [
-      "Group: MPC",
-      "Marks: 971/1000",
-      "JEE Mains January 2020 Percentile: 99.2303444",
-      "JEE Mains September 2020 Percentile: 98.782147",
-      "JEE Mains All India Rank: 8694",
-      "JEE Mains OBC Category Rank: 1629",
-      "JEE Advanced 2020 Score: 122",
-      "JEE Advanced 2020 All India Rank: 9110",
-      "JEE Advanced 2020 OBC Category Rank: 1700",
-    ],
-    website: "https://instagram.com/sreducational_academy",
+    title: "1st Place Winner — Micron SMAI Hackathon",
+    issuer: "Micron Technology India",
+    date: "2022",
+    description: "Won 1st place nationwide in the Smart Manufacturing and AI (SMAI) Hackathon organized by Micron Technology, competing against leading engineering institutions across India.",
+    type: "Award",
+    badge: "1st Place",
   },
   {
-    title: "Secondary Education",
-    company_name: "JSM High School, Warangal",
-    icon: jsm,
-    iconBg: "#ffffff",
-    date: "2016 - 2018",
-    points: [
-      "CGPA: 10/10",
-    ],
-    website: "https://instagram.com/jsmschools",
-  }
+    title: "AWS Certified Data Engineer – Associate",
+    issuer: "Amazon Web Services (AWS)",
+    date: "Credentialed",
+    description: "Demonstrated production competence in AWS data lakes, ingestion pipelines, Glue ETL, Athena, Redshift, S3 architecture, and data security standards.",
+    type: "Certification",
+    badge: "AWS Certified",
+  },
+  {
+    title: "JEE Mains 2020 — 99.23 Percentile",
+    issuer: "National Testing Agency (NTA)",
+    date: "2020",
+    description: "Ranked in the top 0.77% nationwide (All India Rank 8,694) among more than 1.1 million candidates appearing for the premier national engineering entrance exam.",
+    type: "Academic Honor",
+    badge: "AIR 8694",
+  },
+  {
+    title: "AWS Cloud Practitioner Training",
+    issuer: "Scaler / AWS",
+    date: "2023",
+    description: "Comprehensive hands-on training covering core AWS compute (EC2, Lambda), storage (S3, EBS), IAM security policies, and high-availability cloud architecture.",
+    type: "Certification",
+    badge: "Cloud Certified",
+  },
 ];
 
 const testimonials = [
@@ -314,9 +278,114 @@ const testimonials = [
 
 const projects = [
   {
-    name: "ArtiSight",
+    name: "Multi-Agent Medical Assistant",
+    case_study_id: "medical-assistant",
     description:
-      "An AI Photo Critique Assistant to analyze and critique photos by providing actionable insights and personalized learning recommendations.",
+      "Production-grade multi-agent medical diagnostic system utilizing LangGraph state orchestration, Docling multimodal PDF parsing, Qdrant hybrid search (BM25 + dense), PyTorch medical imaging agents, and human-in-the-loop validation.",
+    tags: [
+      {
+        name: "langgraph",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "fastapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "qdrant",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "pytorch",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: medical_assistant,
+    source_code_link: "https://github.com/vdevisricharan/Multi-Agent-Medical-Assistant",
+  },
+  {
+    name: "Cost-Efficient RAG Application",
+    case_study_id: "cost-efficient-rag",
+    description:
+      "High-throughput, cost-efficient RAG system comparing embedded vector databases (LanceDB & ChromaDB) against cloud managed services, achieving 99.9% cost reduction, sub-30ms p50 latency, and 100% fallback accuracy.",
+    tags: [
+      {
+        name: "python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "fastapi",
+        color: "green-text-gradient",
+      },
+      {
+        name: "lancedb",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "chromadb",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: cost_efficient_rag,
+    source_code_link: "https://github.com/vdevisricharan/cost-efficient-rag-application",
+  },
+  {
+    name: "LLM-as-Judge Evaluation Pipeline",
+    case_study_id: "llm-as-judge",
+    description:
+      "Automated evaluation engine with code-level mitigations for 5 systematic LLM biases (position, verbosity, self-enhancement), statistical validation (Cohen's Kappa k = 0.84), Pydantic schemas, and release gating.",
+    tags: [
+      {
+        name: "python",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "gemini-api",
+        color: "green-text-gradient",
+      },
+      {
+        name: "pydantic",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "eval-engineering",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: llm_as_judge,
+    source_code_link: "https://github.com/vdevisricharan/llm-as-judge-evaluation-pipeline",
+  },
+  {
+    name: "LLM Recipe Generation System",
+    case_study_id: "recipe-generation",
+    description:
+      "Parameter-efficient fine-tuning of open-weight 7B LLMs (Llama 3, Gemma, Mistral) with LoRA and 4-bit QLoRA via Unsloth, benchmarked against T5, GPT-2, Bi-LSTM, and GRU baseline neural models.",
+    tags: [
+      {
+        name: "pytorch",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "huggingface",
+        color: "green-text-gradient",
+      },
+      {
+        name: "lora",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "unsloth",
+        color: "blue-text-gradient",
+      },
+    ],
+    image: recipe_generation,
+    source_code_link: "https://github.com/vdevisricharan/LLM-Recipe-Generation-System",
+  },
+  {
+    name: "ArtiSight",
+    case_study_id: "artisight",
+    description:
+      "An AI Photo Critique Assistant to analyze and critique photos by providing actionable insights, composition analysis, and personalized learning recommendations.",
     tags: [
       {
         name: "react",
@@ -340,9 +409,10 @@ const projects = [
     live_link: "https://artisight.netlify.app/",
   },
   {
-    name: " Wasto",
+    name: "Wasto",
+    case_study_id: "wasto",
     description:
-      "A ML algorithm to detect and segregate the waste according to organic, Non-Biodegradable, and recycling products at the recycling unit.",
+      "A ML algorithm to detect and segregate waste according to organic, non-biodegradable, and recycling categories using MobileNetV3 transfer learning and microcontroller integration.",
     tags: [
       {
         name: "python",
@@ -356,54 +426,15 @@ const projects = [
         name: "tailwindcss",
         color: "pink-text-gradient",
       },
+      {
+        name: "arduino",
+        color: "blue-text-gradient",
+      },
     ],
     image: wasto,
     source_code_link: "https://github.com/vdevisricharan/wasto",
     live_link: "https://wasto.netlify.app/",
   },
-  {
-    name: "SecurePass",
-    description:
-      "A Browser extension that provides an additional layer of security for your saved passwords, with adjustable protection levels",
-    tags: [
-      {
-        name: "javascript",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "css",
-        color: "green-text-gradient",
-      },
-      {
-        name: "html",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: securepass,
-    source_code_link: "https://github.com/vdevisricharan/securepass",
-  },
-  {
-    name: "PHNMN",
-    description:
-      "A Ecommerce fashion website that provides a seamless shopping experience with a user-friendly interface, and secure payment options.",
-    tags: [
-      {
-        name: "typescript",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "node.js",
-        color: "green-text-gradient",
-      },
-      {
-        name: "next.js",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: phnmn,
-    source_code_link: "https://github.com/vdevisricharan/phnmn",
-    live_link: "https://phnmn.vercel.app/"
-  }
 ];
 
-export { services, technologies, experiences, testimonials, projects, education };
+export { services, technologies, experiences, testimonials, projects, education, achievements };
