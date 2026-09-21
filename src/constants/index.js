@@ -165,6 +165,96 @@ const technologies = [
   },
 ];
 
+const skillCategories = [
+  {
+    title: "AI, Machine Learning & RAG",
+    icon: "🧠",
+    badge: "Core",
+    skills: [
+      "LangChain",
+      "LangGraph",
+      "PyTorch",
+      "TensorFlow",
+      "Hugging Face",
+      "Transformers",
+      "Qdrant",
+      "LanceDB",
+      "ChromaDB",
+      "Docling",
+      "SentenceTransformers",
+      "Multimodal CV",
+      "NLP"
+    ]
+  },
+  {
+    title: "Backend & Distributed Systems",
+    icon: "⚡",
+    badge: "Production",
+    skills: [
+      "FastAPI",
+      "Django",
+      "Django REST Framework",
+      "Express.js",
+      "NestJS",
+      "Node.js",
+      "Celery",
+      "Redis",
+      "Socket.IO",
+      "RESTful APIs",
+      "Microservices"
+    ]
+  },
+  {
+    title: "Frontend & Mobile",
+    icon: "💻",
+    badge: "Cross-Platform",
+    skills: [
+      "React",
+      "React Native (Expo)",
+      "Next.js (SSR/SSG)",
+      "TypeScript",
+      "Redux",
+      "Zustand",
+      "Tailwind CSS",
+      "Three.js",
+      "HTML5 / CSS3"
+    ]
+  },
+  {
+    title: "Cloud, Data & DevOps",
+    icon: "☁️",
+    badge: "Certified",
+    skills: [
+      "AWS (EC2, S3, Lambda, Athena, Glue)",
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "Docker",
+      "GitHub Actions (CI/CD)",
+      "Firebase / FCM",
+      "Cloudinary",
+      "Linux / Bash"
+    ]
+  },
+  {
+    title: "Languages & Foundations",
+    icon: "🛠️",
+    badge: "Foundational",
+    skills: [
+      "Python",
+      "TypeScript",
+      "JavaScript",
+      "SQL",
+      "Java",
+      "C++",
+      "Bash",
+      "System Design",
+      "Data Structures & Algorithms"
+    ]
+  }
+];
+
+
 const experiences = [
   {
     title: "Software Engineer",
@@ -438,4 +528,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects, education, achievements };
+export { services, technologies, experiences, testimonials, projects, education, achievements, skillCategories };
