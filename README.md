@@ -36,13 +36,13 @@ Each of the 6 featured projects links to an in-depth, dedicated case study page 
 
 ### 3. 💼 Quantified Professional Experience
 - **Vertical Timeline:** Interactive company timeline detailing production impact at **Skizen** (Oct 2025 – Present) and **Lumiq** (Jun 2024 – Aug 2025).
-- **Concrete Technical Bullets:** Highlights real-time Socket.IO messaging, Celery/Redis asynchronous workers, GeoJSON 2dsphere indexing, LangGraph virtual sales agents, and automated data deduplication eliminating 350,000+ duplicate financial records.
+- **Concrete Technical Bullets:** Highlights CapCut Desktop video prep automation, multi-platform Google Drive social media posting automation, real-time Socket.IO messaging, Celery/Redis asynchronous workers, GeoJSON 2dsphere indexing, LangGraph virtual sales agents, and automated data deduplication eliminating 350,000+ duplicate financial records.
 - **External Archival Link:** Sleek callout directing recruiters to LinkedIn for earlier academic and research lab roles.
 
 ### 4. 🧠 Technologies & Interactive 3D Spheres
 - **Interactive 3D Ball Showcase:** Floating icosahedron decals rendered in WebGL with rotation and orbit controls, equipped with technology labels for clarity.
 - **Specialized 5-Domain Skills Matrix:**
-  1. **AI, Machine Learning & RAG:** *LangChain, LangGraph, PyTorch, TensorFlow, Hugging Face, Transformers, Qdrant, LanceDB, ChromaDB, Docling, SentenceTransformers, Multimodal CV, NLP*
+  1. **AI, Machine Learning & RAG:** *LangChain, LangGraph, PyTorch, TensorFlow, Hugging Face, Transformers, Qdrant, LanceDB, ChromaDB, Docling, OpenCV, SentenceTransformers, Multimodal CV, NLP*
   2. **Backend & Distributed Systems:** *FastAPI, Django, Django REST Framework, Express.js, NestJS, Node.js, Celery, Redis, Socket.IO, RESTful APIs, Microservices*
   3. **Frontend & Mobile:** *React, React Native (Expo), Next.js (SSR/SSG), TypeScript, Redux, Zustand, Tailwind CSS, Three.js, HTML5 / CSS3*
   4. **Cloud, Data & DevOps:** *AWS (EC2, S3, Lambda, Athena, Glue), PostgreSQL, MongoDB, MySQL, Docker, GitHub Actions (CI/CD), Firebase / FCM, Cloudinary, Linux / Bash*

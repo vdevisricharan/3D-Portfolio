@@ -1,4 +1,4 @@
-﻿# Hi 👋, I'm Charan
+# Hi 👋, I'm Charan
 
 **Software Engineer** specializing in **Scalable Backend Systems**, **Applied AI / Machine Learning**, and **Full-Stack Engineering**.
 
@@ -92,10 +92,11 @@ flowchart LR
 
 ### 🏢 Software Engineer &bull; [Skizen](https://skizen.in/)
 *Oct 2025 – Present &bull; Hyderabad, India*
-- Developing a mobile-first social discovery platform using **React Native (Expo)** and **Django / Express** backends.
-- Engineered spatial data models with **GeoJSON 2dsphere indexing** for location-based demand mapping, category feeds, and business opportunity discovery.
-- Built asynchronous backend pipelines using **Celery and Redis** to decouple analytics aggregation, notifications, and background media processing.
-- Implemented real-time bidirectional messaging via **Socket.IO** with JWT authentication, typing indicators, and TOTP-based 2FA security.
+- Architected and developed a mobile-first social discovery platform using **React Native (Expo)**, **Django**, **DRF**, and **Express** with **GeoJSON 2dsphere spatial indexing** for location-based demand mapping.
+- Engineered high-performance video feed orchestration using **expo-video** and viewport visibility detection for single-stream hardware-accelerated playback with preloading.
+- Developed a production-quality local video automation tool (**Python, OpenCV, PySceneDetect, FFmpeg**) to prepare raw footage for 9:16 Instagram Reel editing in **CapCut Desktop** with automated scene detection, quality scoring, and non-destructive draft generation.
+- Engineered an automated social media posting pipeline that monitors client **Google Drive** folders for finalized Reels and publishes them across client social media handles (**Meta Graph API / Instagram Reels, YouTube Shorts**) with chunked media upload streaming and resilient retries.
+- Built asynchronous backend pipelines using **Celery and Redis** for analytics aggregation and push notifications, alongside real-time **Socket.IO** messaging with TOTP 2FA.
 
 ### 🏢 Software Engineer &bull; [Lumiq](https://lumiq.ai/)
 *Jun 2024 – Aug 2025 &bull; Noida, India*
@@ -113,7 +114,7 @@ flowchart LR
 | **Programming** | Python, JavaScript, TypeScript, SQL, Java, Bash |
 | **Frontend & Mobile** | React, React Native (Expo), Next.js, Redux, Zustand, Tailwind CSS, HTML5, CSS3 |
 | **Backend & APIs** | Django, Django REST Framework, FastAPI, Flask, Node.js, Express.js, NestJS, REST APIs, Socket.IO |
-| **AI / ML / RAG** | LangChain, LangGraph, PyTorch, TensorFlow, Hugging Face, Transformers, Qdrant, LanceDB, ChromaDB, Docling, SentenceTransformers, RAG, NLP |
+| **AI / ML / RAG** | LangChain, LangGraph, PyTorch, TensorFlow, Hugging Face, Transformers, Qdrant, LanceDB, ChromaDB, Docling, OpenCV, SentenceTransformers, RAG, NLP |
 | **Data, Cloud & DevOps** | PostgreSQL, MySQL, MongoDB, AWS (EC2, S3, Lambda, Athena, Glue), Celery, Redis, Docker, Git, GitHub Actions, Firebase / FCM, Cloudinary |
 
 ---

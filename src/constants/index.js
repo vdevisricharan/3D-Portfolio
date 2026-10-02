@@ -181,6 +181,7 @@ const skillCategories = [
       "LanceDB",
       "ChromaDB",
       "Docling",
+      "OpenCV",
       "SentenceTransformers",
       "Multimodal CV",
       "NLP"
@@ -263,11 +264,11 @@ const experiences = [
     iconBg: "#ffffff",
     date: "Oct 2025 - Present",
     points: [
-      "Architected and developed a mobile-first social discovery platform connecting users through location-based demand mapping, engineering the cross-platform client with React Native (Expo) and backend services using Django, Django REST Framework, Express, and PostgreSQL.",
-      "Designed RESTful APIs and spatial data models utilizing GeoJSON 2dsphere indexing for geolocation-based business discovery, category feeds, community discussions, and tiered role-based access control (User, Creator, Business).",
-      "Engineered high-performance video feed orchestration using expo-video and viewport visibility detection (onViewableItemsChanged), guaranteeing single-stream hardware-accelerated playback with preloading and zero black-frame transitions.",
-      "Built asynchronous backend pipelines using Celery and Redis to decouple background analytics aggregation and push notifications; implemented a non-blocking media ingestion pipeline integrating Cloudinary and background upload queues with client-side progress tracking.",
-      "Implemented bidirectional real-time messaging using Socket.IO with JWT authentication, typing indicators, and read receipts; reinforced system security with automated token refresh interceptors and TOTP-based two-factor authentication (2FA).",
+      "Architected and developed a mobile-first social discovery platform connecting users through location-based demand mapping, engineering the cross-platform client with React Native (Expo) and backend services using Django, DRF, Express, and PostgreSQL with GeoJSON 2dsphere spatial indexing.",
+      "Engineered high-performance video feed orchestration using expo-video and viewport visibility detection (onViewableItemsChanged), guaranteeing single-stream hardware-accelerated playback with preloading, zero black-frame transitions, and non-blocking background media ingestion.",
+      "Developed a production-quality local video automation tool (Python, OpenCV, PySceneDetect, FFmpeg) to prepare raw footage for 9:16 Instagram Reel editing; implemented automated scene cut detection, visual quality scoring (sharpness, motion), perceptual duplicate filtering, and programmatic CapCut Desktop draft project generation with non-destructive speed retiming (1.0x, 0.75x, 0.5x slo-mo) and an interactive human-in-the-loop review UI.",
+      "Engineered an automated social media posting pipeline that continuously monitors client Google Drive folders for finalized Reels and automatically schedules and publishes content across client social media handles (Meta Graph API / Instagram Reels, YouTube Shorts) with chunked media upload streaming, OAuth token lifecycle management, rate limiting, and resilient retry mechanisms.",
+      "Built asynchronous backend pipelines using Celery and Redis to decouple background analytics aggregation and push notifications; implemented bidirectional real-time messaging using Socket.IO with JWT authentication, typing indicators, and TOTP-based two-factor authentication (2FA).",
     ],
     website: "https://skizen.in/"
   },
