@@ -1,25 +1,25 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   About,
   Contact,
   Experience,
-  Education,
-  Testimonials,
   Hero,
   Navbar,
   Technologies,
   Projects,
   Achievements,
+  ResumeSection,
   Footer,
   StarsCanvas,
   ResumeModal,
   ProjectCaseStudy,
-  ScrollToTop
+  ScrollToTop,
 } from "./components";
-import { useState } from "react";
 
 const App = () => {
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [nightPatrol, setNightPatrol] = useState(false);
 
   const handleResumeClick = () => {
     setIsResumeModalOpen(true);
@@ -29,31 +29,68 @@ const App = () => {
     setIsResumeModalOpen(false);
   };
 
+  const handleToggleNightPatrol = () => {
+    setNightPatrol((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (nightPatrol) {
+      document.documentElement.setAttribute("data-night-patrol", "true");
+    } else {
+      document.documentElement.removeAttribute("data-night-patrol");
+    }
+  }, [nightPatrol]);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="relative z-0 bg-primary">
+      {/* Skip to Main Content Link for Keyboard Accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded focus:bg-[#FF304F] focus:text-[#F7F5FF] focus:font-mono focus:text-xs focus:uppercase"
+      >
+        Skip to main content
+      </a>
+
+      <div className="relative z-0 bg-[#08060F] min-h-screen text-[#F7F5FF]">
         <Routes>
-          <Route path="/" element={
-            <>
-              <Navbar onResumeClick={handleResumeClick} />
-              <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-                <Hero onResumeClick={handleResumeClick} />
-              </div>
-              <About />
-              <Experience />
-              <Projects />
-              <Technologies />
-              <Achievements />
-              <Education />
-              <Testimonials />
-              <div className="relative z-0">
-                <Contact />
-                <StarsCanvas />
-              </div>
-              <Footer onResumeClick={handleResumeClick} />
-            </>
-          } />
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar
+                  onResumeClick={handleResumeClick}
+                  nightPatrol={nightPatrol}
+                  onToggleNightPatrol={handleToggleNightPatrol}
+                />
+                <main id="main-content">
+                  {/* SECTION 01 — HERO: THE ORIGIN */}
+                  <Hero
+                    onResumeClick={handleResumeClick}
+                    nightPatrol={nightPatrol}
+                  />
+                  {/* SECTION 02 — ABOUT: BEHIND THE MASK */}
+                  <About />
+                  {/* SECTION 03 — FEATURED PROJECTS: THE MISSIONS */}
+                  <Projects />
+                  {/* SECTION 04 — EXPERIENCE: THE JOURNEY */}
+                  <Experience />
+                  {/* SECTION 05 — SKILLS: THE TECH ARSENAL */}
+                  <Technologies />
+                  {/* SECTION 06 — ACHIEVEMENTS: MILESTONES */}
+                  <Achievements />
+                  {/* SECTION 07 — RESUME: THE DOSSIER */}
+                  <ResumeSection onResumeClick={handleResumeClick} />
+                  {/* SECTION 08 — CONTACT: SEND A SIGNAL */}
+                  <div className="relative z-0">
+                    <Contact />
+                    <StarsCanvas />
+                  </div>
+                </main>
+                <Footer onResumeClick={handleResumeClick} />
+              </>
+            }
+          />
           <Route
             path="/project/:projectId"
             element={<ProjectCaseStudy onResumeClick={handleResumeClick} />}
@@ -63,7 +100,8 @@ const App = () => {
             element={<ProjectCaseStudy onResumeClick={handleResumeClick} />}
           />
         </Routes>
-        {/* Resume Modal */}
+
+        {/* Interactive Resume Modal */}
         <ResumeModal
           isOpen={isResumeModalOpen}
           onClose={handleCloseResumeModal}
@@ -73,5 +111,4 @@ const App = () => {
   );
 };
 
-
-export default App
+export default App;

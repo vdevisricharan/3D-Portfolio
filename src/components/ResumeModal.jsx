@@ -1,90 +1,146 @@
-import { useEffect } from 'react';
-import resumeUrl from '../assets/Devi_Sri_Charan_SWE_2026.html?url';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef } from "react";
+import resumeUrl from "../assets/Devi_Sri_Charan_SWE_2026.html?url";
+import { motion, AnimatePresence } from "framer-motion";
+
+const PUBLIC_RESUME_PATH = "/Devi_Sri_Charan_SWE_2026.html";
 
 const ResumeModal = ({ isOpen, onClose }) => {
-  // Handle escape key press
+  const closeBtnRef = useRef(null);
+  const iframeRef = useRef(null);
+
   useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      document.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        if (closeBtnRef.current) closeBtnRef.current.focus();
+      }, 50);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose]);
 
-  // Handle backdrop click
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
+  const handlePrint = () => {
+    try {
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        iframeRef.current.contentWindow.focus();
+        iframeRef.current.contentWindow.print();
+        return;
+      }
+    } catch {
+      // Fallback to opening in new tab
+    }
+    window.open(PUBLIC_RESUME_PATH, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
-          {/* Blurred Overlay */}
-          <motion.div 
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="resume-modal-title"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6"
+        >
+          {/* Backdrop */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+            className="fixed inset-0 bg-[#08060F]/85 backdrop-blur-md"
             onClick={handleBackdropClick}
           />
-          
-          {/* Resume Modal Container */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            onClick={handleBackdropClick}
+
+          {/* Modal Frame */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.25 }}
+            className="relative z-10 w-full max-w-5xl h-[92vh] bg-[#171126] border border-[#9B4DFF]/50 rounded-xl shadow-[0_24px_80px_rgba(8,6,15,0.95)] flex flex-col overflow-hidden"
           >
-            <div className="relative w-full max-w-5xl h-[90vh] bg-tertiary rounded-xl p-4 shadow-2xl">
-              {/* Actions Header */}
-              <div className="absolute -top-4 -right-4 flex items-center gap-2 z-50">
-                <a
-                  href={resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-tertiary rounded-full flex items-center justify-center shadow-lg hover:bg-secondary transition-all duration-300 border-2 border-white/20 text-white"
-                  aria-label="Open Resume in new tab"
-                  title="Open in new tab"
+            {/* Modal Top HUD Action Bar */}
+            <div className="px-4 sm:px-6 py-3 bg-[#08060F] border-b border-[#9B4DFF]/30 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#FF304F]" aria-hidden="true" />
+                <h2
+                  id="resume-modal-title"
+                  className="font-mono text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#F7F5FF]"
                 >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-                <button
-                  onClick={onClose}
-                  className="w-10 h-10 bg-tertiary rounded-full flex items-center justify-center shadow-lg hover:bg-secondary transition-all duration-300 border-2 border-white/20"
-                  aria-label="Close Resume"
-                >
-                  <span className="text-white text-2xl font-bold">×</span>
-                </button>
+                  DOSSIER // DEVI SRI CHARAN — VERIFIED RESUME
+                </h2>
               </div>
 
-              {/* Resume Container */}
-              <div className="w-full h-full rounded-lg overflow-hidden bg-white">
-                <iframe
-                  src={resumeUrl}
-                  className="w-full h-full border-none"
-                  title="Devi Sri Charan - Resume"
-                />
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handlePrint}
+                  className="px-3 py-1.5 rounded bg-[#FF304F] hover:bg-[#e02442] text-[#F7F5FF] font-mono text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors cursor-pointer"
+                >
+                  Print / Save PDF
+                </button>
+
+                <a
+                  href={PUBLIC_RESUME_PATH}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded bg-[#171126] hover:bg-[#9B4DFF]/25 border border-[#9B4DFF]/40 text-[#F7F5FF] font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
+                >
+                  Open Fullscreen &#8599;
+                </a>
+
+                <button
+                  ref={closeBtnRef}
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Close Resume Viewer"
+                  className="w-8 h-8 rounded bg-[#171126] hover:bg-[#FF304F] border border-[#9B4DFF]/40 text-[#F7F5FF] font-mono text-[16px] font-bold flex items-center justify-center transition-colors cursor-pointer"
+                >
+                  &times;
+                </button>
               </div>
             </div>
+
+            {/* Embedded Semantic Resume Document */}
+            <div className="flex-1 w-full bg-white overflow-hidden relative">
+              <iframe
+                ref={iframeRef}
+                src={resumeUrl || PUBLIC_RESUME_PATH}
+                className="w-full h-full border-none"
+                title="Devi Sri Charan Valupadasu - Software Engineer Resume"
+              />
+            </div>
+
+            {/* Direct Fallback Footer Bar for Mobile Browsers */}
+            <div className="px-4 py-2 bg-[#08060F] border-t border-[#9B4DFF]/25 flex items-center justify-between text-[11px] font-mono text-[#BDB4CC]">
+              <span>ATS-Ready Semantic HTML Document</span>
+              <a
+                href={PUBLIC_RESUME_PATH}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C4A2FF] hover:text-[#FF304F] underline"
+              >
+                Having trouble viewing? Open direct resume link &rarr;
+              </a>
+            </div>
           </motion.div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );

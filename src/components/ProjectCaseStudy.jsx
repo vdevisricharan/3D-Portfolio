@@ -1,31 +1,57 @@
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { caseStudies, caseStudyKeys } from "../constants/caseStudies";
-import { github, website, logo } from "../assets";
 import { StarsCanvas } from "./canvas";
 import Footer from "./Footer";
+
+const DEFAULT_TITLE = "Devi Sri Charan | Software Engineer & AI Systems";
 
 const ProjectCaseStudy = ({ onResumeClick }) => {
   const { projectId } = useParams();
   const navigate = useNavigate();
+  const [copiedMermaid, setCopiedMermaid] = useState(false);
 
   const caseStudy = caseStudies[projectId];
 
+  // Dynamic SEO Title per Case Study
+  useEffect(() => {
+    if (caseStudy) {
+      document.title = `${caseStudy.title} — Case Study | Devi Sri Charan`;
+    } else {
+      document.title = `Case Study Not Found | Devi Sri Charan`;
+    }
+    return () => {
+      document.title = DEFAULT_TITLE;
+    };
+  }, [caseStudy]);
+
+  const handleCopyDiagram = () => {
+    if (!caseStudy?.architecture?.diagram) return;
+    navigator.clipboard?.writeText(caseStudy.architecture.diagram);
+    setCopiedMermaid(true);
+    setTimeout(() => setCopiedMermaid(false), 2000);
+  };
+
   if (!caseStudy) {
     return (
-      <div className="min-h-screen bg-primary flex flex-col justify-center items-center px-6 text-center relative z-0">
+      <div className="min-h-screen bg-[#08060F] flex flex-col justify-center items-center px-6 text-center relative z-0">
         <StarsCanvas />
-        <div className="relative z-10 max-w-lg bg-tertiary/80 border border-white/10 rounded-2xl p-8 backdrop-blur-md">
-          <span className="text-[#915eff] text-5xl font-bold">404</span>
-          <h1 className="text-white text-2xl font-bold mt-4">Case Study Not Found</h1>
-          <p className="text-secondary text-sm mt-3 leading-relaxed">
-            The requested project case study "{projectId}" does not exist or has been relocated.
+        <div className="relative z-10 max-w-lg comic-panel rounded-xl p-8">
+          <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-[#FF304F] block">
+            ERROR // 404
+          </span>
+          <h1 className="font-display font-extrabold uppercase text-[38px] text-[#F7F5FF] mt-2">
+            CASE STUDY NOT FOUND
+          </h1>
+          <p className="font-sans text-[#BDB4CC] text-[14.5px] mt-3 leading-relaxed">
+            The requested mission field report &ldquo;{projectId}&rdquo; could not be located in the archive.
           </p>
           <Link
             to="/#projects"
-            className="inline-block mt-6 px-6 py-3 bg-[#915eff] hover:bg-[#804bee] text-white text-sm font-semibold rounded-xl transition-all shadow-lg shadow-[#915eff]/30"
+            className="spider-sense-btn inline-block mt-6 px-6 py-3 rounded-md bg-[#FF304F] hover:bg-[#e02442] text-[#F7F5FF] font-mono text-[12px] font-bold uppercase tracking-[0.14em] transition-all"
           >
-            &larr; Return to Featured Projects
+            &larr; Return to Featured Missions
           </Link>
         </div>
       </div>
@@ -34,49 +60,84 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
 
   // Calculate Previous and Next projects
   const currentIndex = caseStudyKeys.indexOf(projectId);
-  const prevKey = currentIndex > 0 ? caseStudyKeys[currentIndex - 1] : caseStudyKeys[caseStudyKeys.length - 1];
-  const nextKey = currentIndex < caseStudyKeys.length - 1 ? caseStudyKeys[currentIndex + 1] : caseStudyKeys[0];
+  const prevKey =
+    currentIndex > 0
+      ? caseStudyKeys[currentIndex - 1]
+      : caseStudyKeys[caseStudyKeys.length - 1];
+  const nextKey =
+    currentIndex < caseStudyKeys.length - 1
+      ? caseStudyKeys[currentIndex + 1]
+      : caseStudyKeys[0];
 
   const prevProject = caseStudies[prevKey];
   const nextProject = caseStudies[nextKey];
 
   return (
-    <div className="relative z-0 bg-primary min-h-screen text-white selection:bg-[#915eff] selection:text-white">
-      {/* Top Floating Navigation Bar */}
-      <header className="sticky top-0 z-30 w-full bg-primary/85 backdrop-blur-md border-b border-white/10 py-3.5 px-6 sm:px-12 transition-all">
+    <div className="relative z-0 bg-[#08060F] min-h-screen text-[#F7F5FF] selection:bg-[#9B4DFF] selection:text-[#F7F5FF]">
+      {/* Subtle Background Grid */}
+      <div
+        className="fixed inset-0 bg-arch-grid opacity-45 pointer-events-none z-[-1]"
+        aria-hidden="true"
+      />
+
+      {/* Sticky Top Technical Field Report HUD Header */}
+      <header className="sticky top-0 z-30 w-full bg-[#08060F]/90 backdrop-blur-md border-b border-[#9B4DFF]/30 py-3.5 px-5 sm:px-12">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => navigate("/#projects")}
-              className="inline-flex items-center gap-2 text-secondary hover:text-white text-sm font-medium transition-colors group cursor-pointer"
+            <Link
+              to="/#projects"
+              className="inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-[0.12em] text-[#BDB4CC] hover:text-[#F7F5FF] transition-colors group"
             >
-              <span className="group-hover:-translate-x-1 transition-transform">&larr;</span>
-              <span className="hidden sm:inline">Back to Portfolio</span>
+              <span
+                className="text-[#FF304F] group-hover:-translate-x-1 transition-transform"
+                aria-hidden="true"
+              >
+                &larr;
+              </span>
+              <span className="hidden sm:inline">Back to Missions</span>
               <span className="sm:hidden">Back</span>
-            </button>
-            <span className="text-white/20 hidden md:inline">|</span>
-            <div className="hidden md:flex items-center gap-2 text-xs text-secondary">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            </Link>
+
+            <span className="text-[#9B4DFF]/30 hidden md:inline" aria-hidden="true">
+              //
+            </span>
+
+            <nav
+              aria-label="Breadcrumb"
+              className="hidden md:flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] text-[#BDB4CC]"
+            >
+              <Link to="/" className="hover:text-[#F7F5FF] transition-colors">
+                Origin
+              </Link>
               <span>/</span>
-              <button onClick={() => navigate("/#projects")} className="hover:text-white transition-colors">
-                Projects
-              </button>
+              <Link to="/#projects" className="hover:text-[#F7F5FF] transition-colors">
+                Missions
+              </Link>
               <span>/</span>
-              <span className="text-white font-medium truncate max-w-[200px]">{caseStudy.title}</span>
-            </div>
+              <span className="text-[#C4A2FF] truncate max-w-[240px]">
+                {caseStudy.title}
+              </span>
+            </nav>
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Repository, Live Demo & Resume Actions */}
+          <div className="flex items-center gap-2.5">
             {caseStudy.github && (
               <a
                 href={caseStudy.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-tertiary border border-white/10 hover:border-[#915eff]/60 text-xs font-semibold text-white transition-all hover:scale-105 shadow-sm"
-                title="View Source on GitHub"
+                className="px-3.5 py-1.5 rounded-md bg-[#171126] hover:bg-[#9B4DFF]/25 border border-[#9B4DFF]/40 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F7F5FF] inline-flex items-center gap-2 transition-colors"
               >
-                <img src={github} alt="GitHub" className="w-4 h-4 object-contain" />
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  />
+                </svg>
                 <span className="hidden sm:inline">GitHub Repository</span>
+                <span className="sm:hidden">Code</span>
               </a>
             )}
 
@@ -85,18 +146,18 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
                 href={caseStudy.liveDemo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#915eff] hover:bg-[#804bee] text-xs font-semibold text-white transition-all hover:scale-105 shadow-md shadow-[#915eff]/30"
-                title="Open Live Deployment"
+                className="px-3.5 py-1.5 rounded-md bg-[#FF304F] hover:bg-[#e02442] font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-[#F7F5FF] inline-flex items-center gap-1.5 transition-colors shadow-[0_0_16px_rgba(255,48,79,0.35)]"
               >
-                <img src={website} alt="Demo" className="w-3.5 h-3.5 object-contain" />
                 <span>Live Demo</span>
+                <span aria-hidden="true">&#8599;</span>
               </a>
             )}
 
             {onResumeClick && (
               <button
+                type="button"
                 onClick={onResumeClick}
-                className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-secondary hover:text-white transition-all"
+                className="hidden lg:inline-flex items-center px-3 py-1.5 rounded-md bg-[#08060F] hover:bg-[#171126] border border-[#9B4DFF]/35 font-mono text-[11px] uppercase tracking-[0.1em] text-[#C4A2FF] hover:text-[#F7F5FF] transition-colors cursor-pointer"
               >
                 Resume
               </button>
@@ -105,57 +166,69 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
         </div>
       </header>
 
-      {/* Main Content Container */}
-      <main className="max-w-6xl mx-auto px-6 sm:px-12 py-10 sm:py-16">
-        {/* Hero Section */}
-        <section className="mb-14">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            {caseStudy.badge && (
-              <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#915eff]/20 text-[#915eff] border border-[#915eff]/40">
-                {caseStudy.badge}
+      {/* Main Field Report Body */}
+      <main className="max-w-6xl mx-auto px-5 sm:px-12 py-10 sm:py-16">
+        {/* 1. Project Title & Executive Summary Header */}
+        <motion.section
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          className="mb-12"
+        >
+          <div className="flex flex-wrap items-center gap-2.5 mb-4">
+            <span className="px-3 py-1 rounded bg-[#FF304F]/15 border border-[#FF304F]/50 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#FF304F]">
+              {caseStudy.missionCode || `FIELD REPORT // 0${currentIndex + 1}`}
+            </span>
+            {caseStudy.displayLabel && (
+              <span className="px-3 py-1 rounded bg-[#171126] border border-[#9B4DFF]/40 font-mono text-[11px] uppercase tracking-[0.14em] text-[#C4A2FF]">
+                {caseStudy.displayLabel}
               </span>
             )}
-            <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-secondary border border-white/10">
-              {caseStudy.category}
-            </span>
-            <span className="px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-secondary border border-white/10">
+            <span className="px-3 py-1 rounded bg-[#08060F] border border-[#9B4DFF]/25 font-mono text-[11px] text-[#BDB4CC]">
               {caseStudy.timeline}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+          <h1 className="font-display font-black uppercase text-[42px] sm:text-[58px] lg:text-[68px] tracking-[0.01em] text-[#F7F5FF] leading-[0.96]">
             {caseStudy.title}
           </h1>
 
-          <p className="mt-5 text-secondary text-base sm:text-lg lg:text-xl leading-relaxed max-w-4xl">
+          <p className="mt-4 font-sans text-[#C4A2FF] text-[17px] sm:text-[20px] leading-[1.55] max-w-4xl">
             {caseStudy.subtitle}
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-4 text-xs sm:text-sm text-secondary">
-            <div className="flex items-center gap-2">
-              <span className="text-[#915eff] font-semibold">Role:</span>
-              <span className="text-white">{caseStudy.role}</span>
+          {/* Quick Metadata Strip */}
+          <div className="mt-6 pt-5 border-t border-[#9B4DFF]/20 flex flex-wrap items-center gap-6 font-mono text-[12px]">
+            <div>
+              <span className="text-[#9B4DFF] uppercase tracking-[0.14em]">ROLE: </span>
+              <span className="text-[#F7F5FF] font-semibold">{caseStudy.role}</span>
             </div>
-            <span className="text-white/20">•</span>
-            <div className="flex items-center gap-2">
-              <span className="text-[#915eff] font-semibold">Verification:</span>
-              <span className="text-white">Open Source & Verified Metrics</span>
+            <div>
+              <span className="text-[#9B4DFF] uppercase tracking-[0.14em]">DOMAIN: </span>
+              <span className="text-[#F7F5FF]">{caseStudy.category}</span>
+            </div>
+            <div>
+              <span className="text-[#FF304F] uppercase tracking-[0.14em]">STATUS: </span>
+              <span className="text-[#F7F5FF]">VERIFIED OPEN SOURCE</span>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Stats Grid */}
+        {/* Key Metrics Callout Grid */}
         {caseStudy.stats && caseStudy.stats.length > 0 && (
-          <section className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+          <section
+            aria-label="Key Engineering Metrics"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
+          >
             {caseStudy.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="bg-tertiary/70 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-[#915eff]/40 transition-colors"
+                className="comic-panel rounded-xl p-4 sm:p-5 flex flex-col justify-between"
               >
-                <span className="text-xs uppercase tracking-wider text-secondary font-medium mb-2">
-                  {stat.label}
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9B4DFF] mb-1.5">
+                  0{idx + 1} // {stat.label}
                 </span>
-                <span className="text-lg sm:text-2xl font-extrabold text-white tracking-tight">
+                <span className="font-display font-extrabold uppercase text-[24px] sm:text-[28px] text-[#F7F5FF] tracking-wide leading-tight">
                   {stat.value}
                 </span>
               </div>
@@ -163,66 +236,159 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
           </section>
         )}
 
-        {/* Hero Visual Asset */}
+        {/* Hero Visual Banner */}
         {caseStudy.image && (
-          <section className="mb-16">
-            <div className="w-full rounded-2xl overflow-hidden border border-white/10 bg-tertiary shadow-2xl group relative">
-              <img
-                src={caseStudy.image}
-                alt={caseStudy.title}
-                className="w-full h-auto max-h-[520px] object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent pointer-events-none" />
+          <section className="mb-14">
+            <div className="w-full rounded-xl overflow-hidden comic-panel p-2 bg-[#171126]">
+              <div className="relative rounded-lg overflow-hidden border border-[#9B4DFF]/25">
+                <img
+                  src={caseStudy.image}
+                  alt={`${caseStudy.title} system architecture and interface`}
+                  className="w-full h-auto max-h-[500px] object-cover object-top"
+                />
+              </div>
             </div>
           </section>
         )}
 
-        {/* Executive Overview & Problem */}
-        <section className="mb-16">
-          <div className="border-l-4 border-[#915eff] pl-4 sm:pl-6 mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Problem & Executive Overview
+        {/* 2 & 3. Problem, Motivation & Verified Role Responsibilities */}
+        <section className="mb-14 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <div className="lg:col-span-7 comic-panel rounded-xl p-6 sm:p-8">
+            <div className="flex items-center gap-2.5 mb-3">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF304F]">
+                SECTION 01 // PROBLEM &amp; MOTIVATION
+              </span>
+            </div>
+            <h2 className="font-display font-bold uppercase text-[28px] sm:text-[32px] text-[#F7F5FF] tracking-wide mb-4">
+              Executive Overview
             </h2>
-            <p className="text-xs text-secondary uppercase tracking-widest mt-1">
-              Context, motivation, and system objectives
-            </p>
+            <div className="font-sans text-[#BDB4CC] text-[15px] leading-[1.7] whitespace-pre-line">
+              {caseStudy.overview}
+            </div>
           </div>
-          <div className="bg-tertiary/50 border border-white/10 rounded-2xl p-6 sm:p-8 leading-relaxed text-secondary text-sm sm:text-base whitespace-pre-line">
-            {caseStudy.overview}
+
+          <div className="lg:col-span-5 comic-panel rounded-xl p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#9B4DFF] block mb-3">
+                SECTION 02 // ROLE &amp; RESPONSIBILITIES
+              </span>
+              <h2 className="font-display font-bold uppercase text-[28px] sm:text-[32px] text-[#F7F5FF] tracking-wide mb-2">
+                {caseStudy.role}
+              </h2>
+              <p className="font-mono text-[11px] text-[#C4A2FF] mb-4">
+                VERIFIED ENGINEERING CONTRIBUTIONS
+              </p>
+
+              {caseStudy.responsibilities && (
+                <ul className="space-y-3">
+                  {caseStudy.responsibilities.map((resp, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2.5 font-sans text-[14px] text-[#BDB4CC] leading-[1.6]"
+                    >
+                      <span
+                        className="mt-2 w-1.5 h-1.5 rounded-full bg-[#FF304F] flex-shrink-0"
+                        aria-hidden="true"
+                      />
+                      <span>{resp}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {/* 4. Technical Stack Summary inside Role Panel */}
+            {caseStudy.techStack && (
+              <div className="mt-6 pt-4 border-t border-[#9B4DFF]/20">
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9B4DFF] block mb-2.5">
+                  CORE TECHNICAL STACK
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {caseStudy.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2.5 py-1 rounded bg-[#08060F] border border-[#9B4DFF]/35 font-mono text-[11px] text-[#F7F5FF]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* System Architecture & Flow */}
+        {/* 5. System Architecture Diagram (Interactive Pipeline Nodes + Mermaid Flowchart) */}
         {caseStudy.architecture && (
-          <section className="mb-16">
-            <div className="border-l-4 border-[#915eff] pl-4 sm:pl-6 mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                System Architecture & Data Pipeline
+          <section className="mb-14">
+            <div className="mb-6">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF304F] block">
+                SECTION 03 // SYSTEM ARCHITECTURE
+              </span>
+              <h2 className="font-display font-extrabold uppercase text-[32px] sm:text-[38px] text-[#F7F5FF] tracking-wide mt-1">
+                ARCHITECTURE &amp; EXECUTION PIPELINE
               </h2>
-              <p className="text-xs text-secondary uppercase tracking-widest mt-1">
-                Data flow, execution graph, and agent interactions
+              <p className="font-sans text-[#BDB4CC] text-[15px] mt-1">
+                {caseStudy.architecture.description}
               </p>
             </div>
 
-            <p className="text-secondary text-sm sm:text-base mb-6 leading-relaxed">
-              {caseStudy.architecture.description}
-            </p>
-
-            {caseStudy.architecture.diagram && (
-              <div className="rounded-2xl border border-white/10 bg-[#0d1117] overflow-hidden shadow-2xl">
-                {/* Window header */}
-                <div className="bg-[#161b22] px-4 py-3 border-b border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                    <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                    <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                    <span className="text-xs text-secondary font-mono ml-2">architecture-flowchart.mmd</span>
+            {/* Visual Pipeline Node Schematic */}
+            {caseStudy.architecture.nodes && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
+                {caseStudy.architecture.nodes.map((node, idx) => (
+                  <div
+                    key={idx}
+                    className="comic-panel rounded-lg p-4 relative flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-mono text-[10px] font-bold text-[#FF304F]">
+                          STAGE {node.step}
+                        </span>
+                        {idx < caseStudy.architecture.nodes.length - 1 && (
+                          <span
+                            className="font-mono text-[12px] text-[#9B4DFF] hidden lg:inline"
+                            aria-hidden="true"
+                          >
+                            &rarr;
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-sans font-bold text-[14px] text-[#F7F5FF]">
+                        {node.name}
+                      </h3>
+                      <p className="font-sans text-[12px] text-[#BDB4CC] mt-1 leading-relaxed">
+                        {node.detail}
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-[11px] font-mono text-secondary/60 uppercase">Mermaid Workflow</span>
+                ))}
+              </div>
+            )}
+
+            {/* Mermaid Flowchart Specification Box */}
+            {caseStudy.architecture.diagram && (
+              <div className="rounded-xl border border-[#9B4DFF]/35 bg-[#0B0814] overflow-hidden shadow-2xl">
+                <div className="bg-[#171126] px-4 py-3 border-b border-[#9B4DFF]/25 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF304F]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#9B4DFF]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#C4A2FF]" />
+                    <span className="font-mono text-[11px] text-[#F7F5FF] ml-2">
+                      architecture-graph.mmd
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleCopyDiagram}
+                    className="px-2.5 py-1 rounded bg-[#08060F] hover:bg-[#9B4DFF]/25 border border-[#9B4DFF]/35 font-mono text-[10px] uppercase tracking-[0.12em] text-[#C4A2FF] cursor-pointer"
+                  >
+                    {copiedMermaid ? "Copied Mermaid" : "Copy Diagram"}
+                  </button>
                 </div>
-                {/* Diagram Code / Visual */}
-                <div className="p-6 overflow-x-auto">
-                  <pre className="text-xs sm:text-sm font-mono text-[#915eff] leading-relaxed select-all">
+                <div className="p-5 sm:p-6 overflow-x-auto">
+                  <pre className="text-[12px] sm:text-[13px] font-mono text-[#C4A2FF] leading-[1.65] select-all">
                     <code>{caseStudy.architecture.diagram}</code>
                   </pre>
                 </div>
@@ -231,34 +397,69 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
           </section>
         )}
 
-        {/* Key Engineering Decisions & Trade-offs */}
-        {caseStudy.technicalDecisions && caseStudy.technicalDecisions.length > 0 && (
-          <section className="mb-16">
-            <div className="border-l-4 border-[#915eff] pl-4 sm:pl-6 mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Key Technical Decisions & Trade-offs
+        {/* 6. Implementation Methodology */}
+        {caseStudy.methodology && caseStudy.methodology.length > 0 && (
+          <section className="mb-14">
+            <div className="mb-6">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#9B4DFF] block">
+                SECTION 04 // IMPLEMENTATION METHODOLOGY
+              </span>
+              <h2 className="font-display font-extrabold uppercase text-[32px] sm:text-[38px] text-[#F7F5FF] tracking-wide mt-1">
+                STEP-BY-STEP ENGINEERING PIPELINE
               </h2>
-              <p className="text-xs text-secondary uppercase tracking-widest mt-1">
-                Engineering rationale and design alternatives
-              </p>
+            </div>
+
+            <div className="space-y-3.5">
+              {caseStudy.methodology.map((step, idx) => (
+                <div
+                  key={idx}
+                  className="comic-panel rounded-xl p-5 flex items-start gap-4"
+                >
+                  <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-[#08060F] border border-[#9B4DFF]/45 text-[#FF304F] font-mono font-bold text-[13px] flex items-center justify-center">
+                    0{idx + 1}
+                  </span>
+                  <p className="font-sans text-[#BDB4CC] text-[14.5px] sm:text-[15px] leading-[1.65] pt-1">
+                    {step}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 7. Engineering Decisions & Trade-offs */}
+        {caseStudy.technicalDecisions && caseStudy.technicalDecisions.length > 0 && (
+          <section className="mb-14">
+            <div className="mb-6">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF304F] block">
+                SECTION 05 // ARCHITECTURAL RATIONALE
+              </span>
+              <h2 className="font-display font-extrabold uppercase text-[32px] sm:text-[38px] text-[#F7F5FF] tracking-wide mt-1">
+                ENGINEERING DECISIONS &amp; TRADE-OFFS
+              </h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {caseStudy.technicalDecisions.map((decision, idx) => (
                 <div
                   key={idx}
-                  className="bg-tertiary/60 border border-white/10 rounded-2xl p-6 hover:border-[#915eff]/50 transition-all flex flex-col justify-between"
+                  className="comic-panel rounded-xl p-6 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="w-2 h-2 rounded-full bg-[#915eff]" />
-                      <h3 className="text-white font-bold text-base sm:text-lg">{decision.title}</h3>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#FF304F]">
+                        DECISION // 0{idx + 1}
+                      </span>
+                      <span className="font-mono text-[10px] text-[#C4A2FF]">
+                        EVALUATED TRADE-OFF
+                      </span>
                     </div>
-                    <p className="text-secondary text-sm leading-relaxed">{decision.rationale}</p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-secondary/70">
-                    <span>Decision #{idx + 1}</span>
-                    <span className="text-[#915eff]">Evaluated & Implemented</span>
+                    <h3 className="font-display font-bold uppercase text-[23px] text-[#F7F5FF] tracking-wide">
+                      {decision.title}
+                    </h3>
+                    <p className="font-sans text-[#BDB4CC] text-[14px] leading-[1.65] mt-2.5">
+                      {decision.rationale}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -266,207 +467,188 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
           </section>
         )}
 
-        {/* Methodology & Implementation Pipeline */}
-        {caseStudy.methodology && caseStudy.methodology.length > 0 && (
-          <section className="mb-16">
-            <div className="border-l-4 border-[#915eff] pl-4 sm:pl-6 mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Methodology & Pipeline Implementation
-              </h2>
-              <p className="text-xs text-secondary uppercase tracking-widest mt-1">
-                Systematic step-by-step engineering process
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {caseStudy.methodology.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-tertiary/40 border border-white/10 hover:border-white/20 transition-colors"
-                >
-                  <span className="flex-shrink-0 w-8 h-8 rounded-xl bg-[#915eff]/20 border border-[#915eff]/40 text-[#915eff] flex items-center justify-center font-bold text-sm">
-                    {idx + 1}
-                  </span>
-                  <p className="text-secondary text-sm sm:text-base leading-relaxed pt-1">{step}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Quantitative Benchmarks & Results */}
+        {/* 9. Results & Verified Evaluation (Benchmarks Table) */}
         {caseStudy.benchmarks && caseStudy.benchmarks.length > 0 && (
-          <section className="mb-16">
-            <div className="border-l-4 border-[#915eff] pl-4 sm:pl-6 mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Empirical Evaluation & Benchmarks
+          <section className="mb-14">
+            <div className="mb-6">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#9B4DFF] block">
+                SECTION 06 // EMPIRICAL EVALUATION
+              </span>
+              <h2 className="font-display font-extrabold uppercase text-[32px] sm:text-[38px] text-[#F7F5FF] tracking-wide mt-1">
+                VERIFIED RESULTS &amp; BENCHMARKS
               </h2>
-              <p className="text-xs text-secondary uppercase tracking-widest mt-1">
-                Measured results, comparative tests, and runtime metrics
-              </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-tertiary/50 overflow-hidden">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-white/5 border-b border-white/10">
-                    <th className="py-4 px-6 text-xs font-bold uppercase tracking-wider text-secondary">
-                      Metric / Dimension
-                    </th>
-                    <th className="py-4 px-6 text-xs font-bold uppercase tracking-wider text-white">
-                      Observed Result / Verification
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-white/5">
-                  {caseStudy.benchmarks.map((bench, idx) => (
-                    <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                      <td className="py-4 px-6 text-sm font-medium text-white/90">
-                        {bench.metric}
-                      </td>
-                      <td className="py-4 px-6 text-sm text-[#915eff] font-mono font-semibold">
-                        {bench.result}
-                      </td>
+            <div className="comic-panel rounded-xl overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-[#08060F] border-b border-[#9B4DFF]/30">
+                      <th className="py-4 px-5 sm:px-6 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#BDB4CC]">
+                        Evaluation Dimension / Metric
+                      </th>
+                      <th className="py-4 px-5 sm:px-6 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#F7F5FF]">
+                        Verified Result &amp; Context
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-[#9B4DFF]/15">
+                    {caseStudy.benchmarks.map((bench, idx) => (
+                      <tr
+                        key={idx}
+                        className="hover:bg-[#9B4DFF]/[0.05] transition-colors"
+                      >
+                        <td className="py-4 px-5 sm:px-6 font-sans text-[14px] font-semibold text-[#F7F5FF]">
+                          {bench.metric}
+                        </td>
+                        <td className="py-4 px-5 sm:px-6 font-mono text-[13px] text-[#C4A2FF]">
+                          {bench.result}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </section>
         )}
 
-        {/* Challenges & Mitigations */}
-        {caseStudy.challenges && caseStudy.challenges.length > 0 && (
-          <section className="mb-16">
-            <div className="border-l-4 border-[#915eff] pl-4 sm:pl-6 mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Production Challenges & Engineering Mitigations
+        {/* 8 & 10. Challenges & Solutions + Lessons Learned */}
+        <section className="mb-14 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {caseStudy.challenges && caseStudy.challenges.length > 0 && (
+            <div className="comic-panel rounded-xl p-6 sm:p-7">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#FF304F] block mb-2">
+                SECTION 07 // CHALLENGES &amp; MITIGATIONS
+              </span>
+              <h2 className="font-display font-bold uppercase text-[28px] text-[#F7F5FF] tracking-wide mb-4">
+                Production Obstacles Solved
               </h2>
-              <p className="text-xs text-secondary uppercase tracking-widest mt-1">
-                Obstacles encountered and technical solutions
-              </p>
+              <ul className="space-y-3.5">
+                {caseStudy.challenges.map((challenge, idx) => (
+                  <li
+                    key={idx}
+                    className="p-4 rounded-lg bg-[#08060F]/80 border border-[#9B4DFF]/25 font-sans text-[14px] text-[#BDB4CC] leading-[1.6]"
+                  >
+                    {challenge}
+                  </li>
+                ))}
+              </ul>
             </div>
+          )}
 
-            <div className="space-y-4">
-              {caseStudy.challenges.map((challenge, idx) => (
-                <div
-                  key={idx}
-                  className="p-5 rounded-2xl bg-tertiary/50 border border-white/10 hover:border-[#915eff]/30 transition-all flex items-start gap-4"
-                >
-                  <span className="text-[#915eff] text-lg font-bold">⚡</span>
-                  <p className="text-secondary text-sm sm:text-base leading-relaxed">{challenge}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Technologies Used */}
-        {caseStudy.techStack && (
-          <section className="mb-16">
-            <div className="border-l-4 border-[#915eff] pl-4 sm:pl-6 mb-6">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Technologies & Tools
+          {caseStudy.lessonsLearned && caseStudy.lessonsLearned.length > 0 && (
+            <div className="comic-panel rounded-xl p-6 sm:p-7">
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#9B4DFF] block mb-2">
+                SECTION 08 // KEY TAKEAWAYS
+              </span>
+              <h2 className="font-display font-bold uppercase text-[28px] text-[#F7F5FF] tracking-wide mb-4">
+                Engineering Lessons Learned
               </h2>
-              <p className="text-xs text-secondary uppercase tracking-widest mt-1">
-                Frameworks, libraries, and cloud infrastructure
-              </p>
+              <ul className="space-y-3.5">
+                {caseStudy.lessonsLearned.map((lesson, idx) => (
+                  <li
+                    key={idx}
+                    className="p-4 rounded-lg bg-[#08060F]/80 border border-[#9B4DFF]/25 font-sans text-[14px] text-[#BDB4CC] leading-[1.6] flex items-start gap-3"
+                  >
+                    <span className="font-mono text-[11px] font-bold text-[#C4A2FF] mt-0.5">
+                      0{idx + 1}
+                    </span>
+                    <span>{lesson}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="flex flex-wrap gap-2.5">
-              {caseStudy.techStack.map((tech, idx) => (
-                <span
-                  key={idx}
-                  className="px-4 py-2 rounded-xl bg-tertiary border border-white/10 text-xs sm:text-sm font-medium text-white hover:border-[#915eff] transition-colors"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Next / Previous Project Navigation */}
-        <section className="my-16 pt-10 border-t border-white/10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {prevProject && (
-              <Link
-                to={`/project/${prevProject.id}`}
-                className="group p-6 rounded-2xl bg-tertiary/40 border border-white/10 hover:border-[#915eff]/50 transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-secondary font-medium">
-                    &larr; Previous Case Study
-                  </span>
-                  <h4 className="text-lg font-bold text-white mt-1 group-hover:text-[#915eff] transition-colors">
-                    {prevProject.title}
-                  </h4>
-                  <p className="text-xs text-secondary mt-2 line-clamp-2">{prevProject.subtitle}</p>
-                </div>
-                <div className="mt-4 text-xs font-semibold text-[#915eff] flex items-center gap-1">
-                  <span>Explore Architecture</span>
-                  <span className="group-hover:-translate-x-1 transition-transform">&larr;</span>
-                </div>
-              </Link>
-            )}
-
-            {nextProject && (
-              <Link
-                to={`/project/${nextProject.id}`}
-                className="group p-6 rounded-2xl bg-tertiary/40 border border-white/10 hover:border-[#915eff]/50 transition-all flex flex-col justify-between text-left sm:text-right"
-              >
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-secondary font-medium">
-                    Next Case Study &rarr;
-                  </span>
-                  <h4 className="text-lg font-bold text-white mt-1 group-hover:text-[#915eff] transition-colors">
-                    {nextProject.title}
-                  </h4>
-                  <p className="text-xs text-secondary mt-2 line-clamp-2">{nextProject.subtitle}</p>
-                </div>
-                <div className="mt-4 text-xs font-semibold text-[#915eff] flex items-center justify-start sm:justify-end gap-1">
-                  <span>Explore Architecture</span>
-                  <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-                </div>
-              </Link>
-            )}
-          </div>
+          )}
         </section>
 
-        {/* Conversion & Contact CTA */}
-        <section className="my-16 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-tertiary via-black-100 to-tertiary border border-white/10 text-center relative overflow-hidden shadow-2xl">
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Interested in discussing this architecture?
-            </h3>
-            <p className="mt-4 text-secondary text-sm sm:text-base leading-relaxed">
-              I am actively exploring Software Engineering, Applied AI, and Backend roles.
-              Let's connect to discuss systems design, project implementations, or collaboration opportunities.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
+        {/* 12. Previous / Next Mission Sequential Navigation */}
+        <nav
+          aria-label="Case Study Sequential Navigation"
+          className="my-14 pt-8 border-t border-[#9B4DFF]/25 grid grid-cols-1 sm:grid-cols-2 gap-5"
+        >
+          {prevProject && (
+            <Link
+              to={`/project/${prevProject.id}`}
+              className="comic-panel rounded-xl p-6 flex flex-col justify-between group"
+            >
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9B4DFF]">
+                  &larr; PREVIOUS MISSION
+                </span>
+                <h3 className="font-display font-bold uppercase text-[24px] text-[#F7F5FF] group-hover:text-[#C4A2FF] transition-colors mt-1">
+                  {prevProject.title}
+                </h3>
+                <p className="font-sans text-[13px] text-[#BDB4CC] mt-1 line-clamp-2">
+                  {prevProject.subtitle}
+                </p>
+              </div>
+              <span className="mt-4 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#FF304F]">
+                Inspect Field Report &larr;
+              </span>
+            </Link>
+          )}
+
+          {nextProject && (
+            <Link
+              to={`/project/${nextProject.id}`}
+              className="comic-panel rounded-xl p-6 flex flex-col justify-between text-left sm:text-right group"
+            >
+              <div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9B4DFF]">
+                  NEXT MISSION &rarr;
+                </span>
+                <h3 className="font-display font-bold uppercase text-[24px] text-[#F7F5FF] group-hover:text-[#C4A2FF] transition-colors mt-1">
+                  {nextProject.title}
+                </h3>
+                <p className="font-sans text-[13px] text-[#BDB4CC] mt-1 line-clamp-2">
+                  {nextProject.subtitle}
+                </p>
+              </div>
+              <span className="mt-4 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-[#FF304F]">
+                Inspect Field Report &rarr;
+              </span>
+            </Link>
+          )}
+        </nav>
+
+        {/* Conversion CTA Box */}
+        <section className="my-12 comic-panel rounded-xl p-8 sm:p-10 text-center border border-[#9B4DFF]/40">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#FF304F] block">
+            NEXT STEP // COLLABORATION
+          </span>
+          <h2 className="font-display font-extrabold uppercase text-[34px] sm:text-[42px] text-[#F7F5FF] mt-1">
+            WANT TO DISCUSS THIS ARCHITECTURE?
+          </h2>
+          <p className="font-sans text-[#BDB4CC] text-[15px] max-w-2xl mx-auto mt-2">
+            Explore the source repository, inspect my verified resume, or send a direct signal to discuss engineering roles and systems design.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-3.5">
+            <button
+              type="button"
+              onClick={() => navigate("/#contact")}
+              className="spider-sense-btn px-6 py-3 rounded-md bg-[#FF304F] hover:bg-[#e02442] text-[#F7F5FF] font-mono text-[12px] font-bold uppercase tracking-[0.14em] cursor-pointer"
+            >
+              Send a Signal
+            </button>
+            {onResumeClick && (
               <button
-                onClick={() => navigate("/#contact")}
-                className="px-6 py-3 rounded-xl bg-[#915eff] hover:bg-[#804bee] text-white text-sm font-semibold transition-all shadow-lg shadow-[#915eff]/30 cursor-pointer"
+                type="button"
+                onClick={onResumeClick}
+                className="px-6 py-3 rounded-md bg-[#171126] hover:bg-[#9B4DFF]/25 border border-[#9B4DFF]/50 text-[#F7F5FF] font-mono text-[12px] uppercase tracking-[0.14em] cursor-pointer"
               >
-                Send Message / Get in Touch
+                View Resume
               </button>
-              {onResumeClick && (
-                <button
-                  onClick={onResumeClick}
-                  className="px-6 py-3 rounded-xl bg-tertiary hover:bg-white/10 border border-white/10 text-white text-sm font-semibold transition-all cursor-pointer"
-                >
-                  View Interactive Resume
-                </button>
-              )}
+            )}
+            {caseStudy.github && (
               <a
                 href={caseStudy.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-semibold transition-all"
+                className="px-6 py-3 rounded-md bg-[#08060F] hover:bg-[#171126] border border-[#9B4DFF]/35 text-[#C4A2FF] font-mono text-[12px] uppercase tracking-[0.14em]"
               >
-                Star on GitHub
+                View GitHub Repo &#8599;
               </a>
-            </div>
+            )}
           </div>
         </section>
       </main>

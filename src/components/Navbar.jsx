@@ -1,197 +1,357 @@
-// Navbar.jsx - Improved responsive design
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import { styles } from '../styles';
-import { logo, menu, close } from '../assets';
-import { navLinks } from '../constants';
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { styles } from "../styles";
+import { logo } from "../assets";
+import { navLinks } from "../constants";
 
-const Navbar = ({ onResumeClick }) => {
-  const [active, setActive] = useState("");
+const Navbar = ({ onResumeClick, nightPatrol = false, onToggleNightPatrol }) => {
+  const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Close mobile menu when clicking outside
+  // Track scroll position, HUD backdrop, and active section
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (toggle && !event.target.closest('.mobile-menu-container')) {
-        setToggle(false);
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setScrolled(scrollTop > 24);
+
+      const docHeight =
+        document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (docHeight > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (scrollTop / docHeight) * 100)));
       }
     };
 
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Track active section via IntersectionObserver on home page
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const sectionIds = ["hero", "about", "projects", "experience", "skills", "achievements", "resume-dossier", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-30% 0px -55% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          if (id === "hero") setActive("Home");
+          else if (id === "about") setActive("About");
+          else if (id === "projects") setActive("Projects");
+          else if (id === "experience") setActive("Experience");
+          else if (id === "skills") setActive("Skills");
+          else if (id === "achievements" || id === "resume-dossier") setActive("Achievements");
+          else if (id === "contact") setActive("Contact");
+        }
+      });
+    }, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
+  // Close mobile drawer on Escape or outside click
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && toggle) {
+        setToggle(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [toggle]);
 
-  const handleLinkClick = (link) => {
+  const handleNavClick = (e, link) => {
+    e.preventDefault();
     setActive(link.title);
-    
-    if (link.id === 'resume') {
-      // Handle resume modal
-      onResumeClick();
-    } else if (link.id.startsWith('#')) {
-      // Handle hash links
-      const element = document.querySelector(link.id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
     setToggle(false);
+
+    const targetId = link.id.replace("#", "");
+    if (location.pathname !== "/") {
+      navigate(`/${link.id}`);
+      return;
+    }
+
+    if (targetId === "hero") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <nav className={`
-      ${styles.paddingX} w-full flex items-center py-3 xs:py-4 sm:py-5 fixed top-0 z-20 
-      ${scrolled ? "bg-primary/95 backdrop-blur-sm" : "bg-primary"}
-      transition-all duration-300
-    `}>
-      <div className="w-full flex items-center justify-between max-w-7xl mx-auto">
-        {/* Logo and Brand */}
+    <header
+      className={`${styles.paddingX} w-full fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${
+        scrolled
+          ? "py-2.5 bg-[#08060F]/90 backdrop-blur-md border-b border-[#9B4DFF]/25 shadow-[0_8px_32px_rgba(8,6,15,0.85)]"
+          : "py-4 bg-gradient-to-b from-[#08060F]/95 via-[#08060F]/70 to-transparent"
+      }`}
+    >
+      <nav
+        aria-label="Primary Navigation"
+        className="w-full max-w-7xl mx-auto flex items-center justify-between gap-4"
+      >
+        {/* Brand Identity */}
         <Link
           to="/"
-          className='flex items-center gap-1.5 xs:gap-2 hover:scale-105 transition-transform duration-200'
           onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}>
-          <img 
-            src={logo} 
-            alt="logo" 
-            className="w-7 h-7 xs:w-8 xs:h-8 sm:w-9 sm:h-9 object-contain" 
-          />
-          <p className='text-white font-bold text-[14px] xs:text-[16px] sm:text-[18px] cursor-pointer'>
-            Charan
-          </p>
+            setActive("Home");
+            setToggle(false);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="flex items-center gap-2.5 group focus:outline-none"
+        >
+          <div className="relative flex items-center justify-center w-9 h-9 rounded-lg bg-[#171126] border border-[#9B4DFF]/40 group-hover:border-[#FF304F] transition-colors">
+            <img
+              src={logo}
+              alt="Devi Sri Charan Logo"
+              className="w-6 h-6 object-contain"
+            />
+            <span
+              className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#FF304F]"
+              aria-hidden="true"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-display font-extrabold text-[18px] sm:text-[20px] tracking-[0.06em] uppercase text-[#F7F5FF] leading-none group-hover:text-[#C4A2FF] transition-colors">
+              CHARAN
+            </span>
+            <span className="font-mono text-[9px] tracking-[0.18em] uppercase text-[#BDB4CC]">
+              DEV // VERSE
+            </span>
+          </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className='list-none hidden lg:flex flex-row gap-6 xl:gap-10'>
-          {navLinks.map((link) => (
-            <li key={link.id}
-              className={`${active === link.title
-                ? "text-white"
-                : "text-secondary"} 
-                hover:text-white text-[16px] xl:text-[18px] font-medium cursor-pointer
-                transition-colors duration-200 relative group`}
-              onClick={() => handleLinkClick(link)}>
-              {link.id === 'resume' ? (
-                <span className="relative">
+        {/* Desktop HUD Navigation Links */}
+        <ul className="list-none hidden lg:flex items-center gap-1 xl:gap-2 bg-[#171126]/80 border border-[#9B4DFF]/20 rounded-lg px-2 py-1">
+          {navLinks.map((link) => {
+            const isActive = active === link.title;
+            return (
+              <li key={link.id}>
+                <a
+                  href={link.id}
+                  onClick={(e) => handleNavClick(e, link)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative px-3 py-1.5 rounded-md font-mono text-[12px] xl:text-[13px] uppercase tracking-[0.1em] transition-all duration-200 flex items-center gap-1.5 ${
+                    isActive
+                      ? "text-[#F7F5FF] bg-[#9B4DFF]/20 border border-[#9B4DFF]/50 shadow-[0_0_12px_rgba(155,77,255,0.25)]"
+                      : "text-[#BDB4CC] hover:text-[#F7F5FF] hover:bg-white/[0.04] border border-transparent"
+                  }`}
+                >
+                  {isActive && (
+                    <span
+                      className="w-1.5 h-1.5 rounded-full bg-[#FF304F]"
+                      aria-hidden="true"
+                    />
+                  )}
                   {link.title}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#915eff] group-hover:w-full transition-all duration-300"></span>
-                </span>
-              ) : link.id.startsWith('#') ? (
-                <a href={link.id} className="relative">
-                  {link.title}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#915eff] group-hover:w-full transition-all duration-300"></span>
                 </a>
-              ) : (
-                <Link to={link.id} className="relative">
-                  {link.title}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#915eff] group-hover:w-full transition-all duration-300"></span>
-                </Link>
-              )}
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
 
-        {/* Mobile Menu Button */}
-        <div className='lg:hidden flex flex-1 justify-end items-center mobile-menu-container'>
-          <img 
-            src={toggle ? close : menu} 
-            alt="menu" 
-            className='w-[24px] h-[24px] xs:w-[26px] xs:h-[26px] sm:w-[28px] sm:h-[28px] object-contain cursor-pointer hover:scale-110 transition-transform duration-200' 
-            onClick={() => setToggle(!toggle)} 
-          />
-          
-          {/* Mobile Menu Overlay */}
-          <div className={`${!toggle ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'} 
-            fixed inset-0 bg-black/50 backdrop-blur-sm transition-all duration-300 z-40`}
-            onClick={() => setToggle(false)}
-          />
-          
-          {/* Mobile Menu */}
-          <div className={`${!toggle ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'} 
-            fixed top-0 right-0 w-[280px] xs:w-[320px] sm:w-[360px] h-full
-            bg-gradient-to-b from-tertiary via-black-100 to-black-200
-            backdrop-blur-md border-l border-white/10
-            transform transition-all duration-300 ease-out z-50
-            shadow-2xl`}>
-            
-            {/* Mobile Menu Header */}
-            <div className="flex items-center justify-between p-4 xs:p-5 sm:p-6 border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <img src={logo} alt="logo" className="w-6 h-6 xs:w-7 xs:h-7 object-contain" />
-                <p className='text-white font-bold text-[14px] xs:text-[16px]'>Charan</p>
-              </div>
-              <img 
-                src={close} 
-                alt="close" 
-                className='w-[20px] h-[20px] xs:w-[22px] xs:h-[22px] object-contain cursor-pointer hover:scale-110 transition-transform duration-200' 
-                onClick={() => setToggle(false)} 
+        {/* Right HUD Controls: Night Patrol Easter Egg + Persistent Resume CTA */}
+        <div className="hidden lg:flex items-center gap-3">
+          {onToggleNightPatrol && (
+            <button
+              type="button"
+              onClick={onToggleNightPatrol}
+              aria-pressed={nightPatrol}
+              title={
+                nightPatrol
+                  ? "Exit Night Patrol Mode (Standard Atmosphere)"
+                  : "Activate Night Patrol Mode (Enhanced Neon Skyline)"
+              }
+              className={`px-2.5 py-1.5 rounded-md font-mono text-[11px] uppercase tracking-[0.12em] border transition-all flex items-center gap-1.5 cursor-pointer ${
+                nightPatrol
+                  ? "bg-[#FF304F]/15 border-[#FF304F] text-[#F7F5FF] shadow-[0_0_15px_rgba(255,48,79,0.35)]"
+                  : "bg-[#171126]/80 border-[#9B4DFF]/25 text-[#BDB4CC] hover:text-[#F7F5FF] hover:border-[#9B4DFF]/60"
+              }`}
+            >
+              <span
+                className={`w-2 h-2 rounded-full ${
+                  nightPatrol ? "bg-[#FF304F] animate-pulse" : "bg-[#9B4DFF]"
+                }`}
+                aria-hidden="true"
               />
-            </div>
+              <span>{nightPatrol ? "Patrol: ON" : "Night Patrol"}</span>
+            </button>
+          )}
 
-            {/* Mobile Menu Items */}
-            <div className="p-4 xs:p-5 sm:p-6">
-              <ul className='list-none flex flex-col gap-3 xs:gap-4'>
-                {navLinks.map((link, index) => (
-                  <li key={link.id}
-                    className={`${active === link.title
-                      ? "text-white bg-white/5"
-                      : "text-secondary hover:text-white hover:bg-white/5"} 
-                      font-medium cursor-pointer text-[14px] xs:text-[15px] sm:text-[16px]
-                      px-3 xs:px-4 py-2 xs:py-3 rounded-lg transition-all duration-200
-                      border border-transparent hover:border-white/10
-                      transform hover:translate-x-1`}
-                    onClick={() => handleLinkClick(link)}
-                    style={{ 
-                      animationDelay: `${index * 50}ms`,
-                      animation: toggle ? 'slideInRight 0.3s ease-out forwards' : 'none'
-                    }}>
-                    {link.id === 'resume' ? (
-                      <span className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#915eff] rounded-full"></span>
-                        {link.title}
-                      </span>
-                    ) : link.id.startsWith('#') ? (
-                      <a href={link.id} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#915eff] rounded-full"></span>
-                        {link.title}
-                      </a>
-                    ) : (
-                      <Link to={link.id} className="flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-[#915eff] rounded-full"></span>
-                        {link.title}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Mobile Menu Footer */}
-            <div className="absolute bottom-4 xs:bottom-5 sm:bottom-6 left-4 xs:left-5 sm:left-6 right-4 xs:right-5 sm:right-6">
-              <div className="text-center text-secondary text-[12px] xs:text-[13px] border-t border-white/10 pt-4">
-                © 2026 Charan. All rights reserved.
-              </div>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={onResumeClick}
+            className="spider-sense-btn px-4 py-2 rounded-md bg-[#FF304F] hover:bg-[#e02442] text-[#F7F5FF] font-mono text-[12px] font-semibold uppercase tracking-[0.12em] transition-all shadow-[0_0_20px_rgba(255,48,79,0.35)] flex items-center gap-2 cursor-pointer"
+          >
+            <svg
+              className="w-3.5 h-3.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            <span>Resume</span>
+          </button>
         </div>
+
+        {/* Mobile / Tablet Quick Actions & Hamburger */}
+        <div className="flex lg:hidden items-center gap-2.5">
+          <button
+            type="button"
+            onClick={onResumeClick}
+            className="px-3 py-1.5 rounded-md bg-[#FF304F] text-[#F7F5FF] font-mono text-[11px] font-semibold uppercase tracking-[0.1em]"
+          >
+            Resume
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setToggle(!toggle)}
+            aria-expanded={toggle}
+            aria-controls="mobile-hud-drawer"
+            aria-label={toggle ? "Close navigation menu" : "Open navigation menu"}
+            className="w-10 h-10 rounded-md bg-[#171126] border border-[#9B4DFF]/35 flex items-center justify-center text-[#F7F5FF] hover:border-[#9B4DFF]"
+          >
+            {toggle ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {/* Subtle Web-Strand Scroll Progress Indicator */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#171126] overflow-hidden"
+        aria-hidden="true"
+      >
+        <div
+          className="h-full bg-gradient-to-r from-[#9B4DFF] via-[#C4A2FF] to-[#FF304F] transition-all duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
 
-      <style jsx="true">{`
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
-    </nav>
-  )
-}
+      {/* Mobile Navigation Backdrop */}
+      {toggle && (
+        <div
+          className="fixed inset-0 top-[57px] bg-[#08060F]/80 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => setToggle(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Mobile HUD Drawer */}
+      <div
+        id="mobile-hud-drawer"
+        className={`fixed top-[57px] right-0 w-[290px] sm:w-[330px] h-[calc(100vh-57px)] bg-[#08060F] border-l border-[#9B4DFF]/30 z-50 lg:hidden transform transition-transform duration-300 ease-out flex flex-col justify-between p-6 ${
+          toggle ? "translate-x-0" : "translate-x-full pointer-events-none"
+        }`}
+      >
+        <div>
+          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#9B4DFF]/20">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#9B4DFF]">
+              HUD // NAVIGATION
+            </span>
+            <span className="font-mono text-[11px] text-[#BDB4CC]">01—08</span>
+          </div>
+
+          <ul className="list-none flex flex-col gap-1.5">
+            {navLinks.map((link, idx) => {
+              const isActive = active === link.title;
+              return (
+                <li key={link.id}>
+                  <a
+                    href={link.id}
+                    onClick={(e) => handleNavClick(e, link)}
+                    className={`w-full px-3.5 py-2.5 rounded-md font-mono text-[13px] uppercase tracking-[0.12em] flex items-center justify-between transition-colors ${
+                      isActive
+                        ? "bg-[#9B4DFF]/20 text-[#F7F5FF] border border-[#9B4DFF]/50"
+                        : "text-[#BDB4CC] hover:text-[#F7F5FF] hover:bg-[#171126]"
+                    }`}
+                  >
+                    <span className="flex items-center gap-2.5">
+                      <span className="text-[10px] text-[#9B4DFF]">0{idx + 1}</span>
+                      <span>{link.title}</span>
+                    </span>
+                    {isActive && (
+                      <span className="w-2 h-2 rounded-full bg-[#FF304F]" />
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+
+          {onToggleNightPatrol && (
+            <div className="mt-6 pt-4 border-t border-[#9B4DFF]/20">
+              <button
+                type="button"
+                onClick={onToggleNightPatrol}
+                aria-pressed={nightPatrol}
+                className={`w-full px-3.5 py-2.5 rounded-md font-mono text-[12px] uppercase tracking-[0.12em] border flex items-center justify-between ${
+                  nightPatrol
+                    ? "bg-[#FF304F]/15 border-[#FF304F] text-[#F7F5FF]"
+                    : "bg-[#171126] border-[#9B4DFF]/30 text-[#BDB4CC]"
+                }`}
+              >
+                <span>Night Patrol Mode</span>
+                <span className={nightPatrol ? "text-[#FF304F] font-bold" : "text-[#9B4DFF]"}>
+                  {nightPatrol ? "ACTIVE" : "OFF"}
+                </span>
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="pt-4 border-t border-[#9B4DFF]/20 flex flex-col gap-3">
+          <button
+            type="button"
+            onClick={() => {
+              setToggle(false);
+              onResumeClick();
+            }}
+            className="w-full py-2.5 rounded-md bg-[#FF304F] text-[#F7F5FF] font-mono text-[12px] font-semibold uppercase tracking-[0.14em] text-center"
+          >
+            View Interactive Resume
+          </button>
+          <p className="font-mono text-[10px] text-center text-[#BDB4CC]/70 uppercase tracking-[0.12em]">
+            CHARAN // FRIENDLY NEIGHBOURHOOD DEV
+          </p>
+        </div>
+      </div>
+    </header>
+  );
+};
 
 export default Navbar;
