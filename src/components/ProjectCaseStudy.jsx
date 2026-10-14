@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { caseStudies, caseStudyKeys } from "../constants/caseStudies";
 import { StarsCanvas } from "./canvas";
 import Footer from "./Footer";
+import MermaidDiagram from "./MermaidDiagram";
 
 const DEFAULT_TITLE = "Devi Sri Charan | Software Engineer & AI Systems";
 
 const ProjectCaseStudy = ({ onResumeClick }) => {
   const { projectId } = useParams();
   const navigate = useNavigate();
-  const [copiedMermaid, setCopiedMermaid] = useState(false);
 
   const caseStudy = caseStudies[projectId];
 
@@ -25,13 +25,6 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
       document.title = DEFAULT_TITLE;
     };
   }, [caseStudy]);
-
-  const handleCopyDiagram = () => {
-    if (!caseStudy?.architecture?.diagram) return;
-    navigator.clipboard?.writeText(caseStudy.architecture.diagram);
-    setCopiedMermaid(true);
-    setTimeout(() => setCopiedMermaid(false), 2000);
-  };
 
   if (!caseStudy) {
     return (
@@ -367,32 +360,12 @@ const ProjectCaseStudy = ({ onResumeClick }) => {
               </div>
             )}
 
-            {/* Mermaid Flowchart Specification Box */}
+            {/* Real Mermaid Flowchart Diagram */}
             {caseStudy.architecture.diagram && (
-              <div className="rounded-xl border border-[#9B4DFF]/35 bg-[#0B0814] overflow-hidden shadow-2xl">
-                <div className="bg-[#171126] px-4 py-3 border-b border-[#9B4DFF]/25 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF304F]" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#9B4DFF]" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#C4A2FF]" />
-                    <span className="font-mono text-[11px] text-[#F7F5FF] ml-2">
-                      architecture-graph.mmd
-                    </span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleCopyDiagram}
-                    className="px-2.5 py-1 rounded bg-[#08060F] hover:bg-[#9B4DFF]/25 border border-[#9B4DFF]/35 font-mono text-[10px] uppercase tracking-[0.12em] text-[#C4A2FF] cursor-pointer"
-                  >
-                    {copiedMermaid ? "Copied Mermaid" : "Copy Diagram"}
-                  </button>
-                </div>
-                <div className="p-5 sm:p-6 overflow-x-auto">
-                  <pre className="text-[12px] sm:text-[13px] font-mono text-[#C4A2FF] leading-[1.65] select-all">
-                    <code>{caseStudy.architecture.diagram}</code>
-                  </pre>
-                </div>
-              </div>
+              <MermaidDiagram
+                chart={caseStudy.architecture.diagram}
+                title="architecture-graph.mmd"
+              />
             )}
           </section>
         )}

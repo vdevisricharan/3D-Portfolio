@@ -184,10 +184,10 @@ This project delivers a production-grade, reproducible RAG application that benc
     VectorSearch --> ScoreFilter{Max Score >= 0.35?}
     
     ScoreFilter -->|Yes| PromptBuilder[Construct Strict Citation Prompt]
-    ScoreFilter -->|No (< 0.35)| Fallback[Return Insufficient Information Fallback]
+    ScoreFilter -->|"No (< 0.35)"| Fallback[Return Insufficient Information Fallback]
     
     PromptBuilder --> GeminiLLM[Gemini 2.5 Flash LLM]
-    GeminiLLM --> Response([Response with [Doc, Chunk] Citations + Loguru Metrics])
+    GeminiLLM --> Response(["Response with [Doc, Chunk] Citations + Loguru Metrics"])
     Fallback --> Response`,
     },
     technicalDecisions: [
@@ -300,13 +300,13 @@ This project implements an automated, auditable evaluation pipeline featuring co
     ModeSelect -->|Reference-Based| RefJudge[Ground-Truth Comparison]
     ModeSelect -->|Reference-Free| RefFreeJudge[Rubric Constraint Validation]
     
-    DualPass --> Pass1[Pass 1: Evaluate (Output A, Output B)]
-    DualPass --> Pass2[Pass 2: Evaluate (Output B, Output A)]
+    DualPass --> Pass1["Pass 1: Evaluate (Output A, Output B)"]
+    DualPass --> Pass2["Pass 2: Evaluate (Output B, Output A)"]
     Pass1 --> ConsistencyCheck{Both Passes Agree?}
     Pass2 --> ConsistencyCheck
     
     ConsistencyCheck -->|Yes| WinnerDeclared[Assign A or B as Winner]
-    ConsistencyCheck -->|No (Order Flip)| TieDeclared[Declare Tie & Flag Position Flip]
+    ConsistencyCheck -->|"No (Order Flip)"| TieDeclared[Declare Tie & Flag Position Flip]
     
     WinnerDeclared --> SchemaVal[Pydantic Schema Validation + Fallback JSON Repair]
     TieDeclared --> SchemaVal
@@ -315,7 +315,7 @@ This project implements an automated, auditable evaluation pipeline featuring co
     SchemaVal --> StatEngine[Statistical Validator: Cohen's Kappa, Agreement Rate]
     StatEngine --> AuditLogs[(Auditable .jsonl Event Logs & Token Costs)]
     StatEngine --> GatingPolicy{Production Release Gating}
-    GatingPolicy -->|Pass Rate >= 95% & k >= 0.75| ReleaseApproved([Production Release Approved])
+    GatingPolicy -->|"Pass Rate >= 95% and k >= 0.75"| ReleaseApproved([Production Release Approved])
     GatingPolicy -->|Anomalies / Safety Violations| EscalateHuman([Escalate to Human Review])`,
     },
     technicalDecisions: [
@@ -441,7 +441,7 @@ This project delivers a parameter-efficient fine-tuning pipeline for modern open
         GPT2[Fine-Tuned GPT-2 Base]
         T5[T5-Base Encoder-Decoder]
         LSTM[Bidirectional LSTM Network]
-        GRU[Gated Recurrent Unit (GRU)]
+        GRU["Gated Recurrent Unit (GRU)"]
     end
     
     ModernPipeline --> ModernLLMs

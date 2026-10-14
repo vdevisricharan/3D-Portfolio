@@ -13,6 +13,7 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 import ResumeModal from "./ResumeModal";
 import ProjectCaseStudy from "./ProjectCaseStudy";
+import MermaidDiagram from "./MermaidDiagram";
 import ScrollToTop from "./ScrollToTop";
 
 export {
@@ -30,6 +31,7 @@ export {
   Footer,
   ResumeModal,
   ProjectCaseStudy,
+  MermaidDiagram,
   ScrollToTop,
   EarthCanvas,
   BallCanvas,
