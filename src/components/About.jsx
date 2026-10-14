@@ -93,18 +93,18 @@ const About = () => {
       </motion.div>
 
       {/* Split Layout: Editorial Biography + Interactive Engineering Node Network */}
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch min-w-0">
         {/* Left: Editorial Biography Panel (7 Columns) */}
         <motion.div
           variants={fadeIn("right", "tween", 0.1, 0.55)}
-          className="lg:col-span-7 comic-panel rounded-xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden"
+          className="lg:col-span-7 comic-panel rounded-xl p-5 sm:p-8 flex flex-col justify-between relative overflow-hidden min-w-0"
         >
           {/* Decorative Corner Tag */}
-          <div className="flex items-center justify-between pb-4 mb-5 border-b border-[#9B4DFF]/20">
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#9B4DFF]">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b border-[#9B4DFF]/20 min-w-0">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#9B4DFF] truncate max-w-full">
               ENGINEER DOSSIER // DEVI SRI CHARAN VALUPADASU
             </span>
-            <span className="font-mono text-[11px] text-[#BDB4CC]">IIIT DELHI &apos;24</span>
+            <span className="font-mono text-[10px] sm:text-[11px] text-[#BDB4CC] shrink-0">IIIT DELHI &apos;24</span>
           </div>
 
           <div className="space-y-4 font-sans text-[#BDB4CC] text-[15px] sm:text-[16px] leading-[1.7]">
@@ -169,14 +169,14 @@ const About = () => {
         {/* Right: Interactive System Node Network Visualization (5 Columns) */}
         <motion.div
           variants={fadeIn("left", "tween", 0.18, 0.55)}
-          className="lg:col-span-5 comic-panel rounded-xl p-6 flex flex-col justify-between"
+          className="lg:col-span-5 comic-panel rounded-xl p-5 sm:p-6 flex flex-col justify-between overflow-hidden min-w-0"
         >
           <div>
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#9B4DFF]/20">
-              <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#C4A2FF]">
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[#9B4DFF]/20 min-w-0">
+              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#C4A2FF] truncate">
                 INTERACTIVE // SYSTEM TOPOLOGY
               </span>
-              <span className="font-mono text-[10px] text-[#FF304F]">CLICK ANY NODE</span>
+              <span className="font-mono text-[10px] text-[#FF304F] shrink-0">CLICK ANY NODE</span>
             </div>
 
             {/* SVG Connected Web Graph */}

@@ -32,8 +32,8 @@ export const textVariant = (delay = 0) => {
 export const fadeIn = (direction = "", type = "tween", delay = 0, duration = 0.55) => {
   return {
     hidden: {
-      x: direction === "left" ? 32 : direction === "right" ? -32 : 0,
-      y: direction === "up" ? 28 : direction === "down" ? -28 : 0,
+      x: direction === "left" ? 20 : direction === "right" ? -20 : 0,
+      y: direction === "up" ? 24 : direction === "down" ? -24 : 0,
       opacity: 0,
     },
     show: {
@@ -72,8 +72,8 @@ export const zoomIn = (delay = 0, duration = 0.5) => {
 export const slideIn = (direction = "left", _type = "tween", delay = 0, duration = 0.6) => {
   return {
     hidden: {
-      x: direction === "left" ? -40 : direction === "right" ? 40 : 0,
-      y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
+      x: direction === "left" ? -24 : direction === "right" ? 24 : 0,
+      y: direction === "up" ? 24 : direction === "down" ? -24 : 0,
       opacity: 0,
     },
     show: {

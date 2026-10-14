@@ -52,7 +52,7 @@ const App = () => {
         Skip to main content
       </a>
 
-      <div className="relative z-0 bg-[#08060F] min-h-screen text-[#F7F5FF]">
+      <div className="relative z-0 bg-[#08060F] min-h-screen text-[#F7F5FF] overflow-x-hidden w-full max-w-full">
         <Routes>
           <Route
             path="/"
@@ -63,7 +63,7 @@ const App = () => {
                   nightPatrol={nightPatrol}
                   onToggleNightPatrol={handleToggleNightPatrol}
                 />
-                <main id="main-content">
+                <main id="main-content" className="overflow-x-hidden w-full max-w-full">
                   {/* SECTION 01 — HERO: THE ORIGIN */}
                   <Hero
                     onResumeClick={handleResumeClick}

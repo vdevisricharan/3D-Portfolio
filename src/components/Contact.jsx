@@ -130,11 +130,11 @@ const Contact = () => {
         </p>
       </motion.div>
 
-      <div className="mt-10 grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch">
+      <div className="mt-10 grid grid-cols-1 xl:grid-cols-12 gap-8 items-stretch min-w-0">
         {/* Left: Contact Form + Direct Channels (7 Columns) */}
         <motion.div
           variants={slideIn("left", "tween", 0.1, 0.55)}
-          className="xl:col-span-7 comic-panel rounded-xl p-6 sm:p-8 flex flex-col justify-between"
+          className="xl:col-span-7 comic-panel rounded-xl p-5 sm:p-8 flex flex-col justify-between overflow-hidden min-w-0"
         >
           {/* Direct Channels Bar */}
           <div className="pb-6 mb-6 border-b border-[#9B4DFF]/20">
@@ -347,22 +347,22 @@ const Contact = () => {
         {/* Right: 3D Global Signal Relay Canvas (5 Columns) */}
         <motion.div
           variants={slideIn("right", "tween", 0.18, 0.55)}
-          className="xl:col-span-5 comic-panel rounded-xl p-4 flex flex-col justify-between min-h-[360px] sm:min-h-[440px]"
+          className="xl:col-span-5 comic-panel rounded-xl p-4 flex flex-col justify-between min-h-[360px] sm:min-h-[440px] overflow-hidden min-w-0"
         >
-          <div className="px-2 py-1.5 border-b border-[#9B4DFF]/20 flex items-center justify-between">
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#9B4DFF]">
+          <div className="px-2 py-1.5 border-b border-[#9B4DFF]/20 flex flex-wrap sm:flex-nowrap items-center justify-between gap-1 min-w-0">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#9B4DFF] truncate">
               GLOBAL RELAY // HYDERABAD, IN
             </span>
-            <span className="font-mono text-[10px] text-[#FF304F]">ONLINE</span>
+            <span className="font-mono text-[10px] text-[#FF304F] shrink-0">ONLINE</span>
           </div>
 
           <div className="flex-1 w-full h-[300px] sm:h-[360px] relative">
             <EarthCanvas />
           </div>
 
-          <div className="px-2 pt-2 border-t border-[#9B4DFF]/20 flex items-center justify-between font-mono text-[10px] text-[#BDB4CC] uppercase tracking-[0.14em]">
-            <span>OPEN TO SWE / AI / BACKEND ROLES</span>
-            <span className="text-[#C4A2FF]">UTC+05:30</span>
+          <div className="px-2 pt-2 border-t border-[#9B4DFF]/20 flex flex-wrap sm:flex-nowrap items-center justify-between gap-1 font-mono text-[9.5px] sm:text-[10px] text-[#BDB4CC] uppercase tracking-[0.14em] min-w-0">
+            <span className="truncate">OPEN TO SWE / AI / BACKEND ROLES</span>
+            <span className="text-[#C4A2FF] shrink-0">UTC+05:30</span>
           </div>
         </motion.div>
       </div>

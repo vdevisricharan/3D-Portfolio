@@ -11,7 +11,7 @@ const SectionWrapper = (Component, idName) => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.05 }}
-        className={`${styles.padding} max-w-7xl mx-auto relative z-0 scroll-mt-20`}
+        className={`${styles.padding} max-w-7xl mx-auto relative z-0 scroll-mt-20 overflow-x-clip`}
       >
         <Component {...props} />
       </motion.section>

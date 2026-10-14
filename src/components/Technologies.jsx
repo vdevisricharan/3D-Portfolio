@@ -39,17 +39,17 @@ const Technologies = () => {
       </motion.div>
 
       {/* Interactive Developer Web Hub + Selected Domain Inspector */}
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch min-w-0">
         {/* Left: Interactive Developer Web Visualization (5 Columns) */}
         <motion.div
           variants={fadeIn("right", "tween", 0.1, 0.55)}
-          className="lg:col-span-5 comic-panel rounded-xl p-5 sm:p-6 flex flex-col justify-between"
+          className="lg:col-span-5 comic-panel rounded-xl p-4 sm:p-6 flex flex-col justify-between overflow-hidden min-w-0"
         >
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#9B4DFF]/20">
-            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#9B4DFF]">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[#9B4DFF]/20 min-w-0">
+            <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#9B4DFF] truncate">
               DEVELOPER WEB // DOMAIN HUB
             </span>
-            <span className="font-mono text-[10px] text-[#FF304F]">SELECT A NODE</span>
+            <span className="font-mono text-[10px] text-[#FF304F] shrink-0">SELECT A NODE</span>
           </div>
 
           {/* Accessible SVG Developer Web */}
@@ -208,7 +208,7 @@ const Technologies = () => {
         {/* Right: Active Domain Deep-Dive Panel (7 Columns) */}
         <motion.div
           variants={fadeIn("left", "tween", 0.16, 0.55)}
-          className="lg:col-span-7 comic-panel rounded-xl p-6 sm:p-8 flex flex-col justify-between"
+          className="lg:col-span-7 comic-panel rounded-xl p-5 sm:p-8 flex flex-col justify-between overflow-hidden min-w-0"
           aria-live="polite"
         >
           <div>

@@ -22,21 +22,21 @@ const Footer = ({ onResumeClick }) => {
   };
 
   return (
-    <footer className="w-full bg-[#08060F] border-t border-[#9B4DFF]/25 py-12 px-5 sm:px-12 lg:px-16 relative z-10">
-      <div className="max-w-7xl mx-auto flex flex-col gap-8">
+    <footer className="w-full bg-[#08060F] border-t border-[#9B4DFF]/25 py-12 px-4 xs:px-5 sm:px-12 lg:px-16 relative z-10 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col gap-8 min-w-0">
         {/* Top Row: Brand Signature + Quick Navigation + Social Icons */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 min-w-0">
           {/* Mandatory Footer Brand Line */}
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start min-w-0 max-w-full">
             <Link
               to="/"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="flex items-center gap-3 group"
+              className="flex items-center gap-3 group min-w-0 max-w-full"
             >
-              <div className="w-9 h-9 rounded-lg bg-[#171126] border border-[#9B4DFF]/40 group-hover:border-[#FF304F] flex items-center justify-center transition-colors">
+              <div className="w-9 h-9 rounded-lg bg-[#171126] border border-[#9B4DFF]/40 group-hover:border-[#FF304F] flex items-center justify-center transition-colors shrink-0">
                 <img src={logo} alt="Charan Logo" className="w-6 h-6 object-contain" />
               </div>
-              <span className="font-display font-extrabold uppercase text-[20px] sm:text-[22px] tracking-[0.05em] text-[#F7F5FF]">
+              <span className="font-display font-extrabold uppercase text-[18px] xs:text-[20px] sm:text-[22px] tracking-[0.05em] text-[#F7F5FF] break-words">
                 CHARAN // YOUR FRIENDLY NEIGHBOURHOOD DEVELOPER
               </span>
             </Link>

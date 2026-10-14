@@ -29,11 +29,25 @@
   color-scheme: dark;
 }
 
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
   background-color: var(--color-void-black);
   color: var(--color-neon-white);
   overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+}
+
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Keyboard Accessibility Focus Ring */

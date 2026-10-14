@@ -89,10 +89,10 @@ const Hero = ({ onResumeClick, nightPatrol = false }) => {
 
       {/* Main Asymmetrical Split Container */}
       <div
-        className={`${styles.paddingX} relative z-10 w-full max-w-7xl mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center`}
+        className={`${styles.paddingX} relative z-10 w-full max-w-7xl mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center min-w-0`}
       >
         {/* Left Column: Origin Narrative & Typography (7 cols on desktop) */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left">
+        <div className="lg:col-span-7 flex flex-col items-start text-left min-w-0 w-full">
           {/* Top Metadata & Eyebrow Bar */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -270,18 +270,18 @@ const Hero = ({ onResumeClick, nightPatrol = false }) => {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.65, delay: d(0.18), ease: EASE_OUT_EXPO }}
-          className="lg:col-span-5 relative w-full"
+          className="lg:col-span-5 relative w-full min-w-0"
         >
           <div className="relative w-full rounded-xl comic-panel overflow-hidden border border-[#9B4DFF]/35 bg-[#08060F]/80">
             {/* Top Comic-Frame Panel Header */}
-            <div className="px-4 py-2.5 bg-[#171126]/90 border-b border-[#9B4DFF]/25 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#FF304F]" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#F7F5FF]">
+            <div className="px-3.5 sm:px-4 py-2.5 bg-[#171126]/90 border-b border-[#9B4DFF]/25 flex items-center justify-between gap-2 min-w-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="w-2 h-2 rounded-full bg-[#FF304F] shrink-0" />
+                <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#F7F5FF] truncate">
                   SECTOR // BRAND NEW DAY
                 </span>
               </div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#C4A2FF]">
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-[#C4A2FF] shrink-0 whitespace-nowrap">
                 {nightPatrol ? "PATROL OVERDRIVE" : "SKYLINE TELEMETRY"}
               </span>
             </div>
@@ -295,7 +295,7 @@ const Hero = ({ onResumeClick, nightPatrol = false }) => {
                 <a
                   key={node.id}
                   href={node.href}
-                  className={`absolute ${node.position} z-20 px-3 py-2 rounded-md bg-[#08060F]/90 hover:bg-[#171126] border border-[#9B4DFF]/40 hover:border-[#FF304F] transition-all shadow-lg max-w-[195px] group`}
+                  className={`absolute ${node.position} z-20 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-md bg-[#08060F]/90 hover:bg-[#171126] border border-[#9B4DFF]/40 hover:border-[#FF304F] transition-all shadow-lg max-w-[155px] xs:max-w-[175px] sm:max-w-[195px] group`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#FF304F]">
@@ -314,9 +314,9 @@ const Hero = ({ onResumeClick, nightPatrol = false }) => {
             </div>
 
             {/* Bottom Status Bar */}
-            <div className="px-4 py-2 bg-[#171126]/90 border-t border-[#9B4DFF]/25 flex items-center justify-between font-mono text-[10px] text-[#BDB4CC] uppercase tracking-[0.14em]">
-              <span>IIIT DELHI &apos;24 // SKIZEN // LUMIQ</span>
-              <span className="text-[#C4A2FF]">6 VERIFIED MISSIONS</span>
+            <div className="px-3.5 sm:px-4 py-2 bg-[#171126]/90 border-t border-[#9B4DFF]/25 flex flex-wrap sm:flex-nowrap items-center justify-between gap-1 font-mono text-[9.5px] sm:text-[10px] text-[#BDB4CC] uppercase tracking-[0.14em] min-w-0">
+              <span className="truncate">IIIT DELHI &apos;24 // SKIZEN // LUMIQ</span>
+              <span className="text-[#C4A2FF] shrink-0 whitespace-nowrap">6 VERIFIED MISSIONS</span>
             </div>
           </div>
         </motion.div>

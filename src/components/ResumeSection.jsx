@@ -51,20 +51,20 @@ const ResumeSection = ({ onResumeClick }) => {
       {/* Dossier Feature Panel */}
       <motion.div
         variants={fadeIn("up", "tween", 0.1, 0.55)}
-        className="mt-8 comic-panel rounded-xl p-6 sm:p-10 border border-[#9B4DFF]/40 relative overflow-hidden"
+        className="mt-8 comic-panel rounded-xl p-5 sm:p-10 border border-[#9B4DFF]/40 relative overflow-hidden min-w-0"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-w-0">
           {/* Left: Dossier Metadata & Summary (7 Cols) */}
-          <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#08060F] border border-[#9B4DFF]/40 font-mono text-[11px] uppercase tracking-[0.16em] text-[#C4A2FF] mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" aria-hidden="true" />
-              <span>VERIFIED TECHNICAL RESUME // 2026 EDITION</span>
+          <div className="lg:col-span-7 min-w-0">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#08060F] border border-[#9B4DFF]/40 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-[#C4A2FF] mb-4 max-w-full">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" aria-hidden="true" />
+              <span className="truncate">VERIFIED TECHNICAL RESUME // 2026 EDITION</span>
             </div>
 
-            <h3 className="font-display font-extrabold uppercase text-[32px] sm:text-[40px] text-[#F7F5FF] leading-tight tracking-wide">
+            <h3 className="font-display font-extrabold uppercase text-[28px] xs:text-[32px] sm:text-[40px] text-[#F7F5FF] leading-tight tracking-wide break-words">
               DEVI SRI CHARAN VALUPADASU
             </h3>
-            <p className="font-mono text-[12px] sm:text-[13px] text-[#C4A2FF] mt-1">
+            <p className="font-mono text-[12px] sm:text-[13px] text-[#C4A2FF] mt-1 break-words">
               Software Engineer • Scalable Backend Systems • Applied AI/ML • Full-Stack
             </p>
 
@@ -110,7 +110,7 @@ const ResumeSection = ({ onResumeClick }) => {
           </div>
 
           {/* Right: 3 Required Actions (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-3.5 bg-[#08060F]/90 p-6 rounded-xl border border-[#9B4DFF]/30">
+          <div className="lg:col-span-5 flex flex-col gap-3.5 bg-[#08060F]/90 p-5 sm:p-6 rounded-xl border border-[#9B4DFF]/30 min-w-0">
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#9B4DFF] pb-2 border-b border-[#9B4DFF]/20">
               DOSSIER ACTIONS // SELECT MODE
             </span>

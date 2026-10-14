@@ -116,7 +116,7 @@ const ProjectCard = ({
       </div>
 
       {/* Card Footer Actions: View Case Study + GitHub + Live Demo */}
-      <div className="px-5 sm:px-6 py-3.5 bg-[#08060F]/85 border-t border-[#9B4DFF]/20 flex items-center justify-between gap-3">
+      <div className="px-4 sm:px-6 py-3.5 bg-[#08060F]/85 border-t border-[#9B4DFF]/20 flex flex-wrap items-center justify-between gap-2.5 min-w-0">
         <Link
           to={`/project/${case_study_id}`}
           className="spider-sense-btn inline-flex items-center gap-2 font-mono text-[12px] font-bold uppercase tracking-[0.12em] text-[#FF304F] hover:text-[#F7F5FF] transition-colors"

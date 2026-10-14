@@ -12,7 +12,7 @@ const ExperienceMilestone = ({ experience, index }) => {
   return (
     <motion.article
       variants={fadeIn("up", "tween", index * 0.12, 0.55)}
-      className="relative pl-10 sm:pl-16 pb-12 last:pb-0"
+      className="relative pl-8 sm:pl-16 pb-12 last:pb-0 min-w-0"
     >
       {/* Web Node Marker on the Vertical Timeline */}
       <div
@@ -28,12 +28,12 @@ const ExperienceMilestone = ({ experience, index }) => {
 
       {/* Horizontal Web-Connector Tick */}
       <div
-        className="absolute left-7 sm:left-11 top-5 w-3 sm:w-5 h-[2px] bg-gradient-to-r from-[#9B4DFF] to-[#FF304F]"
+        className="absolute left-6 sm:left-11 top-5 w-2 sm:w-5 h-[2px] bg-gradient-to-r from-[#9B4DFF] to-[#FF304F]"
         aria-hidden="true"
       />
 
       {/* Mission Log Card */}
-      <div className="comic-panel rounded-xl p-6 sm:p-8 border border-[#9B4DFF]/30">
+      <div className="comic-panel rounded-xl p-5 sm:p-8 border border-[#9B4DFF]/30 min-w-0 overflow-hidden">
         {/* Top Metadata Header */}
         <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[#9B4DFF]/20">
           <div className="flex items-center gap-2.5">
@@ -207,16 +207,16 @@ const Experience = () => {
       </div>
 
       {/* Archival LinkedIn Link */}
-      <div className="mt-10 flex justify-start sm:pl-16">
+      <div className="mt-10 flex justify-start sm:pl-16 min-w-0 max-w-full">
         <a
           href="https://linkedin.com/in/vdevisricharan"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-5 py-3 rounded-lg comic-panel text-[#BDB4CC] hover:text-[#F7F5FF] font-mono text-[12px] uppercase tracking-[0.12em] transition-colors group"
+          className="inline-flex items-center gap-3 px-4 sm:px-5 py-3 rounded-lg comic-panel text-[#BDB4CC] hover:text-[#F7F5FF] font-mono text-[11px] sm:text-[12px] uppercase tracking-[0.12em] transition-colors group max-w-full"
         >
-          <span>Explore full career history &amp; earlier research roles on LinkedIn</span>
+          <span className="break-words">Explore full career history &amp; earlier research roles on LinkedIn</span>
           <span
-            className="text-[#FF304F] group-hover:translate-x-1 transition-transform"
+            className="text-[#FF304F] group-hover:translate-x-1 transition-transform shrink-0"
             aria-hidden="true"
           >
             &rarr;

@@ -274,8 +274,8 @@ const Navbar = ({ onResumeClick, nightPatrol = false, onToggleNightPatrol }) => 
       {/* Mobile HUD Drawer */}
       <div
         id="mobile-hud-drawer"
-        className={`fixed top-[57px] right-0 w-[290px] sm:w-[330px] h-[calc(100vh-57px)] bg-[#08060F] border-l border-[#9B4DFF]/30 z-50 lg:hidden transform transition-transform duration-300 ease-out flex flex-col justify-between p-6 ${
-          toggle ? "translate-x-0" : "translate-x-full pointer-events-none"
+        className={`fixed top-[57px] right-0 w-[280px] xs:w-[290px] sm:w-[330px] max-w-[85vw] h-[calc(100vh-57px)] bg-[#08060F] border-l border-[#9B4DFF]/30 z-50 lg:hidden transform transition-all duration-300 ease-out flex flex-col justify-between p-6 ${
+          toggle ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible pointer-events-none"
         }`}
       >
         <div>
