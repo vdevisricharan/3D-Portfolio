@@ -102,8 +102,9 @@ Each featured project opens a dedicated engineering field report (`ProjectCaseSt
 | `MISSION // 02` | `RAG ARCHITECTURE` | **Cost-Efficient RAG Application** | LanceDB (Apache Arrow disk format) & ChromaDB vs Cloud Pods ($0/mo vs $70+/mo), Gemini 2.5 Flash, SHA-256 chunk dedup, ~28ms p50 latency | [Case Study](https://vdevisricharan.netlify.app/project/cost-efficient-rag) &bull; [GitHub](https://github.com/vdevisricharan/cost-efficient-rag-application) |
 | `MISSION // 03` | `AI EVALUATION SYSTEM` | **LLM-as-Judge Evaluation Pipeline** | Dual-pass position-swapped evaluation, 5-bias mitigation matrix, Cohen's $\kappa = 0.84$, 99.8% JSON schema compliance | [Case Study](https://vdevisricharan.netlify.app/project/llm-as-judge) &bull; [GitHub](https://github.com/vdevisricharan/llm-as-judge-evaluation-pipeline) |
 | `MISSION // 04` | `LLM FINE-TUNING` | **LLM Recipe Generation System** | Comparative 4-bit NF4 QLoRA fine-tuning across Llama 3 (8B), Gemma (7B), and Mistral (7B) vs T5/GPT-2/LSTM baselines on 2.2M RecipeNLG recipes | [Case Study](https://vdevisricharan.netlify.app/project/recipe-generation) &bull; [GitHub](https://github.com/vdevisricharan/LLM-Recipe-Generation-System) |
-| `MISSION // 05` | `MULTIMODAL PRODUCT` | **ArtiSight — AI Photo Critique** | Dual-engine Google Gemini Vision & Hugging Face BLIP-2 with OpenCV rule-of-thirds composition overlays & EXIF diagnostics | [Case Study](https://vdevisricharan.netlify.app/project/artisight) &bull; [GitHub](https://github.com/vdevisricharan/ArtiSight) &bull; [Demo](https://artisight.netlify.app/) |
+| `MISSION // 05` | `MULTIMODAL PRODUCT` | **ArtiSight — AI Photo Critique** | Multimodal Google Gemini 2.5 Flash & deterministic OpenCV (42.9ms) with SVG composition overlays, exposure histogram, EXIF GPS redaction & Pydantic rubric | [Case Study](https://vdevisricharan.netlify.app/project/artisight) &bull; [GitHub](https://github.com/vdevisricharan/ArtiSight) &bull; [Demo](https://artisight.netlify.app/) |
 | `MISSION // 06` | `EDGE AI + HARDWARE` | **Wasto — Smart Waste Sorter** | MobileNetV3 transfer learning (94.2% test accuracy, <45ms latency) + Web Serial API to Arduino Uno 3-way physical servo actuation | [Case Study](https://vdevisricharan.netlify.app/project/wasto) &bull; [GitHub](https://github.com/vdevisricharan/wasto) &bull; [Demo](https://wasto.netlify.app/) |
+| `MISSION // 07` | `AI SYSTEMS ARCHITECTURE` | **AI Tech Consultant** | 3-service architecture automating consulting bottlenecks: Hybrid RAG Knowledge Brain (SQLite FTS5 + RRF), Inbox Agent with 20-approval autonomy engine, 5-agent Meeting-to-Scope pipeline | [Case Study](https://vdevisricharan.netlify.app/project/ai-tech-consultant) &bull; [GitHub](https://github.com/vdevisricharan/ai-tech-consultant) |
 
 ---
 
@@ -116,7 +117,7 @@ Each featured project opens a dedicated engineering field report (`ProjectCaseSt
 │   ├── Devi_Sri_Charan_SWE_2026.html  # Standalone ATS-conscious interactive resume
 │   ├── og-preview.svg                 # Social preview card (Brand New Day theme)
 │   ├── robots.txt                     # Search crawler directives
-│   ├── sitemap.xml                    # XML sitemap for landing + 6 case studies
+│   ├── sitemap.xml                    # XML sitemap for landing + 7 case studies
 │   └── vite.svg                       # Favicon
 ├── src/
 │   ├── assets/                        # Optimized SVGs, PNGs, company logos & project banners

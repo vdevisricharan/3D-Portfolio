@@ -30,6 +30,7 @@ import {
   recipe_generation,
   wasto,
   artisight,
+  ai_tech_consultant,
   // Testimonials
   binu,
   tarini,
@@ -141,6 +142,7 @@ const skillCategories = [
       { name: "Cost-Efficient RAG Application", id: "cost-efficient-rag" },
       { name: "LLM-as-Judge Evaluation Pipeline", id: "llm-as-judge" },
       { name: "LLM Recipe Generation System", id: "recipe-generation" },
+      { name: "AI Tech Consultant", id: "ai-tech-consultant" },
     ],
   },
   {
@@ -168,6 +170,7 @@ const skillCategories = [
       { name: "Multi-Agent Medical Assistant", id: "medical-assistant" },
       { name: "Cost-Efficient RAG Application", id: "cost-efficient-rag" },
       { name: "ArtiSight — AI Photo Critique", id: "artisight" },
+      { name: "AI Tech Consultant", id: "ai-tech-consultant" },
     ],
   },
   {
@@ -536,16 +539,18 @@ const projects = [
     case_study_id: "artisight",
     category: "COMPUTER VISION / CREATIVE TECHNOLOGY",
     storyAngle:
-      "Bringing intelligent photographic feedback and visual understanding into a practical application.",
+      "Transforming uploaded photographs into structured, explainable critiques and personalized learning assignments.",
     description:
-      "Full-stack AI photography assistant evaluating composition, lighting, and color harmony through a structured multimodal rubric to deliver actionable technical feedback and personalized learning paths.",
-    metricHighlight: "Live Full-Stack Web App • Structured Composition & Lighting Critique",
-    architecturePreview: "React Client -> Flask REST Microservice -> Multimodal Vision Rubric -> Learning Path",
+      "Full-stack photography assistant combining client-side Canvas optimization, deterministic OpenCV metrics (sharpness variance, exposure histogram), EXIF camera extraction with GPS privacy redaction, and Google Gemini 2.5 Flash for structured 6-dimension evaluation.",
+    metricHighlight: "OpenCV Metrics (42.9ms) • GPS Redaction • 6-Dimension Pydantic Rubric",
+    architecturePreview: "React Canvas -> Flask API -> OpenCV + EXIF + Gemini 2.5 Flash -> Pydantic Schema",
     tags: [
       { name: "React", color: "blue-text-gradient" },
       { name: "Tailwind CSS", color: "green-text-gradient" },
+      { name: "OpenCV", color: "pink-text-gradient" },
+      { name: "Gemini 2.5 Flash", color: "blue-text-gradient" },
+      { name: "Pydantic", color: "green-text-gradient" },
       { name: "Flask", color: "pink-text-gradient" },
-      { name: "Generative AI", color: "blue-text-gradient" },
     ],
     image: artisight,
     source_code_link: "https://github.com/vdevisricharan/ArtiSight",
@@ -572,6 +577,28 @@ const projects = [
     image: wasto,
     source_code_link: "https://github.com/vdevisricharan/wasto",
     live_link: "https://wasto.netlify.app/",
+  },
+  {
+    indexLabel: "MISSION 07",
+    name: "AI Tech Consultant",
+    case_study_id: "ai-tech-consultant",
+    category: "AI SYSTEMS / MULTI-SERVICE ARCHITECTURE",
+    storyAngle:
+      "Automating the three costliest bottlenecks in technical consulting — domain lookup, high-volume email triage, and meeting-to-proposal scoping.",
+    description:
+      "Three interconnected microservices: a hybrid-search RAG Knowledge Brain (SQLite FTS5 + semantic vectors with RRF fusion), an autonomous Inbox Agent with 20-approval autonomy engine and commercial guardrails, and a 5-agent Meeting-to-Scope pipeline with PERT estimation and scope-creep detection.",
+    metricHighlight: "88.3% Accuracy (60 evals) • ~$0.0023/query • 100% Policy Adherence",
+    architecturePreview: "Crawler -> Hybrid RAG -> Email Classifier -> Autonomy Engine -> 5-Agent Scope Pipeline",
+    tags: [
+      { name: "Python", color: "blue-text-gradient" },
+      { name: "FastAPI", color: "green-text-gradient" },
+      { name: "TypeScript", color: "pink-text-gradient" },
+      { name: "Anthropic Claude", color: "blue-text-gradient" },
+      { name: "SQLite FTS5", color: "green-text-gradient" },
+      { name: "Express", color: "pink-text-gradient" },
+    ],
+    image: ai_tech_consultant,
+    source_code_link: "https://github.com/vdevisricharan/ai-tech-consultant",
   },
 ];
 

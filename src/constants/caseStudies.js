@@ -5,6 +5,7 @@ import {
   recipe_generation,
   artisight,
   wasto,
+  ai_tech_consultant,
 } from "../assets";
 
 export const caseStudies = {
@@ -518,93 +519,127 @@ This project delivers a parameter-efficient fine-tuning pipeline for modern open
     title: "ArtiSight — AI Photo Critique Assistant",
     displayLabel: "COMPUTER VISION / CREATIVE TECHNOLOGY",
     subtitle:
-      "Intelligent photography assistant providing aesthetic composition analysis, lighting evaluation, and personalized skill learning recommendations using React, Flask, and Generative AI.",
-    category: "Multimodal AI & Full-Stack",
-    badge: "Live Web App",
-    timeline: "2023 – 2024",
+      "A production full-stack photography critique platform combining client-side Canvas optimization, deterministic OpenCV computer vision metrics, EXIF metadata extraction with GPS redaction, and Google Gemini 2.5 Flash structured evaluation.",
+    category: "Multimodal AI & Computer Vision",
+    badge: "ArtiSight 2.0",
+    timeline: "2024 – 2026",
     role: "Full-Stack & Applied AI Engineer",
     responsibilities: [
-      "Built the responsive React and Tailwind CSS frontend for image upload, preview, and interactive critique visualization",
-      "Engineered the Flask REST microservice interfacing with multimodal generative vision models",
-      "Designed a structured photography rubric evaluating composition, lighting, depth of field, and color harmony",
-      "Mapped identified photographic weaknesses to personalized learning recommendations",
+      "Engineered client-side Canvas optimization pipeline downsampling high-resolution images (>2048px) with genuine upload progress tracking",
+      "Built deterministic OpenCV computer vision service calculating 32-bin luminance histograms, Laplacian sharpness variance, and highlight/shadow clipping",
+      "Implemented Pillow EXIF metadata extraction with automated privacy-preserving GPS tag redaction",
+      "Designed a 6-dimension photography rubric (Composition, Lighting, Focus, Color, Storytelling, Technique) validated via Pydantic v2 schemas using Gemini 2.5 Flash",
+      "Developed interactive SVG composition overlays (Rule of Thirds with power points, Golden Ratio, diagonals) and offline curated educational resource engine",
     ],
     image: artisight,
     github: "https://github.com/vdevisricharan/ArtiSight",
     liveDemo: "https://artisight.netlify.app/",
     stats: [
-      { label: "Frontend", value: "React + TailwindCSS" },
-      { label: "Backend", value: "Flask REST API" },
-      { label: "AI Engine", value: "Multimodal Vision LLM" },
-      { label: "Deployment", value: "Netlify + Cloud Service" },
+      { label: "Vision AI", value: "Gemini 2.5 Flash (512 Budget)" },
+      { label: "Deterministic CV", value: "OpenCV Laplacian & Histogram" },
+      { label: "Privacy Gate", value: "Automated GPS Redaction" },
+      { label: "Validation", value: "Pydantic v2 Schemas" },
     ],
-    overview: `Novice and intermediate photographers struggle to develop their craft due to lack of accessible, objective, and constructive feedback. Generic social media platforms offer vanity metrics ('likes') rather than actionable technical critique regarding lighting, rule of thirds, framing, focal points, and color harmony.
+    overview: `Novice and intermediate photographers struggle to develop their craft due to a lack of accessible, objective, and constructive feedback. Generic social media platforms offer vanity metrics ('likes') rather than actionable technical critique regarding lighting, rule of thirds, framing, focal points, and color harmony.
 
-ArtiSight bridges this gap by providing an instant, AI-driven photo critique platform. Users upload their photographs, and the application evaluates them against classical photography principles, generating structured scores, technical observations, actionable improvement tips, and personalized photography learning recommendations.`,
+ArtiSight 2.0 bridges this gap by unifying deterministic computer vision metrics with multimodal generative reasoning. The system evaluates uploaded photographs across 6 core photography dimensions: Composition & Framing, Lighting & Exposure, Focus & Technical Quality, Color & Tonal Balance, Subject & Storytelling, and Technical Settings. Rather than returning unformatted conversational remarks, the backend executes deterministic OpenCV image analysis, extracts privacy-sanitized EXIF camera settings, and validates Gemini 2.5 Flash critique outputs against a strict Pydantic v2 schema, returning actionable strengths, prioritized improvements, concrete shooting assignments, and curated educational resources.`,
     architecture: {
       description:
-        "Interactive React web client connecting to a Flask microservice and multimodal Generative AI evaluation pipeline.",
+        "End-to-end pipeline: client-side image optimization, Flask REST API v2, deterministic OpenCV analysis, EXIF metadata extraction with GPS stripping, and Gemini 2.5 Flash structured evaluation.",
       nodes: [
-        { step: "01", name: "Photographer Upload", detail: "Client-side image preview & compression in React" },
-        { step: "02", name: "Flask REST Service", detail: "Validates payload & dispatches multimodal vision request" },
-        { step: "03", name: "Rubric Vision Engine", detail: "Evaluates composition, lighting, exposure, and subject focus" },
-        { step: "04", name: "Structured Extraction", detail: "Parses feedback into actionable scores & learning modules" },
+        { step: "01", name: "Client Optimization", detail: "Canvas downsampling (>2048px, 90% JPEG) & genuine upload progress" },
+        { step: "02", name: "Flask v2 Gateway", detail: "Payload validation, MIME magic check, and ephemeral memory buffer" },
+        { step: "03", name: "Deterministic Vision", detail: "OpenCV Laplacian sharpness, 32-bin luminance histogram, clipping percentages" },
+        { step: "04", name: "EXIF & Privacy Guard", detail: "Pillow camera metadata extraction with automated GPS tag redaction" },
+        { step: "05", name: "Multimodal AI Rubric", detail: "Gemini 2.5 Flash evaluation across 6 photography dimensions (512-token thinking budget)" },
+        { step: "06", name: "Pydantic Validation", detail: "Strict typing into FullCritiqueResponse, assignments & curated learning database" },
       ],
-      diagram: `flowchart LR
-    User[Photographer] --> UI[React + Tailwind Web Application]
-    UI --> Upload[Image Upload & Client Preview]
-    Upload --> API[Flask REST Microservice]
-    API --> VisionPipeline[Multimodal AI Critique Engine]
-    VisionPipeline --> Prompt[Photography Evaluation Rubric Prompt]
-    Prompt --> GenAI[Generative Vision Model]
-    GenAI --> ParsedOutput[Structured JSON: Composition, Lighting, Recommendations]
-    ParsedOutput --> UI
-    UI --> FeedbackDisplay[Interactive Breakdown Cards & Learning Path]`,
+      diagram: `flowchart TD
+    User([Photographer Upload]) --> Canvas[HTML5 Canvas Client Optimizer]
+    Canvas -->|Optimized Payload| API[Flask REST Microservice /api/v2/analyze]
+    
+    API --> Security[Format & Decompression Bomb Guard]
+    Security --> ParallelFork{Analysis Pipeline}
+    
+    ParallelFork -->|Deterministic CV| OpenCV[OpenCV Engine: Laplacian Sharpness & 32-Bin Luminance Histogram]
+    ParallelFork -->|Metadata Extract| EXIF[Pillow EXIF Service + Automated GPS Redaction]
+    ParallelFork -->|Multimodal Reasoning| Gemini[Gemini 2.5 Flash: 6-Dimension Rubric + 512 Thinking Budget]
+    
+    OpenCV --> Aggregator[Response Synthesizer]
+    EXIF --> Aggregator
+    Gemini --> Pydantic[Pydantic v2 Schema Validator]
+    Pydantic --> Aggregator
+    
+    Aggregator --> ResourceEngine[Curated Learning Resource DB Fallback]
+    ResourceEngine --> Output([Structured Critique JSON: Scores, Overlays, Assignments & Resources])
+    
+    Output --> UI[React Feedback Dashboard: Overlays, Histograms & Action Plan]`,
     },
     technicalDecisions: [
       {
-        title: "Microservice Separation (React Client + Flask Backend)",
+        title: "Gemini 2.5 Flash + OpenCV Hybrid vs. Heavyweight BLIP-2",
         rationale:
-          "Decoupled the lightweight responsive React single-page application from the Python Flask backend, allowing rapid UI iteration and independent scaling of vision model requests.",
+          "BLIP-2 was evaluated during initial architecture design; running a 15GB model with >30s CPU latency on resource-constrained servers offered zero unique value over Gemini 2.5 Flash's state-of-the-art vision understanding. Pairing deterministic OpenCV metrics (Laplacian sharpness variance, RMS contrast, 32-bin luminance histogram) with Gemini 2.5 Flash yields objective mathematical telemetry alongside rich artistic reasoning, with sub-50ms deterministic execution and an active thinking budget of 512 tokens.",
       },
       {
-        title: "Structured Evaluation Framework",
+        title: "Strict Pydantic v2 Schema Enforcement vs. Freeform LLM Output",
         rationale:
-          "Rather than generating arbitrary conversational remarks, the system prompts the multimodal model with structured evaluation categories (Composition, Depth of Field, Lighting, Color Balance), guaranteeing reproducible, pedagogical feedback.",
+          "Unstructured LLM text frequently drifts across prompts, dropping categories or failing to format scores reliably. Enforcing a Pydantic v2 schema (FullCritiqueResponse) guarantees typed numeric scores (0-100), bounded rationale strings, structured strengths, prioritized improvements, and concrete shooting assignments.",
       },
       {
-        title: "Personalized Educational Recommendation Generation",
+        title: "Privacy-Preserving EXIF Extraction with GPS Redaction",
         rationale:
-          "Alongside critique scores, the pipeline maps identified flaws (e.g. blown-out highlights) to specific photography concepts and actionable practice exercises for the user.",
+          "Camera metadata contains valuable exposure settings (aperture, shutter speed, ISO, focal length) essential for technical critique, but consumer images frequently embed precise GPS latitude/longitude coordinates. The EXIF parser extracts camera hardware settings while deterministically purging all GPSInfo tags before data enters the application state.",
+      },
+      {
+        title: "Curated Photography Educational DB with Search Fallback",
+        rationale:
+          "Google Custom Search API dependencies suffer from quota exhaustion, rate limiting, and 403 authorization failures. Implemented a zero-dependency curated repository of 18 peer-reviewed photography learning resources across all 6 rubric categories, ensuring reliable educational recommendations with or without active Google Search API keys.",
+      },
+      {
+        title: "Client-Side HTML5 Canvas Image Optimization",
+        rationale:
+          "Modern DSLR and smartphone cameras produce 20MB–50MB RAW and JPEG images. Uploading uncompressed files introduces severe latency bottlenecks and server memory strain. A client-side HTML5 Canvas optimizer downsamples images exceeding 2048px to 90% quality JPEG, reducing transfer size by up to 80% while preserving optical characteristics.",
       },
     ],
     methodology: [
-      "Image Processing: Uploaded photographs are formatted and verified on the client before secure transmission to the Flask backend.",
-      "Multimodal Critique Pipeline: Images are processed by generative vision models equipped with a calibrated photography rubric.",
-      "Structured Result Extraction: Responses are parsed into categorized dimensions: Technical Execution, Compositional Strength, Lighting, and Next Learning Steps.",
-      "Client Presentation: Interactive cards with progress bars, visual checklists, and direct advice cards built with Tailwind CSS.",
+      "Deterministic Signal Extraction: Computed 32-bin luminance histogram, RMS contrast, highlight clipping (>250), shadow clipping (<5), and Laplacian sharpness variance via OpenCV.",
+      "EXIF Privacy Sanitization: Parsed IFD0 and ExifIFD tags for camera model, aperture (F-number), exposure time, ISO, and focal length while stripping GPSInfo tags.",
+      "Multimodal Evaluator Calibration: Prompted Gemini 2.5 Flash with a structured 6-dimension rubric (Composition, Lighting, Focus, Color, Storytelling, Technique) using a 512-token thinking budget to bound latency.",
+      "Schema Integrity Validation: Validated and structured raw multimodal responses into Pydantic models with automated fallback to prevent partial render failures.",
+      "Interactive Visual Feedback: Engineered client-side SVG composition overlays (Rule of Thirds, Phi Ratio, Crosshairs, Diagonals) and exposure histogram visualizations in React.",
     ],
     benchmarks: [
-      { metric: "Deployment Status", result: "Live on Netlify (https://artisight.netlify.app/)" },
-      { metric: "Critique Turnaround", result: "Sub-4 second end-to-end multimodal analysis" },
-      { metric: "User Experience", result: "Responsive mobile-first photography feedback dashboard" },
+      { metric: "Deterministic EXIF Extraction", result: "9.0 ms (p50) / 9.8 ms (mean)" },
+      { metric: "Deterministic OpenCV Analysis", result: "42.9 ms (p50) / 47.9 ms (mean)" },
+      { metric: "Resource Recommendation Latency", result: "0.1 ms (p50) / 0.1 ms (mean)" },
+      { metric: "Multimodal Critique Latency", result: "13.26 s (p50) / 14.18 s (mean) with Gemini 2.5 Flash" },
+      { metric: "Automated Test Suite", result: "16 pytest unit/integration tests passing (100% pass rate)" },
+      { metric: "Frontend Production Bundle", result: "296.3 kB gzip-optimized via Vite" },
     ],
     challenges: [
-      "Balancing Technical vs Artistic Feedback: Calibrated system prompts to provide constructive, encouraging critique with specific technical adjustments (e.g. aperture, ISO, angle) rather than subjective dismissiveness.",
-      "Client Image Optimization: Implemented client-side compression to speed up upload times on mobile networks without sacrificing visual fidelity.",
+      "Latency vs. Reasoning Quality in Generative Vision: Gemini 2.5 Flash defaults to unconstrained thinking, taking over 100 seconds when output tokens exceed limits. Configured max_output_tokens=8192 with thinking_budget=512, cutting critique latency to 13.26s while preserving deep technical analysis.",
+      "Eliminating Unverified Model Claims: Evaluated and dropped BLIP-2 in favor of deterministic OpenCV computer vision, honestly documenting the trade-off rather than retaining unverified claims.",
+      "State Rehydration & SPA Navigation: Page refreshes on critique routes previously wiped image and analysis states. Implemented sessionStorage persistence and Netlify redirect rules (_redirects) to guarantee seamless navigation.",
     ],
     lessonsLearned: [
-      "Translating open-ended multimodal model capabilities into a useful product requires decomposing domain expertise (photography rules) into structured rubric dimensions.",
-      "Pairing every critique observation with a concrete next exercise turns passive AI scoring into an active learning loop.",
+      "Pairing deterministic computer vision (OpenCV) with generative multimodal AI provides the best of both worlds: mathematical rigor for exposure/sharpness and high-level reasoning for composition/storytelling.",
+      "Bounded thinking budgets on reasoning models provide a predictable latency profile suitable for interactive web applications without sacrificing output quality.",
+      "Honest, reproducible engineering benchmarks build far greater credibility in technical portfolios than unverified marketing claims.",
     ],
     techStack: [
-      "React",
-      "JavaScript",
+      "React 18",
+      "Vite",
       "Tailwind CSS",
-      "Python",
+      "Redux Toolkit",
+      "Python 3.11",
       "Flask",
-      "Generative AI",
-      "RESTful APIs",
+      "OpenCV",
+      "Pillow (PIL)",
+      "Pydantic v2",
+      "Google Gemini 2.5 Flash",
+      "Gunicorn",
+      "Docker",
       "Netlify",
     ],
   },
@@ -716,6 +751,131 @@ Wasto is an end-to-end automated waste segregation system combining edge deep le
       "Netlify",
     ],
   },
+
+  "ai-tech-consultant": {
+    id: "ai-tech-consultant",
+    missionCode: "FIELD REPORT // MISSION 07",
+    title: "AI Tech Consultant — Automated Consulting Pipeline",
+    displayLabel: "AI SYSTEMS / MULTI-SERVICE ARCHITECTURE",
+    subtitle:
+      "A unified AI system automating the three most expensive bottlenecks in technical software consulting: domain knowledge retrieval, high-volume customer email triage, and meeting-to-scope proposal generation.",
+    category: "AI Systems & Microservices",
+    badge: "Multi-Service Architecture",
+    timeline: "2025 – 2026",
+    role: "Full-Stack AI Systems Engineer",
+    responsibilities: [
+      "Architected the 3-microservice system with REST API interconnects where Tasks 2 and 3 consume Task 1 exclusively through its API",
+      "Built the polite resumable web crawler with rate limiting, exponential backoff, and Claude 3.5 Sonnet multimodal screenshot understanding",
+      "Engineered the hybrid search engine combining SQLite FTS5 BM25 lexical search with semantic vector embeddings via Reciprocal Rank Fusion",
+      "Developed the TypeScript Inbox Agent with 7-category email classification, commercial guardrails, and 20-consecutive-approval autonomy engine",
+      "Designed the 5-agent Meeting-to-Scope pipeline with PERT estimation and scope-creep detection across multiple meeting transcripts",
+    ],
+    image: ai_tech_consultant,
+    github: "https://github.com/vdevisricharan/ai-tech-consultant",
+    liveDemo: null,
+    stats: [
+      { label: "Overall Accuracy", value: "88.3% (60 Evals)" },
+      { label: "Cost Per Query", value: "~$0.0023" },
+      { label: "Policy Adherence", value: "100%" },
+      { label: "Microservices", value: "3 Interconnected" },
+    ],
+    overview: `Software development pricing has crashed 90%, forcing consulting firms to handle 10–20x more clients without proportional staff increases. The three most expensive operational bottlenecks — looking up domain-specific knowledge, drafting high-volume customer emails, and turning messy client meetings into scoped proposals — remain overwhelmingly manual.
+
+AI Tech Consultant addresses this by decomposing these bottlenecks into three interconnected microservices. Task 1 (Knowledge Brain) is a hybrid-search RAG engine with a polite resumable crawler and Claude 3.5 Sonnet multimodal understanding. Task 2 (Inbox Agent) autonomously classifies, drafts, and dispatches customer emails with commercial guardrails and a progressive autonomy engine. Task 3 (Meeting-to-Scope) orchestrates 5 specialized AI agents to convert raw meeting transcripts into feasibility-checked, PERT-estimated project proposals with scope-creep detection.`,
+    architecture: {
+      description:
+        "Three interconnected microservices where Tasks 2 and 3 consume Task 1's knowledge base exclusively through its REST API.",
+      nodes: [
+        { step: "01", name: "Polite Web Crawler", detail: "Resumable crawling with rate limiting, backoff, and Claude Vision screenshot analysis" },
+        { step: "02", name: "Hybrid RAG Engine", detail: "SQLite FTS5 BM25 + semantic vectors fused via Reciprocal Rank Fusion" },
+        { step: "03", name: "Inbox Agent", detail: "7-category email classifier with autonomy engine and commercial guardrails" },
+        { step: "04", name: "Meeting-to-Scope", detail: "5 specialized agents: Transcript, Feasibility, Scope, Estimation, Proposal" },
+        { step: "05", name: "Scope Diff Engine", detail: "Cross-meeting change detection and scope creep flagging" },
+      ],
+      diagram: `flowchart TD
+    Crawler[Polite Web Crawler] --> Parser[HTML & Screenshot Parser]
+    Parser --> Vision[Claude 3.5 Sonnet Vision]
+    Vision --> SQLite[SQLite FTS5 + Vector Store]
+    SQLite --> RAGAPI[Knowledge Brain REST API :8000]
+    Email[Incoming Customer Email] --> Classifier[7-Category Classifier: Claude Haiku]
+    Classifier --> DraftGen[Grounded Draft Generator]
+    DraftGen --> RAGAPI
+    DraftGen --> Autonomy{20-Approval Autonomy Gate}
+    Autonomy -->|Autonomous| AutoSend[Auto-Send Response]
+    Autonomy -->|Manual| Console[Unified Web Console :3000]
+    Transcript[Meeting Transcripts] --> Analyst[Transcript Analyst Agent]
+    Analyst --> Feasibility[Feasibility Agent]
+    Feasibility --> RAGAPI
+    Feasibility --> Scope[Scope Agent]
+    Scope --> PERT[Estimation Agent: 3-Point PERT]
+    PERT --> Proposal[Proposal Agent]
+    Transcript2[Follow-up Meetings] --> DiffEngine[Scope Diff Engine]
+    DiffEngine --> CreepAlert[Scope Creep Detection]`,
+    },
+    technicalDecisions: [
+      {
+        title: "Hybrid Search with Reciprocal Rank Fusion over Pure Vector Search",
+        rationale:
+          "Technical consulting queries often contain exact product names, error codes, and version numbers where lexical BM25 matching excels. Combining SQLite FTS5 BM25 with semantic vector embeddings via RRF fusion captures both exact-match precision and semantic similarity, significantly outperforming either approach alone.",
+      },
+      {
+        title: "Claude 3.5 Haiku for Classification vs. Sonnet for Generation",
+        rationale:
+          "Email classification is a constrained categorization task where Haiku runs 3x faster and 75% cheaper than Sonnet while maintaining equivalent accuracy. Reserved Sonnet for complex grounded generation tasks (RAG synthesis, vision analysis) where reasoning depth justifies the cost.",
+      },
+      {
+        title: "20-Consecutive-Approval Autonomy Engine",
+        rationale:
+          "Full automation without human verification risks brand damage from incorrect responses. The progressive autonomy model requires 20 consecutive unedited approvals before auto-sending low-risk emails, with any single edit instantly revoking autonomy — balancing efficiency with safety.",
+      },
+      {
+        title: "Anti-Hallucination Guardrails with Safe Abstention",
+        rationale:
+          "In consulting contexts, fabricated answers are worse than no answer. The RAG engine safely abstains with an 'insufficient_evidence' response when retrieval confidence is low, routing to human escalation rather than generating plausible-sounding but unsupported content.",
+      },
+    ],
+    methodology: [
+      "Knowledge Base Construction: Built a polite, resumable web crawler with robots.txt compliance, rate limiting, and exponential backoff to ingest domain documentation. Multimodal screenshots processed via Claude 3.5 Sonnet Vision for UI-heavy content.",
+      "Hybrid Retrieval Pipeline: Indexed crawled content in SQLite FTS5 for BM25 lexical search alongside semantic vector embeddings. Fused results using Reciprocal Rank Fusion for balanced precision and recall.",
+      "Email Classification and Drafting: Implemented a 7-category intent classifier (how-to, troubleshooting, project, refund, complaint, quote, follow-up) using Claude 3.5 Haiku with commercial guardrails preventing unapproved refunds or arbitrary quotes.",
+      "Progressive Autonomy: Designed a 20-approval autonomy engine where low-risk emails auto-send after 20 consecutive unedited approvals, with any edit instantly revoking autonomous mode.",
+      "Multi-Agent Scope Pipeline: Orchestrated 5 specialized agents (Transcript Analyst, Product Feasibility, Scope, Estimation, Proposal) with out-of-the-box feasibility checking against the Task 1 knowledge base.",
+      "Scope Creep Detection: Built a diff engine that compares requirements across multiple meeting transcripts, flagging new additions and changed specifications.",
+    ],
+    benchmarks: [
+      { metric: "Overall Accuracy", result: "88.3% across 60 test cases" },
+      { metric: "Policy Adherence", result: "100% (zero unauthorized commitments)" },
+      { metric: "Cost Per Query", result: "~$0.0023 average" },
+      { metric: "Knowledge Brain Recall", result: "Hybrid RRF outperforms pure BM25 and pure vector" },
+      { metric: "Email Classification", result: "7-category classifier with commercial guardrails" },
+      { metric: "Scope Pipeline", result: "5-agent chain with PERT 3-point estimation" },
+    ],
+    challenges: [
+      "Multimodal Knowledge Ingestion: Many help center pages rely heavily on annotated screenshots rather than text. Solved by integrating Claude 3.5 Sonnet Vision to extract structured knowledge from UI screenshots, enabling the crawler to index visual content alongside HTML text.",
+      "Balancing Autonomy with Safety: Full email automation risks sending incorrect or policy-violating responses. Designed the 20-approval autonomy engine with instant revocation on any edit, and commercial guardrails that prevent the system from ever promising refunds or custom quotes without human authorization.",
+      "Cross-Meeting Scope Drift: Client requirements evolve across multiple meetings, making it difficult to track what changed. Built a dedicated Scope Diff Engine that performs structured comparison across meeting transcripts, explicitly flagging additions, removals, and modifications.",
+    ],
+    lessonsLearned: [
+      "Hybrid search (BM25 + semantic vectors + RRF fusion) consistently outperforms single-modality retrieval for domain-specific technical queries containing both natural language and exact product terminology.",
+      "Progressive autonomy with instant revocation provides a practical middle ground between fully manual and fully autonomous AI email systems, building trust incrementally.",
+      "Decomposing consulting workflows into specialized microservices with REST API boundaries enables independent scaling and testing while maintaining a unified system experience.",
+    ],
+    techStack: [
+      "Python 3.11",
+      "FastAPI",
+      "TypeScript",
+      "Node.js",
+      "Express.js 5",
+      "Anthropic Claude 3.5 Sonnet",
+      "Anthropic Claude 3.5 Haiku",
+      "SQLite FTS5",
+      "Reciprocal Rank Fusion",
+      "Zod",
+      "Pydantic v2",
+      "Pytest",
+      "Vitest",
+    ],
+  },
 };
 
 export const caseStudyKeys = [
@@ -725,4 +885,5 @@ export const caseStudyKeys = [
   "recipe-generation",
   "artisight",
   "wasto",
+  "ai-tech-consultant",
 ];

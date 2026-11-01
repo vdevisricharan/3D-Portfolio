@@ -36,6 +36,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://vdevisricharan.netlify.app/project/ai-tech-consultant</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://vdevisricharan.netlify.app/Devi_Sri_Charan_SWE_2026.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
