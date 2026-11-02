@@ -196,10 +196,10 @@ const Projects = () => {
         variants={fadeIn("", "tween", 0.1, 0.5)}
         className="mt-3 font-sans text-[#BDB4CC] text-[15px] sm:text-[16px] max-w-3xl leading-[1.65]"
       >
-        Six verified engineering case studies spanning multi-agent orchestration, zero-idle-cost RAG infrastructure, bias-mitigated LLM evaluation, 4-bit QLoRA fine-tuning, computer vision critique, and edge-actuated hardware systems. Select any mission to inspect its full system architecture, trade-offs, and benchmarks.
+        Eight verified engineering case studies spanning multi-agent orchestration, vernacular AI education, zero-idle-cost RAG infrastructure, bias-mitigated LLM evaluation, 4-bit QLoRA fine-tuning, computer vision critique, and edge-actuated hardware systems. Select any mission to inspect its full system architecture, trade-offs, and benchmarks.
       </motion.p>
 
-      {/* 6 Project Cards Grid with Subtle Web-Geometry Background */}
+      {/* 8 Project Cards Grid with Subtle Web-Geometry Background */}
       <div className="relative mt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {projects.map((project, index) => (

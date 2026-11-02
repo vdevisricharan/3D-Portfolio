@@ -6,6 +6,7 @@ import {
   artisight,
   wasto,
   ai_tech_consultant,
+  mission_mpso,
 } from "../assets";
 
 export const caseStudies = {
@@ -876,6 +877,137 @@ AI Tech Consultant addresses this by decomposing these bottlenecks into three in
       "Vitest",
     ],
   },
+
+  "mission-mpso": {
+    id: "mission-mpso",
+    missionCode: "FIELD REPORT // MISSION 08",
+    title: "MISSION MPSO — Telugu-First AI Exam Platform",
+    displayLabel: "AI EDTECH / TELUGU-FIRST PWA",
+    subtitle:
+      "A production-ready, Telugu-first AI exam preparation progressive web app for TGPSC MPSO/ASO recruitment, featuring grounded pedagogical tutoring, deterministic statistical calculations, 6-tier adaptive mastery, and timed mock simulations.",
+    category: "AI EdTech & Accessible Systems",
+    badge: "Vernacular AI Flagship",
+    timeline: "2026",
+    role: "Full-Stack AI & Systems Architect",
+    responsibilities: [
+      "Architected the Next.js 16 (App Router) mobile-first Progressive Web App using React 19, TypeScript, and accessible Tailwind CSS design tokens",
+      "Engineered the Grounded Telugu AI Tutor engine featuring 7 distinct pedagogical modes (Teach Me, Explain Simply, Solve Together, etc.) with offline fallback and KaTeX bilingual math notation",
+      "Built the deterministic StatisticsValidator calculation engine covering 12 statistical domains (Central Tendency, Variance, Bayes, Distributions, Index Numbers) to eliminate LLM arithmetic hallucinations",
+      "Designed the 6-tier evidence-based mastery engine, Spaced Repetition queue (1, 3, 7, 14, 30 days), and persistent 'తప్పుల పుస్తకం' (Mistake Book) with error taxonomy",
+      "Implemented the full-length 150-question official TGPSC timed mock examination simulator with authoritative countdown timer, OMR-style palette, and Paper I/II breakdown",
+      "Conducted rigorous WCAG 2.2 AA accessibility and responsive layout audits across 16 routes and 7 screen viewports (320px–1440px), achieving 49/49 automated unit and E2E tests passing",
+    ],
+    image: mission_mpso,
+    github: "https://github.com/vdevisricharan/mission-mpso",
+    liveDemo: null,
+    stats: [
+      { label: "Tutor Modes", value: "7 Pedagogical Types" },
+      { label: "Automated Tests", value: "49/49 Passing" },
+      { label: "Exam Fidelity", value: "150 Qs / 150 Mins" },
+      { label: "Accessibility", value: "WCAG 2.2 AA / 0px Overflow" },
+    ],
+    overview: `The Telangana Public Service Commission (TGPSC) recruitment for Mandal Planning & Statistical Officers / Assistant Statistical Officers (Notification 07/G/ES/2026) demands mastery across Paper I (General Studies) and Paper II (University Degree-Level Statistics). Aspirants, particularly those from rural and Telugu-medium academic backgrounds, face severe systemic barriers: statistical textbooks and high-quality mock tools are overwhelmingly published in English, while generic commercial LLMs frequently hallucinate multi-step numerical calculations, invent invalid mathematical formulas, and produce unnatural Telugu translations.
+
+MISSION MPSO addresses this challenge through a purpose-built, Telugu-first AI exam preparation platform. Rather than trusting probabilistic LLMs with arithmetic execution, the system decouples pedagogical instruction from numerical truth: an independent deterministic statistics validator computes exact mathematical ground truth, while a grounded vernacular AI tutor guides students across 7 distinct pedagogical modes. Combined with an evidence-based 6-tier mastery engine, automated spaced repetition, and full-length 150-question timed mocks, MISSION MPSO delivers an uncompromising, accessible learning companion designed to operate flawlessly even on low-cost mobile devices.`,
+    architecture: {
+      description:
+        "Mobile-first PWA architecture coupling a Next.js 16 App Router with a dual-engine core: a deterministic numerical validator for mathematical certainty and a grounded Telugu AI tutor for vernacular pedagogy.",
+      nodes: [
+        { step: "01", name: "PWA Client & Viewport", detail: "Mobile-first responsive UI (320px–1440px) with 3-tier font size toggle and touch-optimized controls" },
+        { step: "02", name: "Grounded AI Tutor Engine", detail: "7 pedagogical modes (Teach, Simplify, Solve Together, etc.) with KaTeX bilingual math" },
+        { step: "03", name: "Deterministic Stats Validator", detail: "Independent calculation engine verifying formulas, calculations, and options with zero hallucination" },
+        { step: "04", name: "Adaptive & Spaced Repetition", detail: "6 mastery tiers with multi-attempt evidence thresholds and automated 1/3/7/14/30-day review scheduling" },
+        { step: "05", name: "Mock Simulator & Mistake Book", detail: "150-question timed examination engine with authoritative countdown and categorized misconception analysis" },
+      ],
+      diagram: `flowchart TD
+    User([Student / Aspirant]) --> PWA[Next.js 16 App Router PWA]
+    PWA --> Layout[AppShell & Font Sizer]
+    Layout --> Hub{Learning View}
+    
+    Hub -->|AI Tutor| Tutor[Grounded Telugu AI Tutor: 7 Modes]
+    Hub -->|Practice & Mocks| Practice[150-Q Timed Mock & Practice Engine]
+    Hub -->|Review| MistakeBook[Mistakes Book & Spaced Repetition]
+    
+    Tutor --> KaTeX[Bilingual KaTeX Math Renderer]
+    Tutor --> Grounding[Curriculum Context Injection]
+    
+    Practice --> Validator[Deterministic StatisticsValidator Engine]
+    Validator --> MathCheck[Mean / SD / Bayes / Distributions / Index Numbers]
+    
+    Practice --> Mastery[6-Tier Evidence Mastery Engine]
+    Mastery --> Repetition[Spaced Repetition Scheduler: 1/3/7/14/30 Days]
+    Repetition --> MistakeBook
+    
+    Tutor --> Storage[(Multi-Backend: PostgreSQL / JSON Store)]
+    Practice --> Storage
+    Mastery --> Storage`,
+    },
+    technicalDecisions: [
+      {
+        title: "Deterministic Statistics Engine vs. Probabilistic LLM Arithmetic",
+        rationale:
+          "Language models are autoregressive token predictors prone to subtle arithmetic drift in multi-step statistical calculations (e.g. variance, Karl Pearson correlation, Fisher's index numbers). MISSION MPSO implements an independent StatisticsValidator in TypeScript that computes deterministic ground truth. The AI tutor and question engine consume validated results, eliminating numerical hallucinations entirely.",
+      },
+      {
+        title: "7 Structured Pedagogical Modes vs. Open-Ended Chat",
+        rationale:
+          "Unstructured chatbots frequently give away final solutions without building conceptual understanding. The platform enforces 7 distinct pedagogical modes (Teach Me, Explain Simply, Solve Together, Give Another Example, Test My Understanding, Explain My Mistake, Quick Revision), scaffolding problem-solving step-by-step and guiding students towards independent discovery.",
+      },
+      {
+        title: "Evidence-Based Multi-Attempt Mastery vs. Single-Pass Scoring",
+        rationale:
+          "Single-question success often reflects lucky guessing rather than authentic mastery. The adaptive engine enforces strict multi-attempt evidence thresholds: reaching 'Strong' mastery requires at least 5 independent verified question attempts with >= 85% aggregate accuracy across spaced sessions.",
+      },
+      {
+        title: "Bilingual KaTeX Math with Symbol-by-Symbol Vernacular Glosses",
+        rationale:
+          "Standard Telugu-medium textbooks often present formulas without clarifying underlying notation, leading to rote memorization. The platform formats every mathematical expression using KaTeX with symbol-by-symbol Telugu glosses (e.g. sigma = ప్రామాణిక విచలనం, x̄ = అంకమధ్యమం), connecting formal mathematics to intuitive language.",
+      },
+      {
+        title: "Mobile-First Design System with Strict Zero-Horizontal-Overflow Containment",
+        rationale:
+          "Aspirants predominantly study on compact 360px smartphones. Complex bilingual labels and wide mathematical equations easily cause horizontal scroll breakage. By implementing responsive wrapping on all badge rows, scrollable math cards, min 44x44px touch targets, and 3-tier font sizing, the platform ensures 100% WCAG 2.2 AA accessibility across all viewports.",
+      },
+    ],
+    methodology: [
+      "Official Curriculum Grounding: Mapped the complete TGPSC Notification 07/G/ES/2026 Annexure-II syllabus into immutable curriculum structures (13 Paper I General Studies topics and 8 Paper II Degree Statistics units).",
+      "Deterministic Statistics Engine: Implemented independent numerical calculation functions for Mean, Median, Mode, Variance, SD, Bayes' Theorem, Binomial/Poisson distributions, Karl Pearson correlation, and Index Numbers.",
+      "Vernacular Pedagogical AI Tutoring: Built a multi-mode tutor supporting 7 distinct pedagogical actions with built-in offline lesson retrieval and optional cloud LLM passthrough with strict anti-hallucination prompts.",
+      "Spaced Repetition & Mistake Book: Automated systematic capture of incorrect attempts, classifying errors into conceptual, calculation, formula, or reading mistakes with scheduled intervals at 1, 3, 7, 14, and 30 days.",
+      "Full-Length Timed Mock Simulator: Replicated official exam conditions (150 questions in 150 minutes) with a server-authoritative countdown timer, OMR-style palette, and bilingual question presentation.",
+      "Accessibility & Responsive Viewport Hardening: Conducted comprehensive audits across 16 routes and 7 screen viewports (320px–1440px), ensuring WCAG 2.2 AA touch targets, semantic ARIA roles, and zero horizontal scrolling.",
+    ],
+    benchmarks: [
+      { metric: "Automated Test Suite", result: "49/49 passing (25 Vitest unit + 24 Playwright E2E)" },
+      { metric: "Numerical Calculation Accuracy", result: "100% deterministic verification across 12 statistical domains" },
+      { metric: "Responsive Viewport Integrity", result: "0px horizontal overflow across all 16 routes (320px–1440px)" },
+      { metric: "Touch Target Accessibility", result: "100% >= 44x44px conforming to WCAG 2.2 AA SC 2.5.8" },
+      { metric: "Pedagogical Tutor Modes", result: "7 specialized modes with KaTeX bilingual rendering" },
+      { metric: "Exam Alignment", result: "300 Qs / 300 Marks official 07/G/ES/2026 syllabus compliance" },
+    ],
+    challenges: [
+      "Rendering Complex Mathematical Notation on Budget Mobile Screens: Mathematical formulas frequently caused horizontal clipping on 360px smartphone viewports. Solved by wrapping KaTeX expressions in horizontally scrollable containment cards with thin scrollbars, pairing each equation with step-by-step symbol definitions in Telugu.",
+      "Eliminating Arithmetic Hallucination in Statistics: Generative LLMs routinely fail at arithmetic calculations like standard deviation or Fisher's index numbers. Solved by engineering an independent StatisticsValidator engine that computes ground truth deterministically, using the LLM solely for pedagogical explanation and conceptual intuition.",
+      "Localization & Typographic Layout Stability: Telugu script has tall diacritics and compound glyphs that collide with rigid UI line heights and fixed-height badges. Re-architected typography tokens with dynamic line-heights, flex-wrap metadata rows, and 3-tier user-controlled font size toggles.",
+    ],
+    lessonsLearned: [
+      "Decoupling mathematical calculation into a deterministic engine while using LLMs strictly for pedagogical narrative guarantees both scientific truth and natural explanation.",
+      "Vernacular-first web apps must be engineered from the typography up — Telugu script requires wider padding, flexible flex-wrapping, and generous line-heights compared to Latin alphabets.",
+      "Categorizing student errors by misconception type (formula error vs. calculation error vs. concept misunderstanding) makes spaced repetition revision dramatically more actionable than simple score percentages.",
+    ],
+    techStack: [
+      "Next.js 16.4.3 (App Router)",
+      "React 19.3.0",
+      "TypeScript 5",
+      "Tailwind CSS 4",
+      "KaTeX 0.19.1",
+      "Web Speech API (te-IN)",
+      "Vitest 4.1",
+      "Playwright 1.64",
+      "Supabase PostgreSQL",
+      "Node.js 20+",
+    ],
+  },
 };
 
 export const caseStudyKeys = [
@@ -886,4 +1018,5 @@ export const caseStudyKeys = [
   "artisight",
   "wasto",
   "ai-tech-consultant",
+  "mission-mpso",
 ];

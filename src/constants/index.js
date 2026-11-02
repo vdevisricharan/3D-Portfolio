@@ -31,6 +31,7 @@ import {
   wasto,
   artisight,
   ai_tech_consultant,
+  mission_mpso,
   // Testimonials
   binu,
   tarini,
@@ -143,6 +144,7 @@ const skillCategories = [
       { name: "LLM-as-Judge Evaluation Pipeline", id: "llm-as-judge" },
       { name: "LLM Recipe Generation System", id: "recipe-generation" },
       { name: "AI Tech Consultant", id: "ai-tech-consultant" },
+      { name: "MISSION MPSO — Telugu AI Tutor", id: "mission-mpso" },
     ],
   },
   {
@@ -171,6 +173,7 @@ const skillCategories = [
       { name: "Cost-Efficient RAG Application", id: "cost-efficient-rag" },
       { name: "ArtiSight — AI Photo Critique", id: "artisight" },
       { name: "AI Tech Consultant", id: "ai-tech-consultant" },
+      { name: "MISSION MPSO — Exam Platform", id: "mission-mpso" },
     ],
   },
   {
@@ -195,6 +198,7 @@ const skillCategories = [
     relatedProjects: [
       { name: "ArtiSight — AI Photo Critique", id: "artisight" },
       { name: "Wasto — Smart Waste Sorter", id: "wasto" },
+      { name: "MISSION MPSO — Telugu PWA", id: "mission-mpso" },
     ],
   },
   {
@@ -599,6 +603,28 @@ const projects = [
     ],
     image: ai_tech_consultant,
     source_code_link: "https://github.com/vdevisricharan/ai-tech-consultant",
+  },
+  {
+    indexLabel: "MISSION 08",
+    name: "MISSION MPSO — Telugu AI Learning Platform",
+    case_study_id: "mission-mpso",
+    category: "AI EDTECH / TELUGU-FIRST PWA",
+    storyAngle:
+      "Empowering vernacular civil service aspirants through grounded pedagogical AI, deterministic math verification, and adaptive spaced repetition.",
+    description:
+      "Production-ready Telugu-first AI exam preparation progressive web application tailored for TGPSC MPSO/ASO recruitment (07/G/ES/2026). Features a grounded pedagogical AI tutor with 7 learning modes, deterministic Statistics calculation engine, bilingual KaTeX mathematical notation, 6-tier evidence-based mastery engine, persistent mistake book with spaced repetition, and 150-question timed mock simulator.",
+    metricHighlight: "49/49 Tests Passing • 7 Tutor Modes • 0px Overflow Across 320px–1440px • WCAG 2.2 AA",
+    architecturePreview: "Next.js 16 PWA -> Grounded AI Tutor (7 Modes) + Deterministic Stats Engine -> Spaced Repetition -> PostgreSQL/JSON",
+    tags: [
+      { name: "Next.js 16", color: "blue-text-gradient" },
+      { name: "React 19", color: "green-text-gradient" },
+      { name: "TypeScript", color: "pink-text-gradient" },
+      { name: "Tailwind CSS", color: "blue-text-gradient" },
+      { name: "KaTeX Math", color: "green-text-gradient" },
+      { name: "Vitest & Playwright", color: "pink-text-gradient" },
+    ],
+    image: mission_mpso,
+    source_code_link: "https://github.com/vdevisricharan/mission-mpso",
   },
 ];
 

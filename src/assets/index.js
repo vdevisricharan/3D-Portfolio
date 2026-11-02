@@ -55,6 +55,7 @@ import artisight from "./projects/artisight.png";
 import securepass from "./projects/securepass.png";
 import phnmn from "./projects/phnmn.png";
 import ai_tech_consultant from "./projects/ai_tech_consultant.png";
+import mission_mpso from "./projects/mission_mpso.png";
 
 // Testimonials
 import binu from "./testimonials/binu.jpg";
@@ -113,6 +114,7 @@ export {
   securepass,
   phnmn,
   ai_tech_consultant,
+  mission_mpso,
   // Testimonials
   binu,
   tarini,

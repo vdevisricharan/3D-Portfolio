@@ -56,6 +56,12 @@ flowchart LR
 
 ### Curated Repositories
 
+#### 🔹 [MISSION MPSO — Telugu AI Learning Platform](https://github.com/vdevisricharan/mission-mpso)
+- **What it does:** Production-ready, Telugu-first AI exam preparation progressive web app (PWA) tailored for Telangana Public Service Commission (TGPSC) MPSO/ASO recruitment under Notification 07/G/ES/2026.
+- **Engineering Highlights:** Integrates an independent deterministic statistical calculation engine (`StatisticsValidator`) eliminating LLM arithmetic hallucinations across 12 statistical domains, a grounded Telugu AI tutor with 7 pedagogical modes and bilingual KaTeX notation, a 6-tier evidence-based mastery engine, automated spaced repetition (1, 3, 7, 14, 30 days), persistent mistake book, 150-question timed mock simulator, and 49/49 automated unit and E2E tests passing with WCAG 2.2 AA accessibility.
+- **Tech Stack:** `Next.js 16` &bull; `React 19` &bull; `TypeScript` &bull; `Tailwind CSS` &bull; `KaTeX` &bull; `Vitest` &bull; `Playwright`
+- 🔗 **[View Repository →](https://github.com/vdevisricharan/mission-mpso)**
+
 #### 🔹 [Cost-Efficient RAG Application](https://github.com/vdevisricharan/cost-efficient-rag-application)
 - **What it does:** End-to-end question-answering service pairing embedded/self-hosted vector stores (**LanceDB** with Apache Arrow columnar disk format and **ChromaDB**) with **Gemini 2.5 Flash**.
 - **Engineering Highlights:** Evaluates zero-always-on-pod vector infrastructure, demonstrating up to **99.9% analytical cost reduction** over managed vector cloud databases in benchmark modeling; features SHA-256 chunk idempotency, configurable similarity cutoff ($\tau = 0.35$ with 100% fallback accuracy on unanswerables), and a 20-query evaluation harness ($p_{50} = 26.48\text{ ms}$ retrieval latency).

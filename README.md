@@ -105,6 +105,7 @@ Each featured project opens a dedicated engineering field report (`ProjectCaseSt
 | `MISSION // 05` | `MULTIMODAL PRODUCT` | **ArtiSight — AI Photo Critique** | Multimodal Google Gemini 2.5 Flash & deterministic OpenCV (42.9ms) with SVG composition overlays, exposure histogram, EXIF GPS redaction & Pydantic rubric | [Case Study](https://vdevisricharan.netlify.app/project/artisight) &bull; [GitHub](https://github.com/vdevisricharan/ArtiSight) &bull; [Demo](https://artisight.netlify.app/) |
 | `MISSION // 06` | `EDGE AI + HARDWARE` | **Wasto — Smart Waste Sorter** | MobileNetV3 transfer learning (94.2% test accuracy, <45ms latency) + Web Serial API to Arduino Uno 3-way physical servo actuation | [Case Study](https://vdevisricharan.netlify.app/project/wasto) &bull; [GitHub](https://github.com/vdevisricharan/wasto) &bull; [Demo](https://wasto.netlify.app/) |
 | `MISSION // 07` | `AI SYSTEMS ARCHITECTURE` | **AI Tech Consultant** | 3-service architecture automating consulting bottlenecks: Hybrid RAG Knowledge Brain (SQLite FTS5 + RRF), Inbox Agent with 20-approval autonomy engine, 5-agent Meeting-to-Scope pipeline | [Case Study](https://vdevisricharan.netlify.app/project/ai-tech-consultant) &bull; [GitHub](https://github.com/vdevisricharan/ai-tech-consultant) |
+| `MISSION // 08` | `VERNACULAR AI EDTECH` | **MISSION MPSO — Telugu AI Learning Platform** | Telugu-first Next.js 16 PWA for TGPSC MPSO/ASO, Grounded Pedagogical AI Tutor (7 modes), Deterministic StatisticsValidator, KaTeX math in Telugu, 6-tier adaptive mastery, spaced repetition mistake book, 150-Q timed mock simulator (49/49 tests passing) | [Case Study](https://vdevisricharan.netlify.app/project/mission-mpso) &bull; [GitHub](https://github.com/vdevisricharan/mission-mpso) |
 
 ---
 
@@ -117,7 +118,7 @@ Each featured project opens a dedicated engineering field report (`ProjectCaseSt
 │   ├── Devi_Sri_Charan_SWE_2026.html  # Standalone ATS-conscious interactive resume
 │   ├── og-preview.svg                 # Social preview card (Brand New Day theme)
 │   ├── robots.txt                     # Search crawler directives
-│   ├── sitemap.xml                    # XML sitemap for landing + 7 case studies
+│   ├── sitemap.xml                    # XML sitemap for landing + 8 case studies
 │   └── vite.svg                       # Favicon
 ├── src/
 │   ├── assets/                        # Optimized SVGs, PNGs, company logos & project banners
