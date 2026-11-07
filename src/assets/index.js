@@ -53,7 +53,6 @@ import recipe_generation from "./projects/recipe_generation.png";
 import wasto from "./projects/wasto.png";
 import artisight from "./projects/artisight.png";
 import securepass from "./projects/securepass.png";
-import phnmn from "./projects/phnmn.png";
 import ai_tech_consultant from "./projects/ai_tech_consultant.png";
 import mission_mpso from "./projects/mission_mpso.png";
 
@@ -112,7 +111,6 @@ export {
   wasto,
   artisight,
   securepass,
-  phnmn,
   ai_tech_consultant,
   mission_mpso,
   // Testimonials
